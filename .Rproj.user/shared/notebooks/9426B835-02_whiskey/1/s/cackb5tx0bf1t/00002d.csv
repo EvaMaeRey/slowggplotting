@@ -1,0 +1,11 @@
+"0","ggplot(df_cow) +
+  aes(x,y, fill = z) +
+  geom_raster() +
+  geom_raster(mapping = aes(x+1, y+1, fill = z)) +
+  coord_equal() +
+  scale_y_continuous(""Percent change price of Big Mac (foreign visitor)"", 
+    sec.axis = sec_axis(~ . * 1, name = ""Percent change price of local currency (in dollars) "")
+  )
+"
+"2","Error in ggplot(df_cow) : could not find function ""ggplot""
+"

@@ -1,0 +1,3 @@
+"0","df0 = read_xlsx(""../raw_data/Turkey vultures in North and South America - migration.xlsx"") "
+"0","df = df0 %>% mutate(timestamp = as_datetime(timestamp)) %>% "
+"0","  mutate(year = year(timestamp))"

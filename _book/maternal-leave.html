@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Slow ggplot2</title>
+  <meta name="description" content="Some plots">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Slow ggplot2" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Some plots" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Slow ggplot2" />
+  
+  <meta name="twitter:description" content="Some plots" />
+  
+
+<meta name="author" content="Evangeline Reynolds">
+
+
+<meta name="date" content="2018-09-29">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="officials-beliefs-about-womens-representation.html">
+<link rel="next" href="traits.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Slow ggplot2</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="baseball-war-and-ethnicity.html"><a href="baseball-war-and-ethnicity.html"><i class="fa fa-check"></i><b>2</b> Baseball, WAR, and Ethnicity</a></li>
+<li class="chapter" data-level="3" data-path="christmas-trees.html"><a href="christmas-trees.html"><i class="fa fa-check"></i><b>3</b> Christmas Trees</a></li>
+<li class="chapter" data-level="4" data-path="officials-beliefs-about-womens-representation.html"><a href="officials-beliefs-about-womens-representation.html"><i class="fa fa-check"></i><b>4</b> Officials’ beliefs about women’s representation</a></li>
+<li class="chapter" data-level="5" data-path="maternal-leave.html"><a href="maternal-leave.html"><i class="fa fa-check"></i><b>5</b> Maternal Leave</a></li>
+<li class="chapter" data-level="6" data-path="traits.html"><a href="traits.html"><i class="fa fa-check"></i><b>6</b> Traits</a></li>
+<li class="chapter" data-level="7" data-path="salarys-of-trump-and-obama-white-house-employees.html"><a href="salarys-of-trump-and-obama-white-house-employees.html"><i class="fa fa-check"></i><b>7</b> Salarys of Trump and Obama White House Employees</a></li>
+<li class="chapter" data-level="8" data-path="winter-games.html"><a href="winter-games.html"><i class="fa fa-check"></i><b>8</b> Winter Games</a></li>
+<li class="chapter" data-level="9" data-path="brexit.html"><a href="brexit.html"><i class="fa fa-check"></i><b>9</b> Brexit</a></li>
+<li class="chapter" data-level="10" data-path="curry-in-london.html"><a href="curry-in-london.html"><i class="fa fa-check"></i><b>10</b> Curry in London</a></li>
+<li class="chapter" data-level="11" data-path="life-expectancy-increases.html"><a href="life-expectancy-increases.html"><i class="fa fa-check"></i><b>11</b> Life Expectancy Increases</a></li>
+<li class="chapter" data-level="12" data-path="myers-briggs.html"><a href="myers-briggs.html"><i class="fa fa-check"></i><b>12</b> Myers Briggs</a></li>
+<li class="chapter" data-level="13" data-path="wine.html"><a href="wine.html"><i class="fa fa-check"></i><b>13</b> Wine</a></li>
+<li class="chapter" data-level="14" data-path="arctic-ice.html"><a href="arctic-ice.html"><i class="fa fa-check"></i><b>14</b> Arctic Ice</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Slow ggplot2</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="maternal-leave" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Maternal Leave</h1>
+<p>The OECD provides a comparative report on how much paid leave women are entitled to after childbirth. But leave takes different forms. In some places, the allowed leave is longer, but sometimes that means that the pay out compared to the regular salary is lower. To emphasize the different forms that law around paid leave take, I plotted the total payout available to mothers as areas of rectangles, where one side is the length of leave allowed, and the other side is the proportion of salary paid to the new mom.</p>
+<p>A random sample from the data set:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Country</th>
+<th align="right">Paid maternity leave avg payment rate (%)</th>
+<th align="right">Paid maternity leave full rate equivalent in weeks</th>
+<th align="right">Paid maternity leave in weeks</th>
+<th align="right">Paid parental leave avg payment rate (%)</th>
+<th align="right">Paid parental leave full rate equivalent in weeks</th>
+<th align="right">Paid parental leave in weeks</th>
+<th align="right">Total paid leave avg payment rate (%)</th>
+<th align="right">Total paid leave full rate equivalent in weeks</th>
+<th align="right">Total paid leave in weeks</th>
+<th align="left">rank_name</th>
+<th align="right">paid_leave_months</th>
+<th align="right">total_paid_yearly_salaries</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Switzerland</td>
+<td align="right">56.4</td>
+<td align="right">7.9</td>
+<td align="right">14.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">56.4</td>
+<td align="right">7.9</td>
+<td align="right">14.0</td>
+<td align="left">#32: Switzerland</td>
+<td align="right">3.221918</td>
+<td align="right">0.1519231</td>
+</tr>
+<tr class="even">
+<td align="left">Sweden</td>
+<td align="right">77.6</td>
+<td align="right">10.0</td>
+<td align="right">12.9</td>
+<td align="right">57.7</td>
+<td align="right">24.7</td>
+<td align="right">42.9</td>
+<td align="right">62.3</td>
+<td align="right">34.7</td>
+<td align="right">55.7</td>
+<td align="left">#13: Sweden</td>
+<td align="right">12.818630</td>
+<td align="right">0.6673077</td>
+</tr>
+<tr class="odd">
+<td align="left">Denmark</td>
+<td align="right">53.6</td>
+<td align="right">9.6</td>
+<td align="right">18.0</td>
+<td align="right">53.6</td>
+<td align="right">17.1</td>
+<td align="right">32.0</td>
+<td align="right">53.6</td>
+<td align="right">26.8</td>
+<td align="right">50.0</td>
+<td align="left">#16: Denmark</td>
+<td align="right">11.506849</td>
+<td align="right">0.5153846</td>
+</tr>
+<tr class="even">
+<td align="left">United Kingdom</td>
+<td align="right">30.9</td>
+<td align="right">12.1</td>
+<td align="right">39.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
+<td align="right">30.9</td>
+<td align="right">12.1</td>
+<td align="right">39.0</td>
+<td align="left">#28: United Kingdom</td>
+<td align="right">8.975343</td>
+<td align="right">0.2326923</td>
+</tr>
+<tr class="odd">
+<td align="left">Estonia</td>
+<td align="right">100.0</td>
+<td align="right">20.0</td>
+<td align="right">20.0</td>
+<td align="right">44.5</td>
+<td align="right">65.0</td>
+<td align="right">146.0</td>
+<td align="right">51.2</td>
+<td align="right">85.0</td>
+<td align="right">166.0</td>
+<td align="left">#1: Estonia</td>
+<td align="right">38.202740</td>
+<td align="right">1.6346154</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(df) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> paid_leave_months) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">y =</span> <span class="st">`</span><span class="dt">Total paid leave avg payment rate (%)</span><span class="st">`</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">xmin =</span> <span class="dv">0</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">xmax =</span> paid_leave_months) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">ymin =</span> <span class="dv">0</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">ymax =</span> <span class="st">`</span><span class="dt">Total paid leave avg payment rate (%)</span><span class="st">`</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="kw">fct_inorder</span>(rank_name) <span class="op">~</span><span class="st"> </span>.) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="dt">alpha =</span> .<span class="dv">2</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">yend =</span> <span class="dv">0</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">xend =</span> <span class="dv">0</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">yend =</span> <span class="st">`</span><span class="dt">Total paid leave avg payment rate (%)</span><span class="st">`</span>), <span class="dt">lty =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">xend =</span> paid_leave_months), <span class="dt">lty =</span> <span class="st">&quot;dashed&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>), <span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">44</span>), <span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Length of paid leave entitlement (months)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;Percent of income paid (average over entitlement period)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Total paid leave available to mothers in the OECD&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Countries rank ordered by paid leave full rate equivalent (blue rectangular area)</span><span class="ch">\n</span><span class="st">Visualization: Gina Reynolds | Data source: OECD.org &quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">12</span>) </code></pre></div>
+<p><img src="makeovermonday_book_files/figure-html/unnamed-chunk-17-1.png" width="1152" /></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="officials-beliefs-about-womens-representation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="traits.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["makeovermonday_book.pdf", "makeovermonday_book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

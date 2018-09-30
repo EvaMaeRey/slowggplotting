@@ -1,0 +1,30 @@
+"0","knitr::kable(sample_n(both_data, 5))"
+"1","
+
+"
+"1","|ADMINISTRATION |NAME                  |STATUS   | SALARY|PAY BASIS |POSITION TITLE                                                      |position_and_name                                                                        |"
+"1","
+"
+"1","|:--------------|:---------------------|:--------|------:|:---------|:-------------------------------------------------------------------|:----------------------------------------------------------------------------------------|"
+"1","
+"
+"1","|Trump          |Andersen, Whitney N.  |Employee |  94000|Per Annum |DEPUTY DIRECTOR OF OPERATIONS FOR THE WHITE HOUSE MANAGEMENT OFFICE |Andersen, Whitney N.
+DEPUTY DIRECTOR OF OPERATIONS FOR THE WHITE HOUSE MANAGEMENT OFFICE |"
+"1","
+"
+"1","|Obama          |Millones, Danielle V. |Employee |  47000|Per Annum |ASSOCIATE DIRECTOR FOR PRESIDENTIAL PERSONNEL                       |Millones, Danielle V.
+ASSOCIATE DIRECTOR FOR PRESIDENTIAL PERSONNEL                      |"
+"1","
+"
+"1","|Trump          |Caporale, Justin R.   |Employee |  83000|Per Annum |LEAD ADVANCE REPRESENTATIVE                                         |Caporale, Justin R.
+LEAD ADVANCE REPRESENTATIVE                                          |"
+"1","
+"
+"1","|Trump          |Finzer, Mary C.       |Employee |  56000|Per Annum |STAFF ASSISTANT                                                     |Finzer, Mary C.
+STAFF ASSISTANT                                                          |"
+"1","
+"
+"1","|Trump          |Walk, John            |Employee | 119000|Per Annum |ASSOCIATE COUNSEL TO THE PRESIDENT                                  |Walk, John
+ASSOCIATE COUNSEL TO THE PRESIDENT                                            |"
+"1","
+"

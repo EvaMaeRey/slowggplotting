@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>A Minimal Book Example</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Yihui Xie">
+
+
+<meta name="date" content="2018-08-04">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="intro.html">
+<link rel="next" href="literature.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="arctic-ice.html"><a href="arctic-ice.html"><i class="fa fa-check"></i><b>2</b> Arctic Ice</a></li>
+<li class="chapter" data-level="3" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>3</b> Introduction</a></li>
+<li class="chapter" data-level="4" data-path="whiskey.html"><a href="whiskey.html"><i class="fa fa-check"></i><b>4</b> Whiskey</a><ul>
+<li class="chapter" data-level="4.1" data-path="whiskey.html"><a href="whiskey.html#read-in-data-transform"><i class="fa fa-check"></i><b>4.1</b> read in data, transform</a></li>
+<li class="chapter" data-level="4.2" data-path="whiskey.html"><a href="whiskey.html#images-from-the-noun-project"><i class="fa fa-check"></i><b>4.2</b> Images from the noun project</a></li>
+<li class="chapter" data-level="4.3" data-path="whiskey.html"><a href="whiskey.html#plotting"><i class="fa fa-check"></i><b>4.3</b> Plotting</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>5</b> Literature</a></li>
+<li class="chapter" data-level="6" data-path="texas.html"><a href="texas.html"><i class="fa fa-check"></i><b>6</b> Texas</a></li>
+<li class="chapter" data-level="7" data-path="west-virgina.html"><a href="west-virgina.html"><i class="fa fa-check"></i><b>7</b> West Virgina</a></li>
+<li class="chapter" data-level="8" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>8</b> Methods</a></li>
+<li class="chapter" data-level="9" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>9</b> Applications</a><ul>
+<li class="chapter" data-level="9.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>9.1</b> Example one</a></li>
+<li class="chapter" data-level="9.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>9.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>10</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="whiskey" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Whiskey</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(readxl)
+<span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(png)
+<span class="kw">library</span>(ggplot2)</code></pre></div>
+<div id="read-in-data-transform" class="section level2">
+<h2><span class="header-section-number">4.1</span> read in data, transform</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dta =<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;raw_data/Irish Whiskey Sales by Volume.xlsx&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">filter</span>(Country <span class="op">==</span><span class="st"> &quot;United States&quot;</span><span class="op">|</span>Country <span class="op">==</span><span class="st"> &quot;Ireland&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(Year <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1992</span>, <span class="dv">2000</span>, <span class="dv">2008</span>, <span class="dv">2016</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(Country, Year) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Cases =</span> <span class="kw">sum</span>(Cases, <span class="dt">na.rm =</span> T)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Cases100000 =</span> Cases<span class="op">/</span><span class="dv">100000</span> )</code></pre></div>
+</div>
+<div id="images-from-the-noun-project" class="section level2">
+<h2><span class="header-section-number">4.2</span> Images from the noun project</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">img_cow=<span class="kw">readPNG</span>(<span class="st">&quot;raw_data/noun_194996_cc.png&quot;</span>)[<span class="dv">000</span><span class="op">:</span><span class="dv">600</span>, <span class="dv">57</span><span class="op">:</span><span class="dv">650</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]
+## info reduction
+img_cow=img_cow[<span class="kw">seq</span>(<span class="dv">1</span>, <span class="kw">dim</span>(img_cow)[<span class="dv">1</span>], <span class="dt">by =</span> <span class="dv">1</span>), 
+                          <span class="kw">seq</span>(<span class="dv">1</span>, <span class="kw">dim</span>(img_cow)[<span class="dv">2</span>], <span class="dt">by =</span> <span class="dv">1</span>),<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]
+pngCredit_cow=<span class="st">&quot;Whiskey by Mark S Waterhouse from the Noun Project&quot;</span>
+
+<span class="kw">plot</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">0</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">type=</span><span class="st">&#39;n&#39;</span>)
+<span class="kw">rasterImage</span>(img_cow, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">3</span>)</code></pre></div>
+<p><img src="makeovermonday_book_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># img_chicken=readPNG(&quot;noun_42413_cc.png&quot;)[0:600, 650:50, 1:4]</span>
+<span class="co"># # info reduction</span>
+<span class="co"># img_chicken=img_chicken[seq(1, dim(img_chicken)[1], by = 1), </span>
+<span class="co">#                         seq(1, dim(img_chicken)[2], by = 1),</span>
+<span class="co">#                         1:4]</span>
+<span class="co"># pngCredit_chicken=&quot;Chicken by Yair Cohen from the Noun Project&quot;</span>
+
+img_cow_col =<span class="st"> </span>img_cow; img_cow_col[img_cow] =<span class="st"> </span><span class="fl">0.439</span>
+
+my_array =<span class="st"> </span><span class="kw">array</span>(<span class="kw">c</span>(img_cow, img_cow_col, img_cow_col), <span class="dt">dim =</span> <span class="kw">dim</span>(img_cow))
+<span class="kw">plot</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">4</span>,<span class="dv">0</span><span class="op">:</span><span class="dv">4</span>);<span class="kw">rasterImage</span>(my_array, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">3</span>)</code></pre></div>
+<p><img src="makeovermonday_book_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">R &lt;-<span class="st"> </span><span class="kw">cor</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">40</span>), <span class="dv">8</span>))
+<span class="kw">round</span>(R, <span class="dv">3</span>)</code></pre></div>
+<pre><code>##        [,1]   [,2]   [,3]   [,4]   [,5]
+## [1,]  1.000 -0.304  0.711 -0.026  0.269
+## [2,] -0.304  1.000 -0.446 -0.205 -0.198
+## [3,]  0.711 -0.446  1.000  0.354  0.163
+## [4,] -0.026 -0.205  0.354  1.000  0.105
+## [5,]  0.269 -0.198  0.163  0.105  1.000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d &lt;-<span class="st"> </span><span class="kw">dim</span>(R)
+red  &lt;-<span class="st"> </span><span class="kw">ifelse</span>(R <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>, <span class="op">-</span>R, <span class="dv">0</span>)
+blue &lt;-<span class="st"> </span><span class="kw">ifelse</span>(R <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>, <span class="dv">0</span>, R)
+cols &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">c</span>(red, <span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">prod</span>(d)), blue),
+              <span class="kw">c</span>(d[<span class="dv">1</span>],d[<span class="dv">2</span>],<span class="dv">3</span>))
+
+<span class="co"># png(&quot;rasterImage.png&quot;)</span>
+<span class="kw">plot</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">5</span><span class="op">+</span><span class="fl">0.5</span>, <span class="dv">0</span><span class="op">:</span><span class="dv">5</span><span class="op">+</span><span class="fl">0.5</span>, <span class="dt">type=</span><span class="st">&quot;n&quot;</span>)
+<span class="kw">rasterImage</span>(cols, <span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">5.5</span>, <span class="fl">5.5</span>,
+            <span class="dt">interpolate=</span>T)</code></pre></div>
+<p><img src="makeovermonday_book_files/figure-html/unnamed-chunk-6-3.png" width="672" /></p>
+</div>
+<div id="plotting" class="section level2">
+<h2><span class="header-section-number">4.3</span> Plotting</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">draw_icons &lt;-<span class="st"> </span>
+<span class="st">  </span><span class="cf">function</span>(<span class="dt">origin =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">size =</span> .<span class="dv">5</span>, <span class="dt">num_to_plot =</span> <span class="kw">round</span>(<span class="fl">76.4</span><span class="op">/</span><span class="dv">10</span>), 
+           <span class="dt">cols =</span> <span class="dv">3</span>, <span class="dt">img =</span> img_chicken, <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>){
+rows &lt;-<span class="st"> </span><span class="kw">ceiling</span>(num_to_plot<span class="op">/</span>cols)
+x_pos &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span>cols, rows)[<span class="dv">1</span><span class="op">:</span>num_to_plot]
+x_pos &lt;-<span class="st"> </span>x_pos <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(x_pos)
+y_pos &lt;-<span class="st"> </span><span class="kw">sort</span>(<span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span>rows, cols), <span class="dt">decreasing =</span> T)[<span class="dv">1</span><span class="op">:</span>num_to_plot]
+y_pos &lt;-<span class="st"> </span>y_pos <span class="op">-</span><span class="st"> </span><span class="kw">max</span>(y_pos)
+<span class="kw">rasterImage</span>(img, 
+            <span class="op">-</span>size <span class="op">+</span><span class="st"> </span>x_pos <span class="op">+</span><span class="st"> </span>origin[<span class="dv">1</span>], 
+            <span class="op">-</span>size <span class="op">+</span><span class="st"> </span>y_pos <span class="op">+</span><span class="st"> </span>origin[<span class="dv">2</span>], 
+            size <span class="op">+</span><span class="st"> </span>x_pos <span class="op">+</span><span class="st"> </span>origin[<span class="dv">1</span>], 
+            size <span class="op">+</span><span class="st"> </span>y_pos <span class="op">+</span><span class="st"> </span>origin[<span class="dv">2</span>], <span class="dt">col =</span> col)
+}
+
+x1 =<span class="st"> </span><span class="op">-</span><span class="dv">9</span>
+x2 =<span class="st"> </span><span class="op">-</span><span class="dv">4</span>
+x3 =<span class="st"> </span><span class="dv">1</span>
+x4 =<span class="st"> </span><span class="dv">6</span>
+shift =<span class="st"> </span>.<span class="dv">4</span>
+{
+<span class="kw">par</span>(<span class="dt">bg =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">family =</span> <span class="st">&#39;serif&#39;</span>, <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))
+<span class="kw">plot</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">7</span>,<span class="dv">7</span>), <span class="kw">c</span>(<span class="op">-</span><span class="dv">16</span>,<span class="dv">2</span>), <span class="dt">type=</span><span class="st">&#39;n&#39;</span>, <span class="dt">asp =</span> <span class="dv">1</span>, <span class="dt">axes =</span> F, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>)
+y =<span class="st"> </span><span class="dv">2</span>
+<span class="kw">text</span>(x1, y,
+      <span class="st">&quot;Annual Irish Whiskey Sales in the US and Ireland&quot;</span>, <span class="dt">cex =</span> <span class="fl">1.25</span>, <span class="dt">pos =</span> <span class="dv">4</span>, <span class="dt">offset =</span> <span class="dv">0</span>)
+y =<span class="st"> </span>y <span class="op">-</span><span class="st"> </span>.<span class="dv">75</span>
+<span class="kw">text</span>(x1, y, <span class="st">&quot;Each glass represents 100 thousand cases in sales (rounded)&quot;</span>, <span class="dt">cex =</span> .<span class="dv">8</span>, <span class="dt">pos =</span> <span class="dv">4</span>, <span class="dt">offset =</span> <span class="dv">0</span>)
+y =<span class="st"> </span>y <span class="op">-</span><span class="st"> </span><span class="fl">1.25</span>
+
+<span class="kw">text</span>(x1, y, <span class="st">&quot;Ireland&quot;</span>, <span class="dt">cex =</span> <span class="fl">1.25</span>, <span class="dt">pos =</span> <span class="dv">4</span>, <span class="dt">offset =</span> <span class="dv">0</span>)
+y =<span class="st"> </span>y <span class="op">-</span><span class="st"> </span><span class="dv">1</span>
+
+<span class="kw">text</span>(x1, y, <span class="st">&quot;1992&quot;</span>, <span class="dt">pos =</span> <span class="dv">4</span>, <span class="dt">offset =</span> <span class="dv">0</span>)
+<span class="kw">text</span>(x2, y, <span class="st">&quot;2000&quot;</span>, <span class="dt">pos =</span> <span class="dv">4</span>, <span class="dt">offset =</span> <span class="dv">0</span>)
+<span class="kw">text</span>(x3, y, <span class="st">&quot;2008&quot;</span>, <span class="dt">pos =</span> <span class="dv">4</span>, <span class="dt">offset =</span> <span class="dv">0</span>)
+<span class="kw">text</span>(x4, y, <span class="st">&quot;2016&quot;</span>, <span class="dt">pos =</span> <span class="dv">4</span>, <span class="dt">offset =</span> <span class="dv">0</span>)
+y =<span class="st"> </span>y <span class="op">-</span><span class="st"> </span><span class="dv">1</span>
+
+<span class="kw">draw_icons</span>(<span class="dt">origin =</span> <span class="kw">c</span>(x1<span class="op">+</span>shift<span class="op">-</span>.<span class="dv">3</span>,y<span class="op">-</span>.<span class="dv">3</span>), <span class="dt">size =</span> .<span class="dv">5</span>, <span class="dt">num_to_plot =</span> <span class="kw">round</span>(dta<span class="op">$</span>Cases100000[<span class="dv">1</span>]),
+           <span class="dt">cols =</span> <span class="dv">4</span>, <span class="dt">img =</span> img_cow_col)
+<span class="kw">draw_icons</span>(<span class="dt">origin =</span> <span class="kw">c</span>(x1<span class="op">+</span>shift,y), <span class="dt">size =</span> .<span class="dv">5</span>, <span class="dt">num_to_plot =</span> <span class="kw">round</span>(dta<span class="op">$</span>Cases100000[<span class="dv">1</span>]), 
+           <span class="dt">cols =</span> <span class="dv">4</span>, <span class="dt">img =</span> img_cow)
+<span class="kw">draw_icons</span>(<span class="dt">origin =</span> <span class="kw">c</span>(x2<span class="op">+</span>shift,y), <span class="dt">size =</span> .<span class="dv">5</span>, <span class="dt">num_to_plot =</span> <span class="kw">round</span>(dta<span class="op">$</span>Cases100000[<span class="dv">2</span>]), 
+           <span class="dt">cols =</span> <span class="dv">4</span>, <span class="dt">img =</span> img_cow)
+<span class="kw">draw_icons</span>(<span class="dt">origin =</span> <span class="kw">c</span>(x3<span class="op">+</span>shift,y), <span class="dt">size =</span> .<span class="dv">5</span>, <span class="dt">num_to_plot =</span> <span class="kw">round</span>(dta<span class="op">$</span>Cases100000[<span class="dv">3</span>]), 
+           <span class="dt">cols =</span> <span class="dv">4</span>, <span class="dt">img =</span> img_cow)
+<span class="kw">draw_icons</span>(<span class="dt">origin =</span> <span class="kw">c</span>(x4<span class="op">+</span>shift,y), <span class="dt">size =</span> .<span class="dv">5</span>, <span class="dt">num_to_plot =</span> <span class="kw">round</span>(dta<span class="op">$</span>Cases100000[<span class="dv">4</span>]), 
+           <span class="dt">cols =</span> <span class="dv">4</span>, <span class="dt">img =</span> img_cow)
+
+y =<span class="st"> </span>y <span class="op">-</span><span class="st"> </span><span class="fl">2.75</span>
+
+<span class="kw">text</span>(<span class="op">-</span><span class="dv">9</span>, y, <span class="st">&quot;US&quot;</span>, <span class="dt">cex =</span> <span class="fl">1.25</span>, <span class="dt">pos =</span> <span class="dv">4</span>, <span class="dt">offset =</span> <span class="dv">0</span>)
+y =<span class="st"> </span>y <span class="op">-</span><span class="st"> </span><span class="dv">1</span>
+
+<span class="kw">text</span>(x1, y, <span class="st">&quot;1992&quot;</span>, <span class="dt">pos =</span> <span class="dv">4</span>, <span class="dt">offset =</span> <span class="dv">0</span>)
+<span class="kw">text</span>(x2, y, <span class="st">&quot;2000&quot;</span>, <span class="dt">pos =</span> <span class="dv">4</span>, <span class="dt">offset =</span> <span class="dv">0</span>)
+<span class="kw">text</span>(x3, y, <span class="st">&quot;2008&quot;</span>, <span class="dt">pos =</span> <span class="dv">4</span>, <span class="dt">offset =</span> <span class="dv">0</span>)
+<span class="kw">text</span>(x4, y, <span class="st">&quot;2016&quot;</span>, <span class="dt">pos =</span> <span class="dv">4</span>, <span class="dt">offset =</span> <span class="dv">0</span>)
+y =<span class="st"> </span>y <span class="op">-</span><span class="st"> </span><span class="dv">1</span>
+
+<span class="kw">draw_icons</span>(<span class="dt">origin =</span> <span class="kw">c</span>(x1<span class="op">+</span>shift,y), <span class="dt">size =</span> .<span class="dv">45</span>, <span class="dt">num_to_plot =</span> <span class="kw">round</span>(dta<span class="op">$</span>Cases100000[<span class="dv">5</span>]), 
+           <span class="dt">cols =</span> <span class="dv">4</span>, <span class="dt">img =</span> img_cow)
+<span class="kw">draw_icons</span>(<span class="dt">origin =</span> <span class="kw">c</span>(x2<span class="op">+</span>shift,y), <span class="dt">size =</span> .<span class="dv">45</span>, <span class="dt">num_to_plot =</span> <span class="kw">round</span>(dta<span class="op">$</span>Cases100000[<span class="dv">6</span>]), 
+           <span class="dt">cols =</span> <span class="dv">4</span>, <span class="dt">img =</span> img_cow)
+<span class="kw">draw_icons</span>(<span class="dt">origin =</span> <span class="kw">c</span>(x3<span class="op">+</span>shift,y), <span class="dt">size =</span> .<span class="dv">45</span>, <span class="dt">num_to_plot =</span> <span class="kw">round</span>(dta<span class="op">$</span>Cases100000[<span class="dv">7</span>]), 
+           <span class="dt">cols =</span> <span class="dv">4</span>, <span class="dt">img =</span> img_cow)
+<span class="kw">draw_icons</span>(<span class="dt">origin =</span> <span class="kw">c</span>(x4<span class="op">+</span>shift,y), <span class="dt">size =</span> .<span class="dv">45</span>, <span class="dt">num_to_plot =</span> <span class="kw">round</span>(dta<span class="op">$</span>Cases100000[<span class="dv">8</span>]), 
+           <span class="dt">cols =</span> <span class="dv">4</span>, <span class="dt">img =</span> img_cow)
+<span class="co"># lines(x = c(0, 0), y = c(0.5, -6.5), lwd=2)</span>
+<span class="co"># lines(x = c(-5, -5), y = c(0.5, -6.5), lwd=2)</span>
+<span class="co"># lines(x = c(5, 5), y = c(0.5, -6.5), lwd=2)</span>
+
+y =<span class="st"> </span>y <span class="op">-</span><span class="st"> </span><span class="fl">8.9</span>
+<span class="kw">text</span>(x1, y, <span class="st">&quot;Data Source: Board Bia via The IWSR </span><span class="ch">\n</span><span class="st">Icon:  Whiskey by Mark S Waterhouse from the Noun Project </span><span class="ch">\n</span><span class="st">Data Vis: Gina Reynolds @EvaMaeRey&quot;</span>, <span class="dt">cex =</span> .<span class="dv">5</span>, <span class="dt">pos =</span> <span class="dv">4</span>, <span class="dt">offset =</span> <span class="dv">0</span>)
+
+}</code></pre></div>
+<p><img src="makeovermonday_book_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["makeovermonday_book.pdf", "makeovermonday_book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

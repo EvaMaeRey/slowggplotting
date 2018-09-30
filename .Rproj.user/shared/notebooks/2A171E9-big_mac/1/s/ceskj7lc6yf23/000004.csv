@@ -1,0 +1,25 @@
+"0","df <- read_csv(""../raw_data/Big Mac Index.csv"")
+"
+"2","Parsed with column specification:
+cols(
+  date = col_date(format = """"),
+  iso_a3 = col_character(),
+  currency_code = col_character(),
+  name = col_character(),
+  local_price = col_double(),
+  dollar_ex = col_double(),
+  dollar_price = col_double(),
+  USD_raw = col_double(),
+  EUR_raw = col_double(),
+  GBP_raw = col_double(),
+  JPY_raw = col_double(),
+  CNY_raw = col_double(),
+  GDP_dollar = col_double(),
+  adj_price = col_double(),
+  USD_adjusted = col_double(),
+  EUR_adjusted = col_double(),
+  GBP_adjusted = col_double(),
+  JPY_adjusted = col_double(),
+  CNY_adjusted = col_double()
+)
+"

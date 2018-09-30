@@ -1,0 +1,4 @@
+"0","data <- readxl::read_xlsx(""raw_data/G7 Quarterly GDP Growth.xlsx"")"
+"0","data <- data %>%"
+"0","  mutate(Quarter = as.numeric(stringr::str_extract(Quarter, ""\\d""))) %>%"
+"0","  mutate(`Date (start o quarter)` = lubridate::date(`Date (start of quarter)`))"

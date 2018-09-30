@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Slow ggplot2</title>
+  <meta name="description" content="Some plots">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Slow ggplot2" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Some plots" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Slow ggplot2" />
+  
+  <meta name="twitter:description" content="Some plots" />
+  
+
+<meta name="author" content="Evangeline Reynolds">
+
+
+<meta name="date" content="2018-09-29">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="wine.html">
+<link rel="next" href="references.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Slow ggplot2</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="baseball-war-and-ethnicity.html"><a href="baseball-war-and-ethnicity.html"><i class="fa fa-check"></i><b>2</b> Baseball, WAR, and Ethnicity</a></li>
+<li class="chapter" data-level="3" data-path="christmas-trees.html"><a href="christmas-trees.html"><i class="fa fa-check"></i><b>3</b> Christmas Trees</a></li>
+<li class="chapter" data-level="4" data-path="officials-beliefs-about-womens-representation.html"><a href="officials-beliefs-about-womens-representation.html"><i class="fa fa-check"></i><b>4</b> Officials’ beliefs about women’s representation</a></li>
+<li class="chapter" data-level="5" data-path="maternal-leave.html"><a href="maternal-leave.html"><i class="fa fa-check"></i><b>5</b> Maternal Leave</a></li>
+<li class="chapter" data-level="6" data-path="traits.html"><a href="traits.html"><i class="fa fa-check"></i><b>6</b> Traits</a></li>
+<li class="chapter" data-level="7" data-path="salarys-of-trump-and-obama-white-house-employees.html"><a href="salarys-of-trump-and-obama-white-house-employees.html"><i class="fa fa-check"></i><b>7</b> Salarys of Trump and Obama White House Employees</a></li>
+<li class="chapter" data-level="8" data-path="winter-games.html"><a href="winter-games.html"><i class="fa fa-check"></i><b>8</b> Winter Games</a></li>
+<li class="chapter" data-level="9" data-path="brexit.html"><a href="brexit.html"><i class="fa fa-check"></i><b>9</b> Brexit</a></li>
+<li class="chapter" data-level="10" data-path="curry-in-london.html"><a href="curry-in-london.html"><i class="fa fa-check"></i><b>10</b> Curry in London</a></li>
+<li class="chapter" data-level="11" data-path="life-expectancy-increases.html"><a href="life-expectancy-increases.html"><i class="fa fa-check"></i><b>11</b> Life Expectancy Increases</a></li>
+<li class="chapter" data-level="12" data-path="myers-briggs.html"><a href="myers-briggs.html"><i class="fa fa-check"></i><b>12</b> Myers Briggs</a></li>
+<li class="chapter" data-level="13" data-path="wine.html"><a href="wine.html"><i class="fa fa-check"></i><b>13</b> Wine</a></li>
+<li class="chapter" data-level="14" data-path="arctic-ice.html"><a href="arctic-ice.html"><i class="fa fa-check"></i><b>14</b> Arctic Ice</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Slow ggplot2</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="arctic-ice" class="section level1">
+<h1><span class="header-section-number">Chapter 14</span> Arctic Ice</h1>
+<p>This visualization shows the trend in Arctic Ice Sea Extent, data from the National Snow and Ice Data Center. If I recall correctly, the definition for coverage is the case where at least 15 percent of the sea is ice.</p>
+<p>The visualization shows melting and freezing cycles, in accordance with the seasons — and the disconcerting trend of a general decrease in ice extent over the years.</p>
+<p>One problem that arises is due to inconsistant number of days in each year. There is a measurement for every day, but leap years contain a extra day. Which means that plotting years over years leads to imperfect alignment. My solution was just to pretend that all the data come from a single year, 2000, and plot each of the years on that scale. The earliest year cycle and last year cycle are highlighted in white.</p>
+<p>A random sample from the data set:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="right">Extent (million sq km)</th>
+<th align="right">year</th>
+<th align="left">month_day</th>
+<th align="left">month_day_plus</th>
+<th align="right">proportion_ocean_covered_in_ice</th>
+<th align="right">mean_for_day</th>
+<th align="right">diff_from_mean_day</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1982-04-14</td>
+<td align="right">15.627</td>
+<td align="right">1982</td>
+<td align="left">04-14</td>
+<td align="left">2000-04-14</td>
+<td align="right">0.0434083</td>
+<td align="right">14.629000</td>
+<td align="right">0.9980000</td>
+</tr>
+<tr class="even">
+<td align="left">1982-12-20</td>
+<td align="right">14.016</td>
+<td align="right">1982</td>
+<td align="left">12-20</td>
+<td align="left">2000-12-20</td>
+<td align="right">0.0389333</td>
+<td align="right">12.922823</td>
+<td align="right">1.0931765</td>
+</tr>
+<tr class="odd">
+<td align="left">1996-09-17</td>
+<td align="right">7.531</td>
+<td align="right">1996</td>
+<td align="left">09-17</td>
+<td align="left">2000-09-17</td>
+<td align="right">0.0209194</td>
+<td align="right">5.915686</td>
+<td align="right">1.6153143</td>
+</tr>
+<tr class="even">
+<td align="left">1994-05-01</td>
+<td align="right">14.126</td>
+<td align="right">1994</td>
+<td align="left">05-01</td>
+<td align="left">2000-05-01</td>
+<td align="right">0.0392389</td>
+<td align="right">13.733206</td>
+<td align="right">0.3927941</td>
+</tr>
+<tr class="odd">
+<td align="left">1981-10-12</td>
+<td align="right">8.630</td>
+<td align="right">1981</td>
+<td align="left">10-12</td>
+<td align="left">2000-10-12</td>
+<td align="right">0.0239722</td>
+<td align="right">7.562114</td>
+<td align="right">1.0678857</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="right">year</th>
+<th align="right">average_coverage</th>
+<th align="right">num_days</th>
+<th align="left">average_day</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1982</td>
+<td align="right">12.43945</td>
+<td align="right">182</td>
+<td align="left">1982-07-02 00:00:00</td>
+</tr>
+<tr class="even">
+<td align="right">2016</td>
+<td align="right">10.15069</td>
+<td align="right">366</td>
+<td align="left">2016-07-01 12:00:00</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># breaks for x axis.</span>
+br &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(lubridate<span class="op">::</span><span class="kw">ymd</span>(<span class="kw">c</span>(
+  <span class="st">&quot;2000-01-01&quot;</span>, <span class="st">&quot;2000-04-01&quot;</span>,
+  <span class="st">&quot;2000-07-01&quot;</span>, <span class="st">&quot;2000-10-01&quot;</span>, <span class="st">&quot;2001-01-01&quot;</span>
+)))
+
+<span class="kw">ggplot</span>(df) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">as.numeric</span>(month_day_plus)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">y =</span> <span class="st">`</span><span class="dt">Extent (million sq km)</span><span class="st">`</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">group =</span> year) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">col =</span> year) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(
+    <span class="dt">breaks =</span> br,
+    <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Jan-01&quot;</span>, <span class="st">&quot;Apr-01&quot;</span>, <span class="st">&quot;Jul-01&quot;</span>, <span class="st">&quot;Oct-01&quot;</span>, <span class="st">&quot;Jan-01&quot;</span>), 
+    <span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)
+  ) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">20</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_color_continuous</span>(
+    <span class="dt">guide =</span> <span class="kw">guide_colourbar</span>(<span class="dt">reverse =</span> <span class="ot">TRUE</span>),
+    <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dv">2010</span>, <span class="dv">1980</span>, <span class="op">-</span><span class="dv">10</span>)
+  ) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">lty =</span> <span class="kw">factor</span>(year)),
+    <span class="dt">data =</span> df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2016</span> <span class="op">|</span><span class="st"> </span>year <span class="op">==</span><span class="st"> </span><span class="dv">1982</span>),
+    <span class="dt">col =</span> <span class="st">&quot;white&quot;</span>
+  ) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_linetype_manual</span>(
+    <span class="dt">name =</span> <span class="st">&quot;&quot;</span>,
+    <span class="dt">values =</span> <span class="kw">c</span>(<span class="st">&quot;dashed&quot;</span>, <span class="st">&quot;solid&quot;</span>)
+  ) <span class="op">+</span>
+<span class="st">  </span><span class="kw">annotate</span>(
+    <span class="dt">geom =</span> <span class="st">&quot;text&quot;</span>, <span class="dt">x =</span> <span class="dv">11210</span>, <span class="dt">y =</span> <span class="dv">15</span>,
+    <span class="dt">label =</span> <span class="kw">str_wrap</span>(<span class="st">&quot;For this period, 1982 had the highest calendar-year average extent of Arctic sea ice while 2016 had the lowest&quot;</span>, <span class="dv">30</span>),
+    <span class="dt">col =</span> <span class="st">&quot;white&quot;</span>,
+    <span class="dt">size =</span> <span class="dv">7</span>
+  ) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">y =</span> <span class="st">&quot;extent (million sq km)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">col =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">lty =</span> <span class="st">&quot;&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Freezing cycles: Arctic sea ice extent, 1979-2017&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Data Source: National Snow &amp; Ice Data Center | Vis: Gina Reynolds for #MakeoverMonday&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_dark</span>(<span class="dt">base_size =</span> <span class="dv">14</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(
+    <span class="dt">legend.background =</span> <span class="kw">element_blank</span>(),
+    <span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, .<span class="dv">35</span>),
+    <span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">size =</span> <span class="dv">15</span>),
+    <span class="dt">plot.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;grey30&quot;</span>),
+    <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;lightgrey&quot;</span>),
+    <span class="dt">plot.subtitle =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;lightgrey&quot;</span>),
+    <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;lightgrey&quot;</span>),
+    <span class="dt">axis.line =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;lightgrey&quot;</span>),
+    <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">colour =</span> <span class="st">&quot;lightgrey&quot;</span>),
+    <span class="dt">axis.ticks =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;lightgrey&quot;</span>)
+  )</code></pre></div>
+<p><img src="makeovermonday_book_files/figure-html/unnamed-chunk-56-1.png" width="1152" /></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="wine.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["makeovermonday_book.pdf", "makeovermonday_book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

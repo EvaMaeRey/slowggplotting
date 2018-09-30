@@ -1,0 +1,5 @@
+book_filename: "makeovermonday_book"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Chapter "

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>A Minimal Book Example</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="A Minimal Book Example" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="A Minimal Book Example" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Yihui Xie">
+
+
+<meta name="date" content="2018-08-31">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="arctic-ice.html">
+<link rel="next" href="baseball-war-and-ethnicity.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="arctic-ice.html"><a href="arctic-ice.html"><i class="fa fa-check"></i><b>2</b> Arctic Ice</a></li>
+<li class="chapter" data-level="3" data-path="bank-holidays.html"><a href="bank-holidays.html"><i class="fa fa-check"></i><b>3</b> Bank Holidays</a></li>
+<li class="chapter" data-level="4" data-path="baseball-war-and-ethnicity.html"><a href="baseball-war-and-ethnicity.html"><i class="fa fa-check"></i><b>4</b> Baseball, WAR, and Ethnicity</a></li>
+<li class="chapter" data-level="5" data-path="brexit.html"><a href="brexit.html"><i class="fa fa-check"></i><b>5</b> Brexit</a></li>
+<li class="chapter" data-level="6" data-path="salarys-trump-and-obama.html"><a href="salarys-trump-and-obama.html"><i class="fa fa-check"></i><b>6</b> Salarys Trump and Obama</a><ul>
+<li class="chapter" data-level="6.1" data-path="salarys-trump-and-obama.html"><a href="salarys-trump-and-obama.html#first-read-in-the-data"><i class="fa fa-check"></i><b>6.1</b> First read in the data</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="salarys-trump-and-obama.html"><a href="salarys-trump-and-obama.html#including-plots"><i class="fa fa-check"></i><b>6.1.1</b> Including Plots</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>7</b> Introduction</a></li>
+<li class="chapter" data-level="8" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>8</b> Literature</a></li>
+<li class="chapter" data-level="9" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>9</b> Methods</a></li>
+<li class="chapter" data-level="10" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>10</b> Applications</a><ul>
+<li class="chapter" data-level="10.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>10.1</b> Example one</a></li>
+<li class="chapter" data-level="10.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>10.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>11</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="12" data-path="christmas-trees.html"><a href="christmas-trees.html"><i class="fa fa-check"></i><b>12</b> Christmas Trees</a></li>
+<li class="chapter" data-level="13" data-path="curry-in-london.html"><a href="curry-in-london.html"><i class="fa fa-check"></i><b>13</b> Curry in London</a></li>
+<li class="chapter" data-level="14" data-path="dietary-restrictions.html"><a href="dietary-restrictions.html"><i class="fa fa-check"></i><b>14</b> Dietary Restrictions</a></li>
+<li class="chapter" data-level="15" data-path="exports-of-medicine.html"><a href="exports-of-medicine.html"><i class="fa fa-check"></i><b>15</b> Exports of Medicine</a></li>
+<li class="chapter" data-level="16" data-path="life-expectancy-increases.html"><a href="life-expectancy-increases.html"><i class="fa fa-check"></i><b>16</b> Life Expectancy Increases</a></li>
+<li class="chapter" data-level="17" data-path="most-revenue-getting-companies.html"><a href="most-revenue-getting-companies.html"><i class="fa fa-check"></i><b>17</b> Most Revenue Getting Companies</a></li>
+<li class="chapter" data-level="18" data-path="myers-briggs.html"><a href="myers-briggs.html"><i class="fa fa-check"></i><b>18</b> Myers Briggs</a></li>
+<li class="chapter" data-level="19" data-path="officials-and-share-of-seats.html"><a href="officials-and-share-of-seats.html"><i class="fa fa-check"></i><b>19</b> Officials and share of seats</a></li>
+<li class="chapter" data-level="20" data-path="maternal-leave.html"><a href="maternal-leave.html"><i class="fa fa-check"></i><b>20</b> Maternal Leave</a></li>
+<li class="chapter" data-level="21" data-path="textures.html"><a href="textures.html"><i class="fa fa-check"></i><b>21</b> Textures</a></li>
+<li class="chapter" data-level="22" data-path="wine.html"><a href="wine.html"><i class="fa fa-check"></i><b>22</b> Wine</a></li>
+<li class="chapter" data-level="23" data-path="winter-games.html"><a href="winter-games.html"><i class="fa fa-check"></i><b>23</b> Winter Games</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Minimal Book Example</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="bank-holidays" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Bank Holidays</h1>
+<p>“It’s a bank holiday tomorrow. Praise by. But the UK only has eight of the joyous day each year (New Year Holiday, Good Friday, Easter Monday, May Day, Late May Bank Holiday, August Bank Holiday, Christmas Day and Boxing). That does not compare favourably with most other nations (indeed, Jeremy Corbyn recently sought to woo voters by claiming he will add three new public holidays to the calendar if elected).</p>
+<p>So which countries have the most public holidays? Prepare for some serious work/life balance envy… &quot;</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(readxl)
+<span class="kw">library</span>(rgdal)</code></pre></div>
+<pre><code>## Loading required package: sp</code></pre>
+<pre><code>## rgdal: version: 1.2-20, (SVN revision 725)
+##  Geospatial Data Abstraction Library extensions to R successfully loaded
+##  Loaded GDAL runtime: GDAL 2.1.3, released 2017/20/01
+##  Path to GDAL shared files: /Library/Frameworks/R.framework/Versions/3.5/Resources/library/rgdal/gdal
+##  GDAL binary built with GEOS: FALSE 
+##  Loaded PROJ.4 runtime: Rel. 4.9.3, 15 August 2016, [PJ_VERSION: 493]
+##  Path to PROJ.4 shared files: /Library/Frameworks/R.framework/Versions/3.5/Resources/library/rgdal/proj
+##  Linking to sp version: 1.2-7</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(countrycode)
+<span class="kw">library</span>(stringr)
+
+<span class="co"># Public holiday data</span>
+data0=<span class="kw">read_xlsx</span>(<span class="st">&quot;raw_data/Public Holidays around the world (final).xlsx&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CountryName=</span><span class="kw">countrycode</span>(Country, <span class="st">&quot;country.name&quot;</span>, <span class="st">&quot;country.name&quot;</span>))</code></pre></div>
+<pre><code>## Warning in countrycode(Country, &quot;country.name&quot;, &quot;country.name&quot;): Some values were not matched unambiguously: Micronesia, Saint Martin, St. Barts</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(<span class="kw">table</span>(data0<span class="op">$</span><span class="st">`</span><span class="dt">Holiday Type</span><span class="st">`</span>))</code></pre></div>
+<pre><code>## [1] 56</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(data0<span class="op">$</span><span class="st">`</span><span class="dt">Holiday Type</span><span class="st">`</span>)</code></pre></div>
+<pre><code>##  [1] &quot;Public Holiday&quot;                   
+##  [2] &quot;Season&quot;                           
+##  [3] &quot;Observance&quot;                       
+##  [4] &quot;Jewish holiday&quot;                   
+##  [5] &quot;National holiday&quot;                 
+##  [6] &quot;Local holiday&quot;                    
+##  [7] &quot;Observance, Christian&quot;            
+##  [8] &quot;Orthodox&quot;                         
+##  [9] &quot;Common Local holidays&quot;            
+## [10] &quot;Christian&quot;                        
+## [11] &quot;Clock change/Daylight Saving Time&quot;
+## [12] &quot;National holiday, Christian&quot;      
+## [13] &quot;Muslim&quot;                           
+## [14] &quot;Local observance&quot;                 
+## [15] &quot;National/legal holiday&quot;           
+## [16] &quot;Bank holiday&quot;                     
+## [17] &quot;Bank/Public Sector Holiday&quot;       
+## [18] &quot;Public holiday&quot;                   
+## [19] &quot;Federal Holiday&quot;                  
+## [20] &quot;State holiday&quot;                    
+## [21] &quot;Hindu Holiday&quot;                    
+## [22] &quot;Half Day&quot;                         
+## [23] &quot;Hebrew&quot;                           
+## [24] &quot;National Holiday&quot;                 
+## [25] &quot;Optional Holiday&quot;                 
+## [26] &quot;State Holiday&quot;                    
+## [27] &quot;Common State holiday&quot;             
+## [28] &quot;Bank Holiday&quot;                     
+## [29] &quot;Weekend&quot;                          
+## [30] &quot;National holiday, Orthodox&quot;       
+## [31] &quot;Observance, Orthodox&quot;             
+## [32] &quot;Restricted Holiday&quot;               
+## [33] &quot;Gazetted Holiday&quot;                 
+## [34] &quot;Muslim, Common Local holidays&quot;    
+## [35] &quot;Regional holiday&quot;                 
+## [36] &quot;Observance, Hebrew&quot;               
+## [37] &quot;National holiday, Hebrew&quot;         
+## [38] &quot;Official holiday&quot;                 
+## [39] &quot;Federal Public Holiday&quot;           
+## [40] &quot;National holiday, Hinduism&quot;       
+## [41] &quot;Christian, Common Local holidays&quot; 
+## [42] &quot;Observance, Hinduism&quot;             
+## [43] &quot;Regular Holiday&quot;                  
+## [44] &quot;Special Non-working Holiday&quot;      
+## [45] &quot;De facto holiday&quot;                 
+## [46] &quot;Extra Public Holiday&quot;             
+## [47] &quot;Half-day&quot;                         
+## [48] &quot;Silent Day&quot;                       
+## [49] &quot;Silent Day, National holiday&quot;     
+## [50] &quot;Local holiday, Christian&quot;         
+## [51] &quot;Major Observance&quot;                 
+## [52] &quot;Official Holiday&quot;                 
+## [53] &quot;Flag day&quot;                         
+## [54] &quot;National holiday, Flag day&quot;       
+## [55] &quot;Observance, Flag day&quot;             
+## [56] &quot;De facto half holiday&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Countries=data0 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Country, CountryName) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>()
+
+<span class="co"># Mapping data</span>
+world_map_df=<span class="kw">map_data</span>(<span class="st">&quot;world&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CountryName=</span><span class="kw">countrycode</span>(region, <span class="st">&quot;country.name&quot;</span>, <span class="st">&quot;country.name&quot;</span>))</code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;maps&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     map</code></pre>
+<pre><code>## Warning in countrycode(region, &quot;country.name&quot;, &quot;country.name&quot;): Some values were not matched unambiguously: Ascension Island, Azores, Barbuda, Bonaire, Canary Islands, Chagos Archipelago, Grenadines, Heard Island, Madeira Islands, Micronesia, Saba, Saint Martin, Siachen Glacier, Sint Eustatius, Virgin Islands</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">CountriesWorldMap=world_map_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(CountryName, region) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create a blank ggplot theme</span>
+theme_opts &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">theme</span>(<span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>(),
+                        <span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(),
+                        <span class="dt">panel.background =</span> <span class="kw">element_blank</span>(),
+                        <span class="dt">plot.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;#e6e8ed&quot;</span>),
+                        <span class="dt">panel.border =</span> <span class="kw">element_blank</span>(),
+                        <span class="dt">axis.line =</span> <span class="kw">element_blank</span>(),
+                        <span class="dt">axis.text.x =</span> <span class="kw">element_blank</span>(),
+                        <span class="dt">axis.text.y =</span> <span class="kw">element_blank</span>(),
+                        <span class="dt">axis.ticks =</span> <span class="kw">element_blank</span>(),
+                        <span class="dt">axis.title.x =</span> <span class="kw">element_blank</span>(),
+                        <span class="dt">axis.title.y =</span> <span class="kw">element_blank</span>(),
+                        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">15</span>)))
+
+
+
+
+hitsList=<span class="kw">c</span>(<span class="st">&quot;Bank&quot;</span>, <span class="st">&quot;Public&quot;</span>, <span class="st">&quot;National&quot;</span>, <span class="st">&quot;Federal&quot;</span>, <span class="st">&quot;Official&quot;</span>)
+
+pickList=<span class="kw">c</span>()
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4000</span>){
+pickList[i] =
+<span class="st">  </span><span class="kw">paste</span>(<span class="kw">sort</span>(
+    <span class="kw">unique</span>(<span class="kw">c</span>(<span class="st">&quot;Bank&quot;</span>,<span class="st">&quot;Public&quot;</span>,
+             <span class="kw">sample</span>(hitsList,<span class="dt">replace =</span> T)))), 
+    <span class="dt">collapse =</span> <span class="st">&quot;|&quot;</span>)
+}
+pickList=<span class="kw">unique</span>(<span class="kw">c</span>(pickList))[<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>]
+
+<span class="cf">for</span> (i <span class="cf">in</span> pickList){
+
+
+NumBankHolidays =<span class="st"> </span>data0 <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(<span class="st">`</span><span class="dt">Holiday Type</span><span class="st">`</span>, i )) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(CountryName) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">count=</span><span class="kw">n</span>()) 
+<span class="co">#Some values were not matched unambiguously: Micronesia, Saint Martin, St. Barts</span>
+<span class="kw">table</span>(NumBankHolidays<span class="op">$</span><span class="st">`</span><span class="dt">Holiday Type</span><span class="st">`</span>)
+
+
+NumBankHolidays <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(CountryName) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>()
+
+
+<span class="co">#</span>
+<span class="co">#</span>
+<span class="co">#</span>
+<span class="co">#</span>
+<span class="co">#</span>
+data=world_map_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(NumBankHolidays) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">count=</span><span class="kw">ifelse</span>(<span class="kw">is.na</span>(count), <span class="dv">0</span>, count))
+
+
+<span class="co">#</span>
+<span class="co">#</span>
+<span class="co">#</span>
+<span class="co">#</span>
+##
+<span class="co">#</span>
+<span class="co">#</span>
+<span class="co">#</span>
+<span class="co">#</span>
+<span class="co"># plot map</span>
+<span class="kw">print</span>(<span class="kw">ggplot</span>(data, <span class="kw">aes</span>(long,lat, <span class="dt">group=</span>group, <span class="dt">fill=</span>count)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_polygon</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;World map (longlat)&quot;</span>) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">coord_equal</span>() <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span>theme_opts<span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="kw">paste0</span>(<span class="st">&quot;Country Holidays, Terms: </span><span class="ch">\&quot;</span><span class="st">&quot;</span>, i, <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>), <span class="st">&quot;@EvaMaeRey | source: www.timeanddate.com/holidays/&quot;</span> )
+)
+}</code></pre></div>
+<pre><code>## Warning: Unknown or uninitialised column: &#39;Holiday Type&#39;.</code></pre>
+<pre><code>## Joining, by = &quot;CountryName&quot;</code></pre>
+<pre><code>## Warning: Unknown or uninitialised column: &#39;Holiday Type&#39;.</code></pre>
+<pre><code>## Joining, by = &quot;CountryName&quot;</code></pre>
+<pre><code>## Warning: Unknown or uninitialised column: &#39;Holiday Type&#39;.</code></pre>
+<pre><code>## Joining, by = &quot;CountryName&quot;</code></pre>
+<pre><code>## Warning: Unknown or uninitialised column: &#39;Holiday Type&#39;.</code></pre>
+<pre><code>## Joining, by = &quot;CountryName&quot;</code></pre>
+<pre><code>## Warning: Unknown or uninitialised column: &#39;Holiday Type&#39;.</code></pre>
+<pre><code>## Joining, by = &quot;CountryName&quot;</code></pre>
+<pre><code>## Warning: Unknown or uninitialised column: &#39;Holiday Type&#39;.</code></pre>
+<pre><code>## Joining, by = &quot;CountryName&quot;</code></pre>
+<pre><code>## Warning: Unknown or uninitialised column: &#39;Holiday Type&#39;.</code></pre>
+<pre><code>## Joining, by = &quot;CountryName&quot;</code></pre>
+<pre><code>## Warning: Unknown or uninitialised column: &#39;Holiday Type&#39;.</code></pre>
+<pre><code>## Joining, by = &quot;CountryName&quot;</code></pre>
+<p><img src="makeovermonday_book_files/figure-html/unnamed-chunk-5-1.png" width="3in" /><img src="makeovermonday_book_files/figure-html/unnamed-chunk-5-2.png" width="3in" /><img src="makeovermonday_book_files/figure-html/unnamed-chunk-5-3.png" width="3in" /><img src="makeovermonday_book_files/figure-html/unnamed-chunk-5-4.png" width="3in" /><img src="makeovermonday_book_files/figure-html/unnamed-chunk-5-5.png" width="3in" /><img src="makeovermonday_book_files/figure-html/unnamed-chunk-5-6.png" width="3in" /><img src="makeovermonday_book_files/figure-html/unnamed-chunk-5-7.png" width="3in" /><img src="makeovermonday_book_files/figure-html/unnamed-chunk-5-8.png" width="3in" /></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="arctic-ice.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="baseball-war-and-ethnicity.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["makeovermonday_book.pdf", "makeovermonday_book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

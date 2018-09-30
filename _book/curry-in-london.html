@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Slow ggplot2</title>
+  <meta name="description" content="Some plots">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Slow ggplot2" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Some plots" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Slow ggplot2" />
+  
+  <meta name="twitter:description" content="Some plots" />
+  
+
+<meta name="author" content="Evangeline Reynolds">
+
+
+<meta name="date" content="2018-09-29">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="brexit.html">
+<link rel="next" href="life-expectancy-increases.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Slow ggplot2</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="baseball-war-and-ethnicity.html"><a href="baseball-war-and-ethnicity.html"><i class="fa fa-check"></i><b>2</b> Baseball, WAR, and Ethnicity</a></li>
+<li class="chapter" data-level="3" data-path="christmas-trees.html"><a href="christmas-trees.html"><i class="fa fa-check"></i><b>3</b> Christmas Trees</a></li>
+<li class="chapter" data-level="4" data-path="officials-beliefs-about-womens-representation.html"><a href="officials-beliefs-about-womens-representation.html"><i class="fa fa-check"></i><b>4</b> Officials’ beliefs about women’s representation</a></li>
+<li class="chapter" data-level="5" data-path="maternal-leave.html"><a href="maternal-leave.html"><i class="fa fa-check"></i><b>5</b> Maternal Leave</a></li>
+<li class="chapter" data-level="6" data-path="traits.html"><a href="traits.html"><i class="fa fa-check"></i><b>6</b> Traits</a></li>
+<li class="chapter" data-level="7" data-path="salarys-of-trump-and-obama-white-house-employees.html"><a href="salarys-of-trump-and-obama-white-house-employees.html"><i class="fa fa-check"></i><b>7</b> Salarys of Trump and Obama White House Employees</a></li>
+<li class="chapter" data-level="8" data-path="winter-games.html"><a href="winter-games.html"><i class="fa fa-check"></i><b>8</b> Winter Games</a></li>
+<li class="chapter" data-level="9" data-path="brexit.html"><a href="brexit.html"><i class="fa fa-check"></i><b>9</b> Brexit</a></li>
+<li class="chapter" data-level="10" data-path="curry-in-london.html"><a href="curry-in-london.html"><i class="fa fa-check"></i><b>10</b> Curry in London</a></li>
+<li class="chapter" data-level="11" data-path="life-expectancy-increases.html"><a href="life-expectancy-increases.html"><i class="fa fa-check"></i><b>11</b> Life Expectancy Increases</a></li>
+<li class="chapter" data-level="12" data-path="myers-briggs.html"><a href="myers-briggs.html"><i class="fa fa-check"></i><b>12</b> Myers Briggs</a></li>
+<li class="chapter" data-level="13" data-path="wine.html"><a href="wine.html"><i class="fa fa-check"></i><b>13</b> Wine</a></li>
+<li class="chapter" data-level="14" data-path="arctic-ice.html"><a href="arctic-ice.html"><i class="fa fa-check"></i><b>14</b> Arctic Ice</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Slow ggplot2</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="curry-in-london" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Curry in London</h1>
+<p>This visualization task seemed to get at the question: Does where you eat matter. The data was the cost of identical menu items at different locations of the same restaurant, the Wetherspoon, around the UK.</p>
+<p>First, I mapped the cost of a single menu item, the Empire Burger, across the UK. Then, I calculated the distance from Wetherspoon restaurants from the Big Ben, and plotted prices as a function of this distance – plotting only the restaurants in a 10 kilometer radius.</p>
+<p>A random sample from the data set:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Location</th>
+<th align="right">Latitude</th>
+<th align="right">Longitude</th>
+<th align="right">Empire State Burger</th>
+<th align="right">Chicken Tikka</th>
+<th align="right">Gammon afternoon deal</th>
+<th align="right">Chocolate Brownie</th>
+<th align="right">Doom Bar</th>
+<th align="right">Birra Moretti</th>
+<th align="right">Porn Star at 2 x £12</th>
+<th align="right">Porn Star (glass)</th>
+<th align="right">MEAL</th>
+<th align="left">Notes</th>
+<th align="right">Moretti as a % of a tikka</th>
+<th align="right">Moretti as % of burger</th>
+<th align="left">PRICE BUCKETS</th>
+<th align="right">Food cost £</th>
+<th align="right">Drink cost £</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">The Falcon</td>
+<td align="left">High Wycome</td>
+<td align="right">51.62923</td>
+<td align="right">-0.7512765</td>
+<td align="right">8.75</td>
+<td align="right">7.90</td>
+<td align="right">5.9</td>
+<td align="right">3.85</td>
+<td align="right">2.29</td>
+<td align="right">3.05</td>
+<td align="right">NA</td>
+<td align="right">5.85</td>
+<td align="right">25.84</td>
+<td align="left">NA</td>
+<td align="right">0.3860759</td>
+<td align="right">0.3485714</td>
+<td align="left">£25.21+</td>
+<td align="right">16.65</td>
+<td align="right">5.34</td>
+</tr>
+<tr class="even">
+<td align="left">The Shay Wake</td>
+<td align="left">Oldham</td>
+<td align="right">53.57790</td>
+<td align="right">-2.0929616</td>
+<td align="right">8.75</td>
+<td align="right">7.90</td>
+<td align="right">5.9</td>
+<td align="right">3.85</td>
+<td align="right">2.29</td>
+<td align="right">3.05</td>
+<td align="right">6.3</td>
+<td align="right">NA</td>
+<td align="right">25.84</td>
+<td align="left">NA</td>
+<td align="right">0.3860759</td>
+<td align="right">0.3485714</td>
+<td align="left">£25.21+</td>
+<td align="right">16.65</td>
+<td align="right">5.34</td>
+</tr>
+<tr class="odd">
+<td align="left">The Ford Maddox Brown</td>
+<td align="left">Wilmslow Park</td>
+<td align="right">53.45816</td>
+<td align="right">-2.2267009</td>
+<td align="right">8.75</td>
+<td align="right">7.40</td>
+<td align="right">5.9</td>
+<td align="right">3.85</td>
+<td align="right">2.29</td>
+<td align="right">3.15</td>
+<td align="right">6.3</td>
+<td align="right">NA</td>
+<td align="right">25.44</td>
+<td align="left">NA</td>
+<td align="right">0.4256757</td>
+<td align="right">0.3600000</td>
+<td align="left">£25.21+</td>
+<td align="right">16.15</td>
+<td align="right">5.44</td>
+</tr>
+<tr class="even">
+<td align="left">George’s Meeting House</td>
+<td align="left">Exeter</td>
+<td align="right">50.72062</td>
+<td align="right">-3.5299504</td>
+<td align="right">8.75</td>
+<td align="right">8.29</td>
+<td align="right">5.9</td>
+<td align="right">3.85</td>
+<td align="right">2.29</td>
+<td align="right">2.89</td>
+<td align="right">6.3</td>
+<td align="right">NA</td>
+<td align="right">26.07</td>
+<td align="left">NA</td>
+<td align="right">0.3486128</td>
+<td align="right">0.3302857</td>
+<td align="left">£25.21+</td>
+<td align="right">17.04</td>
+<td align="right">5.18</td>
+</tr>
+<tr class="odd">
+<td align="left">The Ferry Boat</td>
+<td align="left">Runcorn</td>
+<td align="right">53.34233</td>
+<td align="right">-2.7315021</td>
+<td align="right">8.75</td>
+<td align="right">7.40</td>
+<td align="right">5.9</td>
+<td align="right">3.85</td>
+<td align="right">2.19</td>
+<td align="right">2.95</td>
+<td align="right">6.3</td>
+<td align="right">NA</td>
+<td align="right">25.14</td>
+<td align="left">NA</td>
+<td align="right">0.3986486</td>
+<td align="right">0.3371429</td>
+<td align="left">£25.20-</td>
+<td align="right">16.15</td>
+<td align="right">5.14</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Mapping data</span>
+world_map_df &lt;-<span class="st"> </span><span class="kw">map_data</span>(<span class="st">&quot;world&quot;</span>)</code></pre></div>
+<p>A random sample from the data set:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">long</th>
+<th align="right">lat</th>
+<th align="right">group</th>
+<th align="right">order</th>
+<th align="left">region</th>
+<th align="left">subregion</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>42668</td>
+<td align="right">25.22383</td>
+<td align="right">39.89258</td>
+<td align="right">643</td>
+<td align="right">42668</td>
+<td align="left">Greece</td>
+<td align="left">Limnos</td>
+</tr>
+<tr class="even">
+<td>52873</td>
+<td align="right">55.42402</td>
+<td align="right">26.77056</td>
+<td align="right">847</td>
+<td align="right">52873</td>
+<td align="left">Iran</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td>41746</td>
+<td align="right">-14.88672</td>
+<td align="right">10.96807</td>
+<td align="right">596</td>
+<td align="right">41746</td>
+<td align="left">Guinea</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td>77020</td>
+<td align="right">150.75693</td>
+<td align="right">75.16240</td>
+<td align="right">1296</td>
+<td align="right">77020</td>
+<td align="left">Russia</td>
+<td align="left">Ostrov Novaya Sibr’</td>
+</tr>
+<tr class="odd">
+<td>42476</td>
+<td align="right">20.35254</td>
+<td align="right">38.17988</td>
+<td align="right">633</td>
+<td align="right">42476</td>
+<td align="left">Greece</td>
+<td align="left">Kefallinia</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create a blank ggplot theme</span>
+theme_opts &lt;-<span class="st"> </span><span class="kw">theme</span>(
+  <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>(),
+  <span class="dt">panel.grid.major =</span> <span class="kw">element_blank</span>(),
+  <span class="dt">panel.background =</span> <span class="kw">element_blank</span>(),
+  <span class="dt">plot.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;#e6e8ed&quot;</span>),
+  <span class="dt">panel.border =</span> <span class="kw">element_blank</span>(),
+  <span class="dt">axis.line =</span> <span class="kw">element_blank</span>(),
+  <span class="dt">axis.text.x =</span> <span class="kw">element_blank</span>(),
+  <span class="dt">axis.text.y =</span> <span class="kw">element_blank</span>(),
+  <span class="dt">axis.ticks =</span> <span class="kw">element_blank</span>(),
+  <span class="dt">axis.title.x =</span> <span class="kw">element_blank</span>(),
+  <span class="dt">axis.title.y =</span> <span class="kw">element_blank</span>(),
+  <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">15</span>)
+)
+
+
+<span class="kw">ggplot</span>(<span class="dt">data =</span> world_map_df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(region <span class="op">==</span><span class="st"> &quot;UK&quot;</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> long) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">y =</span> lat) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">group =</span> group) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_polygon</span>(<span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">coord_equal</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_viridis_c</span>(<span class="dt">option =</span> <span class="st">&quot;viridis&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> data0,
+             <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Longitude, <span class="dt">y =</span> Latitude,
+                           <span class="dt">group =</span> <span class="ot">NULL</span>, <span class="dt">fill =</span> <span class="st">`</span><span class="dt">Empire State Burger</span><span class="st">`</span>),
+    <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">shape =</span> <span class="dv">21</span>, <span class="dt">stroke =</span> <span class="dv">1</span>, <span class="dt">alpha =</span> .<span class="dv">5</span>, <span class="dt">size =</span> <span class="dv">3</span>
+  ) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;Price</span><span class="ch">\n</span><span class="st">(Pounds)&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Empire State Burger Price&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;@EvaMaeRey | source: data.worldbank.org&quot;</span>) <span class="op">+</span>
+<span class="st">  </span>theme_opts </code></pre></div>
+<p><img src="makeovermonday_book_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p>A random sample from the data set:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">Location</th>
+<th align="right">Latitude</th>
+<th align="right">Longitude</th>
+<th align="left">Notes</th>
+<th align="right">Moretti as a % of a tikka</th>
+<th align="right">Moretti as % of burger</th>
+<th align="left">PRICE BUCKETS</th>
+<th align="right">Food cost £</th>
+<th align="right">Drink cost £</th>
+<th align="right">Kilometers from Big Ben</th>
+<th align="left">Item</th>
+<th align="right">Menu Item Price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">The Bishop Blaize</td>
+<td align="left">Stretford</td>
+<td align="right">53.46126</td>
+<td align="right">-2.2891414</td>
+<td align="left">NA</td>
+<td align="right">0.4436718</td>
+<td align="right">0.3645714</td>
+<td align="left">£25.21+</td>
+<td align="right">15.94</td>
+<td align="right">5.48</td>
+<td align="right">262.471887</td>
+<td align="left">Empire State Burger</td>
+<td align="right">8.75</td>
+</tr>
+<tr class="even">
+<td align="left">Goldengrove</td>
+<td align="left">Stratford, London</td>
+<td align="right">51.54377</td>
+<td align="right">0.0039464</td>
+<td align="left">NA</td>
+<td align="right">0.3987342</td>
+<td align="right">0.3600000</td>
+<td align="left">£25.21+</td>
+<td align="right">16.65</td>
+<td align="right">5.50</td>
+<td align="right">9.165488</td>
+<td align="left">Empire State Burger</td>
+<td align="right">8.75</td>
+</tr>
+<tr class="odd">
+<td align="left">The Counting House</td>
+<td align="left">Congleton</td>
+<td align="right">53.16386</td>
+<td align="right">-2.2146526</td>
+<td align="left">NA</td>
+<td align="right">0.4175676</td>
+<td align="right">0.3531429</td>
+<td align="left">£25.21+</td>
+<td align="right">16.15</td>
+<td align="right">5.38</td>
+<td align="right">233.001988</td>
+<td align="left">Gammon afternoon deal</td>
+<td align="right">5.90</td>
+</tr>
+<tr class="even">
+<td align="left">Goldengrove</td>
+<td align="left">Stratford, London</td>
+<td align="right">51.54377</td>
+<td align="right">0.0039464</td>
+<td align="left">NA</td>
+<td align="right">0.3987342</td>
+<td align="right">0.3600000</td>
+<td align="left">£25.21+</td>
+<td align="right">16.65</td>
+<td align="right">5.50</td>
+<td align="right">9.165488</td>
+<td align="left">Doom Bar</td>
+<td align="right">2.35</td>
+</tr>
+<tr class="odd">
+<td align="left">The Ivor Davies</td>
+<td align="left">Cardiff</td>
+<td align="right">51.48131</td>
+<td align="right">-3.2003483</td>
+<td align="left">NA</td>
+<td align="right">0.4200000</td>
+<td align="right">0.3405405</td>
+<td align="left">£25.21+</td>
+<td align="right">16.75</td>
+<td align="right">5.64</td>
+<td align="right">214.153117</td>
+<td align="left">Empire State Burger</td>
+<td align="right">9.25</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> dataLong) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">`</span><span class="dt">Kilometers from Big Ben</span><span class="st">`</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">aes</span>(<span class="dt">y =</span> <span class="st">`</span><span class="dt">Menu Item Price</span><span class="st">`</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>Item, <span class="dt">scales =</span> <span class="st">&quot;free_y&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_smooth</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlim</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Wetherspoon Pubs&#39; Menu Item Prices v. Distance from Big Ben&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">subtitle =</span> <span class="st">&quot;Visualization: Gina Reynolds | Source: Financial Times Alphaville&quot;</span>) </code></pre></div>
+<p><img src="makeovermonday_book_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="brexit.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="life-expectancy-increases.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["makeovermonday_book.pdf", "makeovermonday_book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

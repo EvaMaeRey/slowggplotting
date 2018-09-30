@@ -1,0 +1,6 @@
+"0","dta = read_xlsx(""../raw_data/Irish Whiskey Sales by Volume.xlsx"") %>%"
+"0","  filter(Country == ""United States""|Country == ""Ireland"") %>% "
+"0","  filter(Year %in% c(1992, 2000, 2008, 2016)) %>% "
+"0","  group_by(Country, Year) %>% "
+"0","  summarise(Cases = sum(Cases, na.rm = T)) %>% "
+"0","  mutate(Cases100000 = Cases/100000 )"

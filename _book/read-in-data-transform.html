@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>How’d you make that? A ggplot2 flipbook</title>
+  <meta name="description" content="A book to show how I participated in #MakeoverMonday.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="How’d you make that? A ggplot2 flipbook" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A book to show how I participated in #MakeoverMonday." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="How’d you make that? A ggplot2 flipbook" />
+  
+  <meta name="twitter:description" content="A book to show how I participated in #MakeoverMonday." />
+  
+
+<meta name="author" content="Evangeline Reynolds">
+
+
+<meta name="date" content="2018-09-22">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="traits.html">
+<link rel="next" href="salarys-of-trump-and-obama-white-house-employees.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Background</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="baseball-war-and-ethnicity.html"><a href="baseball-war-and-ethnicity.html"><i class="fa fa-check"></i><b>3</b> Baseball, WAR, and Ethnicity</a></li>
+<li class="chapter" data-level="4" data-path="christmas-trees.html"><a href="christmas-trees.html"><i class="fa fa-check"></i><b>4</b> Christmas Trees</a></li>
+<li class="chapter" data-level="5" data-path="dietary-restrictions.html"><a href="dietary-restrictions.html"><i class="fa fa-check"></i><b>5</b> Dietary Restrictions</a></li>
+<li class="chapter" data-level="6" data-path="most-revenue-getting-companies.html"><a href="most-revenue-getting-companies.html"><i class="fa fa-check"></i><b>6</b> Most Revenue Getting Companies</a></li>
+<li class="chapter" data-level="7" data-path="officials-beliefs-about-womens-representation.html"><a href="officials-beliefs-about-womens-representation.html"><i class="fa fa-check"></i><b>7</b> Officials’ beliefs about women’s representation</a></li>
+<li class="chapter" data-level="8" data-path="maternal-leave.html"><a href="maternal-leave.html"><i class="fa fa-check"></i><b>8</b> Maternal Leave</a></li>
+<li class="chapter" data-level="9" data-path="traits.html"><a href="traits.html"><i class="fa fa-check"></i><b>9</b> Traits</a></li>
+<li class="chapter" data-level="10" data-path="read-in-data-transform.html"><a href="read-in-data-transform.html"><i class="fa fa-check"></i><b>10</b> read in data, transform</a></li>
+<li class="chapter" data-level="11" data-path="salarys-of-trump-and-obama-white-house-employees.html"><a href="salarys-of-trump-and-obama-white-house-employees.html"><i class="fa fa-check"></i><b>11</b> Salarys of Trump and Obama White House Employees</a></li>
+<li class="chapter" data-level="12" data-path="winter-games.html"><a href="winter-games.html"><i class="fa fa-check"></i><b>12</b> Winter Games</a></li>
+<li class="chapter" data-level="13" data-path="brexit.html"><a href="brexit.html"><i class="fa fa-check"></i><b>13</b> Brexit</a></li>
+<li class="chapter" data-level="14" data-path="curry-in-london.html"><a href="curry-in-london.html"><i class="fa fa-check"></i><b>14</b> Curry in London</a></li>
+<li class="chapter" data-level="15" data-path="life-expectancy-increases.html"><a href="life-expectancy-increases.html"><i class="fa fa-check"></i><b>15</b> Life Expectancy Increases</a></li>
+<li class="chapter" data-level="16" data-path="myers-briggs.html"><a href="myers-briggs.html"><i class="fa fa-check"></i><b>16</b> Myers Briggs</a></li>
+<li class="chapter" data-level="17" data-path="wine.html"><a href="wine.html"><i class="fa fa-check"></i><b>17</b> Wine</a></li>
+<li class="chapter" data-level="18" data-path="arctic-ice.html"><a href="arctic-ice.html"><i class="fa fa-check"></i><b>18</b> Arctic Ice</a></li>
+<li class="chapter" data-level="19" data-path="public-holidays.html"><a href="public-holidays.html"><i class="fa fa-check"></i><b>19</b> Public Holidays</a></li>
+<li class="chapter" data-level="20" data-path="exports-of-medicine.html"><a href="exports-of-medicine.html"><i class="fa fa-check"></i><b>20</b> Exports of Medicine</a></li>
+<li class="chapter" data-level="21" data-path="textures.html"><a href="textures.html"><i class="fa fa-check"></i><b>21</b> Textures</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">How’d you make that? A ggplot2 flipbook</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="read-in-data-transform" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> read in data, transform</h1>
+<pre><code>## # A tibble: 20 x 2
+## # Groups:   country_name [?]
+##    country_name         Nationality
+##    &lt;chr&gt;                &lt;chr&gt;      
+##  1 Australia            Australian 
+##  2 Denmark              Danish     
+##  3 Egypt                Egyptian   
+##  4 Finland              Finnish    
+##  5 France               French     
+##  6 Germany              German     
+##  7 Hong Kong SAR China  Hong Kong  
+##  8 India                Indian     
+##  9 Indonesia            Indonesian 
+## 10 Malaysia             Malaysian  
+## 11 Norway               Norwegian  
+## 12 Philippines          Filipino   
+## 13 Saudi Arabia         Arabian    
+## 14 Singapore            Singaporean
+## 15 Sweden               Swedish    
+## 16 Thailand             Thai       
+## 17 United Arab Emirates UAE        
+## 18 United Kingdom       British    
+## 19 United States        American   
+## 20 Vietnam              Vietnamese</code></pre>
+<pre><code>## [1] &quot;They have a personality I like&quot;         
+## [2] &quot;They have a sense of humour I like&quot;     
+## [3] &quot;They are intelligent&quot;                   
+## [4] &quot;They have similar interests to me&quot;      
+## [5] &quot;They are good looking&quot;                  
+## [6] &quot;They have/make a decent amount of money&quot;</code></pre>
+<pre><code>## [1] &quot;They have a\npersonality\nI like&quot;            
+## [2] &quot;They have\na sense of\nhumour I\nlike&quot;       
+## [3] &quot;They are\nintelligent&quot;                       
+## [4] &quot;They have\nsimilar\ninterests to\nme&quot;        
+## [5] &quot;They are\ngood looking&quot;                      
+## [6] &quot;They have/\nmake a\ndecent\namount of\nmoney&quot;</code></pre>
+<pre><code>## NULL</code></pre>
+<pre><code>## [1] &quot;Ranked first&quot;  &quot;Ranked second&quot; &quot;Ranked third&quot;  &quot;Ranked fourth&quot;
+## [5] &quot;Ranked fifth&quot;  &quot;Ranked sixth&quot;</code></pre>
+<pre><code>## [1] 20  1</code></pre>
+<p>A random sample from the data set:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Gender</th>
+<th align="left">Question_short_wrap</th>
+<th align="left">Rank (text)</th>
+<th align="right">Rank (number)</th>
+<th align="right">n</th>
+<th align="right">Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Men</td>
+<td align="left">Personality</td>
+<td align="left">Ranked sixth</td>
+<td align="right">6</td>
+<td align="right">410.48</td>
+<td align="right">3.839513</td>
+</tr>
+<tr class="even">
+<td align="left">Men</td>
+<td align="left">Personality</td>
+<td align="left">Ranked second</td>
+<td align="right">2</td>
+<td align="right">2460.32</td>
+<td align="right">23.013131</td>
+</tr>
+<tr class="odd">
+<td align="left">Men</td>
+<td align="left">Personality</td>
+<td align="left">Ranked fifth</td>
+<td align="right">5</td>
+<td align="right">701.54</td>
+<td align="right">6.562005</td>
+</tr>
+<tr class="even">
+<td align="left">Men</td>
+<td align="left">Personality</td>
+<td align="left">Ranked first</td>
+<td align="right">1</td>
+<td align="right">4641.14</td>
+<td align="right">43.411898</td>
+</tr>
+<tr class="odd">
+<td align="left">Men</td>
+<td align="left">Personality</td>
+<td align="left">Ranked fourth</td>
+<td align="right">4</td>
+<td align="right">989.05</td>
+<td align="right">9.251291</td>
+</tr>
+<tr class="even">
+<td align="left">Men</td>
+<td align="left">Sense of</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">humor</td>
+<td align="left">Ranked sixth</td>
+<td align="left">6</td>
+<td align="right">701.82 6.5740</td>
+<td align="right">07</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">Men</td>
+<td align="left">Sense of</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">humor</td>
+<td align="left">Ranked first</td>
+<td align="left">1</td>
+<td align="right">978.63 9.1669</td>
+<td align="right">10</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">Men</td>
+<td align="left">Sense of</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">humor</td>
+<td align="left">Ranked fourth</td>
+<td align="left">4 2</td>
+<td align="right">420.43 22.6723</td>
+<td align="right">73</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">Men</td>
+<td align="left">Sense of</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">humor</td>
+<td align="left">Ranked fifth</td>
+<td align="left">5 1</td>
+<td align="right">758.67 16.4736</td>
+<td align="right">11</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">Men</td>
+<td align="left">Sense of</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">humor</td>
+<td align="left">Ranked third</td>
+<td align="left">3 2</td>
+<td align="right">466.30 23.1020</td>
+<td align="right">41</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">Men</td>
+<td align="left">Intellegence</td>
+<td align="left">Ranked sixth</td>
+<td align="right">6</td>
+<td align="right">501.65</td>
+<td align="right">4.699372</td>
+</tr>
+<tr class="odd">
+<td align="left">Men</td>
+<td align="left">Intellegence</td>
+<td align="left">Ranked fifth</td>
+<td align="right">5</td>
+<td align="right">1878.86</td>
+<td align="right">17.600842</td>
+</tr>
+<tr class="even">
+<td align="left">Men</td>
+<td align="left">Intellegence</td>
+<td align="left">Ranked first</td>
+<td align="right">1</td>
+<td align="right">1195.36</td>
+<td align="right">11.197930</td>
+</tr>
+<tr class="odd">
+<td align="left">Men</td>
+<td align="left">Intellegence</td>
+<td align="left">Ranked third</td>
+<td align="right">3</td>
+<td align="right">2557.08</td>
+<td align="right">23.954293</td>
+</tr>
+<tr class="even">
+<td align="left">Men</td>
+<td align="left">Intellegence</td>
+<td align="left">Ranked second</td>
+<td align="right">2</td>
+<td align="right">1973.78</td>
+<td align="right">18.490037</td>
+</tr>
+<tr class="odd">
+<td align="left">Men</td>
+<td align="left">Has similar</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">interests</td>
+<td align="left">Ranked third</td>
+<td align="left">3 1754</td>
+<td align="right">.55 16.428925</td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">Men</td>
+<td align="left">Has similar</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">interests</td>
+<td align="left">Ranked second</td>
+<td align="left">2 1783</td>
+<td align="right">.71 16.701967</td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">Men</td>
+<td align="left">Has similar</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">interests</td>
+<td align="left">Ranked sixth</td>
+<td align="left">6 1116</td>
+<td align="right">.52 10.454659</td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">Men</td>
+<td align="left">Has similar</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">interests</td>
+<td align="left">Ranked first</td>
+<td align="left">1 1184</td>
+<td align="right">.47 11.090917</td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">Men</td>
+<td align="left">Has similar</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">interests</td>
+<td align="left">Ranked fifth</td>
+<td align="left">5 2609</td>
+<td align="right">.06 24.430224</td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">Men</td>
+<td align="left">Looks</td>
+<td align="left">Ranked third</td>
+<td align="right">3</td>
+<td align="right">1828.66</td>
+<td align="right">17.107868</td>
+</tr>
+<tr class="even">
+<td align="left">Men</td>
+<td align="left">Looks</td>
+<td align="left">Ranked fourth</td>
+<td align="right">4</td>
+<td align="right">1722.09</td>
+<td align="right">16.110862</td>
+</tr>
+<tr class="odd">
+<td align="left">Men</td>
+<td align="left">Looks</td>
+<td align="left">Ranked second</td>
+<td align="right">2</td>
+<td align="right">1766.63</td>
+<td align="right">16.527552</td>
+</tr>
+<tr class="even">
+<td align="left">Men</td>
+<td align="left">Looks</td>
+<td align="left">Ranked first</td>
+<td align="right">1</td>
+<td align="right">2494.56</td>
+<td align="right">23.337637</td>
+</tr>
+<tr class="odd">
+<td align="left">Men</td>
+<td align="left">Looks</td>
+<td align="left">Ranked sixth</td>
+<td align="right">6</td>
+<td align="right">742.71</td>
+<td align="right">6.948358</td>
+</tr>
+<tr class="even">
+<td align="left">Men</td>
+<td align="left">Money</td>
+<td align="left">Ranked fourth</td>
+<td align="right">4</td>
+<td align="right">754.62</td>
+<td align="right">7.071332</td>
+</tr>
+<tr class="odd">
+<td align="left">Men</td>
+<td align="left">Money</td>
+<td align="left">Ranked sixth</td>
+<td align="right">6</td>
+<td align="right">7190.57</td>
+<td align="right">67.380809</td>
+</tr>
+<tr class="even">
+<td align="left">Men</td>
+<td align="left">Money</td>
+<td align="left">Ranked third</td>
+<td align="right">3</td>
+<td align="right">578.79</td>
+<td align="right">5.423678</td>
+</tr>
+<tr class="odd">
+<td align="left">Men</td>
+<td align="left">Money</td>
+<td align="left">Ranked fifth</td>
+<td align="right">5</td>
+<td align="right">1617.37</td>
+<td align="right">15.155919</td>
+</tr>
+<tr class="even">
+<td align="left">Men</td>
+<td align="left">Money</td>
+<td align="left">Ranked second</td>
+<td align="right">2</td>
+<td align="right">339.41</td>
+<td align="right">3.180516</td>
+</tr>
+<tr class="odd">
+<td align="left">Women</td>
+<td align="left">Personality</td>
+<td align="left">Ranked fourth</td>
+<td align="right">4</td>
+<td align="right">945.87</td>
+<td align="right">8.293635</td>
+</tr>
+<tr class="even">
+<td align="left">Women</td>
+<td align="left">Personality</td>
+<td align="left">Ranked sixth</td>
+<td align="right">6</td>
+<td align="right">328.93</td>
+<td align="right">2.884144</td>
+</tr>
+<tr class="odd">
+<td align="left">Women</td>
+<td align="left">Personality</td>
+<td align="left">Ranked fifth</td>
+<td align="right">5</td>
+<td align="right">608.01</td>
+<td align="right">5.331190</td>
+</tr>
+<tr class="even">
+<td align="left">Women</td>
+<td align="left">Personality</td>
+<td align="left">Ranked first</td>
+<td align="right">1</td>
+<td align="right">5546.56</td>
+<td align="right">48.633686</td>
+</tr>
+<tr class="odd">
+<td align="left">Women</td>
+<td align="left">Personality</td>
+<td align="left">Ranked third</td>
+<td align="right">3</td>
+<td align="right">1549.71</td>
+<td align="right">13.588262</td>
+</tr>
+<tr class="even">
+<td align="left">Women</td>
+<td align="left">Sense of</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">humor</td>
+<td align="left">Ranked fourth</td>
+<td align="left">4 1</td>
+<td align="right">939.97 17.0572</td>
+<td align="right">61</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">Women</td>
+<td align="left">Sense of</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">humor</td>
+<td align="left">Ranked first</td>
+<td align="left">1 1</td>
+<td align="right">595.04 14.0244</td>
+<td align="right">50</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">Women</td>
+<td align="left">Sense of</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">humor</td>
+<td align="left">Ranked second</td>
+<td align="left">2 3</td>
+<td align="right">052.90 26.8427</td>
+<td align="right">40</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">Women</td>
+<td align="left">Sense of</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">humor</td>
+<td align="left">Ranked third</td>
+<td align="left">3 2</td>
+<td align="right">631.99 23.1418</td>
+<td align="right">73</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">Women</td>
+<td align="left">Sense of</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">humor</td>
+<td align="left">Ranked sixth</td>
+<td align="left">6</td>
+<td align="right">839.23 7.3789</td>
+<td align="right">62</td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">Women</td>
+<td align="left">Intellegence</td>
+<td align="left">Ranked second</td>
+<td align="right">2</td>
+<td align="right">2185.55</td>
+<td align="right">19.238336</td>
+</tr>
+<tr class="odd">
+<td align="left">Women</td>
+<td align="left">Intellegence</td>
+<td align="left">Ranked first</td>
+<td align="right">1</td>
+<td align="right">1324.06</td>
+<td align="right">11.655058</td>
+</tr>
+<tr class="even">
+<td align="left">Women</td>
+<td align="left">Intellegence</td>
+<td align="left">Ranked sixth</td>
+<td align="right">6</td>
+<td align="right">616.11</td>
+<td align="right">5.423317</td>
+</tr>
+<tr class="odd">
+<td align="left">Women</td>
+<td align="left">Intellegence</td>
+<td align="left">Ranked third</td>
+<td align="right">3</td>
+<td align="right">2617.48</td>
+<td align="right">23.040406</td>
+</tr>
+<tr class="even">
+<td align="left">Women</td>
+<td align="left">Intellegence</td>
+<td align="left">Ranked fourth</td>
+<td align="right">4</td>
+<td align="right">2980.55</td>
+<td align="right">26.236335</td>
+</tr>
+<tr class="odd">
+<td align="left">Women</td>
+<td align="left">Has similar</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">interests</td>
+<td align="left">Ranked first</td>
+<td align="left">1 1442</td>
+<td align="right">.49 12.655053</td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">Women</td>
+<td align="left">Has similar</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">interests</td>
+<td align="left">Ranked fourth</td>
+<td align="left">4 2292</td>
+<td align="right">.38 20.111190</td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">Women</td>
+<td align="left">Has similar</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">interests</td>
+<td align="left">Ranked third</td>
+<td align="left">3 2312</td>
+<td align="right">.14 20.284546</td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">Women</td>
+<td align="left">Has similar</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">interests</td>
+<td align="left">Ranked fifth</td>
+<td align="left">5 1819</td>
+<td align="right">.52 15.962760</td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">Women</td>
+<td align="left">Has similar</td>
+<td align="left"></td>
+<td align="right"></td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="even">
+<td align="left">interests</td>
+<td align="left">Ranked second</td>
+<td align="left">2 2101</td>
+<td align="right">.13 18.433342</td>
+<td align="right"></td>
+<td align="right"></td>
+</tr>
+<tr class="odd">
+<td align="left">Women</td>
+<td align="left">Looks</td>
+<td align="left">Ranked second</td>
+<td align="right">2</td>
+<td align="right">997.81</td>
+<td align="right">8.765114</td>
+</tr>
+<tr class="even">
+<td align="left">Women</td>
+<td align="left">Looks</td>
+<td align="left">Ranked first</td>
+<td align="right">1</td>
+<td align="right">1150.34</td>
+<td align="right">10.104991</td>
+</tr>
+<tr class="odd">
+<td align="left">Women</td>
+<td align="left">Looks</td>
+<td align="left">Ranked sixth</td>
+<td align="right">6</td>
+<td align="right">2650.67</td>
+<td align="right">23.284416</td>
+</tr>
+<tr class="even">
+<td align="left">Women</td>
+<td align="left">Looks</td>
+<td align="left">Ranked third</td>
+<td align="right">3</td>
+<td align="right">1320.86</td>
+<td align="right">11.602898</td>
+</tr>
+<tr class="odd">
+<td align="left">Women</td>
+<td align="left">Looks</td>
+<td align="left">Ranked fifth</td>
+<td align="right">5</td>
+<td align="right">3403.09</td>
+<td align="right">29.893938</td>
+</tr>
+<tr class="even">
+<td align="left">Women</td>
+<td align="left">Money</td>
+<td align="left">Ranked first</td>
+<td align="right">1</td>
+<td align="right">310.75</td>
+<td align="right">2.732747</td>
+</tr>
+<tr class="odd">
+<td align="left">Women</td>
+<td align="left">Money</td>
+<td align="left">Ranked sixth</td>
+<td align="right">6</td>
+<td align="right">5533.98</td>
+<td align="right">48.666032</td>
+</tr>
+<tr class="even">
+<td align="left">Women</td>
+<td align="left">Money</td>
+<td align="left">Ranked third</td>
+<td align="right">3</td>
+<td align="right">951.74</td>
+<td align="right">8.369638</td>
+</tr>
+<tr class="odd">
+<td align="left">Women</td>
+<td align="left">Money</td>
+<td align="left">Ranked fifth</td>
+<td align="right">5</td>
+<td align="right">2605.19</td>
+<td align="right">22.910141</td>
+</tr>
+<tr class="even">
+<td align="left">Women</td>
+<td align="left">Money</td>
+<td align="left">Ranked fourth</td>
+<td align="right">4</td>
+<td align="right">1317.23</td>
+<td align="right">11.583771</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> world) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">aes</span>(Question_short_wrap, <span class="dt">fill =</span> <span class="kw">factor</span>(<span class="st">`</span><span class="dt">Rank (text)</span><span class="st">`</span>, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;Ranked sixth&quot;</span>, <span class="st">&quot;Ranked fifth&quot;</span>, <span class="st">&quot;Ranked fourth&quot;</span>, <span class="st">&quot;Ranked third&quot;</span>, <span class="st">&quot;Ranked second&quot;</span>, <span class="st">&quot;Ranked first&quot;</span>))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_col</span>(<span class="kw">aes</span>(<span class="dt">y =</span> Percent)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_grid</span>(Gender <span class="op">~</span><span class="st"> </span>.) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_manual</span>(
+    <span class="dt">values =</span> <span class="kw">colorRampPalette</span>(RColorBrewer<span class="op">::</span><span class="kw">brewer.pal</span>(<span class="dv">9</span>, <span class="st">&quot;Purples&quot;</span>))(<span class="dv">6</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>],
+    <span class="dt">name =</span> <span class="st">&quot;&quot;</span>, <span class="dt">guide =</span> <span class="kw">guide_legend</span>(<span class="dt">reverse =</span> <span class="ot">TRUE</span>)
+  ) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;Why do I love thee?  Let me rank the traits... </span><span class="ch">\n</span><span class="st">How 10,689 men and 11,370 women across 20 countries rank romantic partner trait importance&quot;</span>, <span class="st">&quot;Data Source: @mattsmithetc and @YouGov | Design: Gina Reynolds&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>() <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;&quot;</span>)</code></pre></div>
+<p><img src="makeovermonday_book_files/figure-html/unnamed-chunk-30-1.png" width="1152" /></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="traits.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="salarys-of-trump-and-obama-white-house-employees.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["makeovermonday_book.pdf", "makeovermonday_book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

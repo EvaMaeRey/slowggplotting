@@ -1,0 +1,3 @@
+"0","df <- readxl::read_xlsx(""raw_data/MLB Ethnicity 1947-2016.xlsx"")"
+"0","df_gather <- gather(df, ""type"", ""Percent"", -Year, -Ethnicity) %>%"
+"0","  mutate(Percent = Percent * 100)"

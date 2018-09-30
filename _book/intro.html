@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Slow ggplot2</title>
+  <meta name="description" content="Some plots">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Slow ggplot2" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Some plots" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Slow ggplot2" />
+  
+  <meta name="twitter:description" content="Some plots" />
+  
+
+<meta name="author" content="Evangeline Reynolds">
+
+
+<meta name="date" content="2018-09-29">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+<link rel="next" href="baseball-war-and-ethnicity.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Slow ggplot2</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="baseball-war-and-ethnicity.html"><a href="baseball-war-and-ethnicity.html"><i class="fa fa-check"></i><b>2</b> Baseball, WAR, and Ethnicity</a></li>
+<li class="chapter" data-level="3" data-path="christmas-trees.html"><a href="christmas-trees.html"><i class="fa fa-check"></i><b>3</b> Christmas Trees</a></li>
+<li class="chapter" data-level="4" data-path="officials-beliefs-about-womens-representation.html"><a href="officials-beliefs-about-womens-representation.html"><i class="fa fa-check"></i><b>4</b> Officials’ beliefs about women’s representation</a></li>
+<li class="chapter" data-level="5" data-path="maternal-leave.html"><a href="maternal-leave.html"><i class="fa fa-check"></i><b>5</b> Maternal Leave</a></li>
+<li class="chapter" data-level="6" data-path="traits.html"><a href="traits.html"><i class="fa fa-check"></i><b>6</b> Traits</a></li>
+<li class="chapter" data-level="7" data-path="salarys-of-trump-and-obama-white-house-employees.html"><a href="salarys-of-trump-and-obama-white-house-employees.html"><i class="fa fa-check"></i><b>7</b> Salarys of Trump and Obama White House Employees</a></li>
+<li class="chapter" data-level="8" data-path="winter-games.html"><a href="winter-games.html"><i class="fa fa-check"></i><b>8</b> Winter Games</a></li>
+<li class="chapter" data-level="9" data-path="brexit.html"><a href="brexit.html"><i class="fa fa-check"></i><b>9</b> Brexit</a></li>
+<li class="chapter" data-level="10" data-path="curry-in-london.html"><a href="curry-in-london.html"><i class="fa fa-check"></i><b>10</b> Curry in London</a></li>
+<li class="chapter" data-level="11" data-path="life-expectancy-increases.html"><a href="life-expectancy-increases.html"><i class="fa fa-check"></i><b>11</b> Life Expectancy Increases</a></li>
+<li class="chapter" data-level="12" data-path="myers-briggs.html"><a href="myers-briggs.html"><i class="fa fa-check"></i><b>12</b> Myers Briggs</a></li>
+<li class="chapter" data-level="13" data-path="wine.html"><a href="wine.html"><i class="fa fa-check"></i><b>13</b> Wine</a></li>
+<li class="chapter" data-level="14" data-path="arctic-ice.html"><a href="arctic-ice.html"><i class="fa fa-check"></i><b>14</b> Arctic Ice</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Slow ggplot2</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Slow ggplot2</h1>
+<h4 class="author"><em>Evangeline Reynolds</em></h4>
+<h4 class="date"><em>2018-09-29</em></h4>
+</div>
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
+<p>In late 2016 I heard Andy Kreibel (and __) being interviewed on the Podcast “Data Stories”. He was invited onto the show because he had started the initiative #MakeoverMonday, in which he would find the data for an existing data visualization that he had come across in the media, and would recreate the visualization using Tableau, a tool that they were both expert in, but found that they weren’t practicing as regularly due to the grind of administrative jobs. The two friends shared their makeovers products with each other, but also with the world on Twitter. Soon, more people expressed interest in joining, and they two started a more organized initiative - posting the original graph and data every Sunday, so that whoever wanted to could participate in #Makeovermonday.</p>
+<p>My first submission was late 2016, after catching wind of the exciting project via the podcast. I made a scrappy little graph about motorway casualties; sad topic, but fun graph making.</p>
+<p>I was using base R at that time. Then in the summer of 2017 I went to a conference in Zurich, the women’s summer school for political methodology. There was a session on ggplot2. I internalized some of the basics, and decided that if I wanted to learn that (powerful - as everyone kept calling it) graphing system, then I could do it via the #MakeoverMonday weekly exercises (not that I particpated weekly). Even though most folks were using Tablaeu, the administrators didn’t seem to mind a few R and ggplot submission here and there. I got a little hooked.</p>
+<p>Early this year Andy and Eva Murry sent a number of the participants a private message on Twitter. “We’re writing a book: #MakeoverMonday”. They were putting together a collection of a visualizations that resulted from the project, and were seeking perspectives of participants as well as permission to use some of the visualizations produced for the initiatives. Cool. I was pleased to participate. For me #MakeoverMonday allowed me to focus on the visualization task. Usually visualization comes at the end of, sometimes arguous, data cleaning — and you might already be a little spent. Having rather clean data delivered, and seeing the approaches of many other (many brilliant) data visualizers was a treat. I still need to buy my copy of the book, which contains a visualization of food prices in London as a function of how far a restaurant is from the Big Ben.</p>
+<p>And now, using the magic of RStudio and Yihui Xie’s bookdown, I’m putting together my own little collection. Of course there is a bit of curation involved — I’m not including every plot. And, I’m revising the exact code that creates the plots in many cases, to be more consistent across plots, and also, I think, to make communicating about how the plot was built easy. This involves:</p>
+<ul>
+<li>using fewer functions (labs(title = ) instead of ggtitle())</li>
+<li>pulling out aes() from the ggplot() function</li>
+<li>multiply using functions aes(x = ?) + aes(y = ?) rather than aes(x = , y = )</li>
+<li>using base R functions and tidyverse functions. For other packages, the :: style to call them</li>
+<li>write out arguments (no shortcuts) aes(x = gdppercap) not aes(gdppercap)</li>
+<li>order ggplot commands so that reactivity is obvious</li>
+</ul>
+<!-- You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods). -->
+<!-- Figures and tables with captions will be placed in `figure` and `table` environments, respectively. -->
+<!-- ```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'} -->
+<!-- par(mar = c(4, 4, .1, .1)) -->
+<!-- plot(pressure, type = 'b', pch = 19) -->
+<!-- ``` -->
+<!-- Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab). -->
+<!-- ```{r nice-tab, tidy=FALSE} -->
+<!-- knitr::kable( -->
+<!--   head(iris, 20), caption = 'Here is a nice table!', -->
+<!--   booktabs = TRUE -->
+<!-- ) -->
+<!-- ``` -->
+<!-- You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015]. -->
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="baseball-war-and-ethnicity.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["makeovermonday_book.pdf", "makeovermonday_book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
