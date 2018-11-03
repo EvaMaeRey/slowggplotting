@@ -64,8 +64,5 @@ ggplot(data = df_all) +
   labs(subtitle = "Data Source: Equal Measures 2030 | Vis: Gina Reynolds @EvaMaeRey")
 ```
 
-`r paste(knitr::knit(text = partial_knit_chunks("women")), collapse = "\n")`
 
-```{css, eval=TRUE}
-.remark-code{ line-height: 2; }
-```
+

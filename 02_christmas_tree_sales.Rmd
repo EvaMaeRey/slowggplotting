@@ -31,6 +31,7 @@ ggplot(data = dta) +
   theme_bw() 
 ```
 
+`r paste(knitr::knit(text = partial_knit_chunks("christmas")), collapse = "\n")`
 
 
 
@@ -52,5 +53,6 @@ ggplot(dta %>% filter(Year <= 2014)) +
   theme_bw() +
   ylim(c(0, 400))
 ```
+
 
 

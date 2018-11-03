@@ -125,7 +125,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-11-02}
+    \date{2018-11-03}
 
 \usepackage{booktabs}
 
@@ -152,15 +152,32 @@
 }
 \chapter{Introduction}\label{intro}
 
-In late 2016 I heard Andy Kreibel (and \_\_) being interviewed on the
-Podcast ``Data Stories''. He was invited onto the show because he had
-started the initiative \#MakeoverMonday, in which he would find the data
-for an existing data visualization that he had come across in the media,
-and would recreate the visualization using Tableau, a tool that they
-were both expert in, but found that they weren't practicing as regularly
-due to the grind of administrative jobs. The two friends shared their
+Outline introduction:
+
+\begin{itemize}
+\tightlist
+\item
+  What is ggplot
+\item
+  What is ``slow'' ggplotting
+\item
+  What does this book contain (Makeover monday examples with slow
+  ggplot)
+\end{itemize}
+
+\chapter{MakeoverMonday is now in it's third
+year.}\label{makeovermonday-is-now-in-its-third-year.}
+
+January 2016, Andy Kreibel, Head Coach at The Information Lab, and Andy
+Cotgreave, Technical Evangelist at Tableau, have been organizing Make
+
+The friends wanted to keep up their skills even as they had moved into
+more administrative jobs that didn't require regular visualizaton work.
+Andy and Andy were find the data for an existing data visualization in
+the media, and would recreate or ``makeover'' the visualization using
+Tableau, a tool that they were both expert in. They were sharing their
 makeovers products with each other, but also with the world on Twitter.
-Soon, more people expressed interest in joining, and they two started a
+When more people expressed interest in joining, and they two started a
 more organized initiative - posting the original graph and data every
 Sunday, so that whoever wanted to could participate in \#Makeovermonday.
 
@@ -202,12 +219,13 @@ how the plot was built easy. This involves:
 \begin{itemize}
 \tightlist
 \item
-  using fewer functions (labs(title = ) instead of ggtitle())
-\item
   pulling out aes() from the ggplot() function
 \item
-  multiply using functions aes(x = ?) + aes(y = ?) rather than aes(x = ,
-  y = )
+  using fewer functions; example - using labs() to add a title instead
+  of ggtitle()
+\item
+  using functions multiple times; example aes(x = var1) + aes(y = var2)
+  rather than aes(x = var1, y = var2)
 \item
   using base R functions and tidyverse functions. For other packages,
   the :: style to call them
@@ -215,7 +233,8 @@ how the plot was built easy. This involves:
   write out arguments (no shortcuts) aes(x = gdppercap) not
   aes(gdppercap)
 \item
-  order ggplot commands so that reactivity is obvious
+  order ggplot commands so that reactivity is obvious; scale adjustments
+  to aesthetics might also be near the aesthetic declaration.
 \end{itemize}
 
 \chapter{Baseball, WAR, and Ethnicity}\label{baseball-war-and-ethnicity}
@@ -235,15 +254,15 @@ A random sample from the data set:
 \hline
 Year & Ethnicity & type & Percent\\
 \hline
-1993 & Asian & \% of Players & 0.0\\
+2005 & African American & \% of WAR & 11.3\\
 \hline
-1988 & Latino & \% of WAR & 11.1\\
+1985 & Asian & \% of Players & 0.0\\
 \hline
-1965 & African American & \% of Players & 12.7\\
+1977 & Asian & \% of Players & 0.0\\
 \hline
-1998 & White & \% of Players & 62.0\\
+1960 & Latino & \% of Players & 8.9\\
 \hline
-1948 & Asian & \% of Players & 0.0\\
+1968 & African American & \% of Players & 15.4\\
 \hline
 \end{tabular}
 
@@ -265,63 +284,53 @@ Year & Ethnicity & type & Percent\\
 
 \includegraphics{makeovermonday_book_files/figure-latex/baseball-1.pdf}
 
-class: split-50 count: false
-
-.column{[}.content{[}
+\clearpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(df_gather)  }\CommentTok{#<<}
+\KeywordTok{ggplot}\NormalTok{(df_gather) }
 \end{Highlighting}
 \end{Shaded}
 
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output1-1.pdf}
-{]}{]} --- class: split-50 count: false
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output1-1.pdf}}{}}\label{section}
 
-.column{[}.content{[}
+\clearpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{ggplot}\NormalTok{(df_gather) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Year)  }\CommentTok{#<<}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Year) }
 \end{Highlighting}
 \end{Shaded}
 
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output2-1.pdf}
-{]}{]} --- class: split-50 count: false
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output2-1.pdf}}{}}\label{section-1}
 
-.column{[}.content{[}
+\clearpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{ggplot}\NormalTok{(df_gather) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Year) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ Percent)  }\CommentTok{#<<}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ Percent) }
 \end{Highlighting}
 \end{Shaded}
 
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output3-1.pdf}
-{]}{]} --- class: split-50 count: false
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output3-1.pdf}}{}}\label{section-2}
 
-.column{[}.content{[}
+\clearpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{ggplot}\NormalTok{(df_gather) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Year) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ Percent) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ type)  }\CommentTok{#<<}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ type) }
 \end{Highlighting}
 \end{Shaded}
 
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output4-1.pdf}
-{]}{]} --- class: split-50 count: false
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output4-1.pdf}}{}}\label{section-3}
 
-.column{[}.content{[}
+\clearpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -329,15 +338,13 @@ class: split-50 count: false
 \StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Year) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ Percent) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ type) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\StringTok{ }\NormalTok{Ethnicity)  }\CommentTok{#<<}
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\StringTok{ }\NormalTok{Ethnicity) }
 \end{Highlighting}
 \end{Shaded}
 
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output5-1.pdf}
-{]}{]} --- class: split-50 count: false
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output5-1.pdf}}{}}\label{section-4}
 
-.column{[}.content{[}
+\clearpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -346,15 +353,13 @@ class: split-50 count: false
 \StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ Percent) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ type) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\StringTok{ }\NormalTok{Ethnicity) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_area}\NormalTok{(}\DataTypeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{, }\DataTypeTok{position =} \StringTok{"dodge"}\NormalTok{)  }\CommentTok{#<<}
+\StringTok{  }\KeywordTok{geom_area}\NormalTok{(}\DataTypeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{, }\DataTypeTok{position =} \StringTok{"dodge"}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output6-1.pdf}
-{]}{]} --- class: split-50 count: false
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output6-1.pdf}}{}}\label{section-5}
 
-.column{[}.content{[}
+\clearpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -364,15 +369,13 @@ class: split-50 count: false
 \StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{fill =}\NormalTok{ type) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\StringTok{ }\NormalTok{Ethnicity) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_area}\NormalTok{(}\DataTypeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{, }\DataTypeTok{position =} \StringTok{"dodge"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{fill =} \StringTok{""}\NormalTok{)  }\CommentTok{#<<}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{fill =} \StringTok{""}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output7-1.pdf}
-{]}{]} --- class: split-50 count: false
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output7-1.pdf}}{}}\label{section-6}
 
-.column{[}.content{[}
+\clearpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -383,15 +386,13 @@ class: split-50 count: false
 \StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\StringTok{ }\NormalTok{Ethnicity) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_area}\NormalTok{(}\DataTypeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{, }\DataTypeTok{position =} \StringTok{"dodge"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{fill =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{)  }\CommentTok{#<<}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output8-1.pdf}
-{]}{]} --- class: split-50 count: false
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output8-1.pdf}}{}}\label{section-7}
 
-.column{[}.content{[}
+\clearpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -403,15 +404,13 @@ class: split-50 count: false
 \StringTok{  }\KeywordTok{geom_area}\NormalTok{(}\DataTypeTok{alpha =}\NormalTok{ .}\DecValTok{5}\NormalTok{, }\DataTypeTok{position =} \StringTok{"dodge"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{fill =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"American Baseball Demographics 1947-2016"}\NormalTok{)  }\CommentTok{#<<}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"American Baseball Demographics 1947-2016"}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output9-1.pdf}
-{]}{]} --- class: split-50 count: false
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output9-1.pdf}}{}}\label{section-8}
 
-.column{[}.content{[}
+\clearpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -424,15 +423,13 @@ class: split-50 count: false
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{fill =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"American Baseball Demographics 1947-2016"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{subtitle =} \StringTok{"Percentage of players and WAR percentage (WAR is a calculation of value contributed)}\CharTok{\textbackslash{}n}\StringTok{Data: SABR.org | Vis: @EvaMaeRey for #MakeoverMonday"}\NormalTok{)  }\CommentTok{#<<}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{subtitle =} \StringTok{"Percentage of players and WAR percentage (WAR is a calculation of value contributed)}\CharTok{\textbackslash{}n}\StringTok{Data: SABR.org | Vis: @EvaMaeRey for #MakeoverMonday"}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output10-1.pdf}
-{]}{]} --- class: split-50 count: false
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output10-1.pdf}}{}}\label{section-9}
 
-.column{[}.content{[}
+\clearpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -446,13 +443,11 @@ class: split-50 count: false
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"American Baseball Demographics 1947-2016"}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{subtitle =} \StringTok{"Percentage of players and WAR percentage (WAR is a calculation of value contributed)}\CharTok{\textbackslash{}n}\StringTok{Data: SABR.org | Vis: @EvaMaeRey for #MakeoverMonday"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme_light}\NormalTok{()  }\CommentTok{#<<}
+\StringTok{  }\KeywordTok{theme_light}\NormalTok{() }
 \end{Highlighting}
 \end{Shaded}
 
-{]}{]} .column{[}.content.center{[}
 \includegraphics{makeovermonday_book_files/figure-latex/output11-1.pdf}
-{]}{]}
 
 \chapter{Christmas Trees}\label{christmas-trees}
 
@@ -475,15 +470,15 @@ A random sample from the data set:
 \hline
 Year & Number of trees sold & Type of tree & Number of trees sold (millions)\\
 \hline
-2010 & 27000000 & Real tree & 27.0\\
+2016 & 27400000 & Real tree & 27.4\\
 \hline
-2006 & 28600000 & Real tree & 28.6\\
+2011 & 9500000 & Fake tree & 9.5\\
 \hline
-2013 & 14700000 & Fake tree & 14.7\\
+2011 & 30800000 & Real tree & 30.8\\
 \hline
-2008 & 11700000 & Fake tree & 11.7\\
+2009 & 28200000 & Real tree & 28.2\\
 \hline
-2008 & 28200000 & Real tree & 28.2\\
+2012 & 24500000 & Real tree & 24.5\\
 \hline
 \end{tabular}
 
@@ -505,6 +500,192 @@ Year & Number of trees sold & Type of tree & Number of trees sold (millions)\\
 \end{Shaded}
 
 \includegraphics{makeovermonday_book_files/figure-latex/christmas-1.pdf}
+
+\clearpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }
+\end{Highlighting}
+\end{Shaded}
+
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output1-1.pdf}}{}}\label{section-10}
+
+\clearpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }
+\end{Highlighting}
+\end{Shaded}
+
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output2-1.pdf}}{}}\label{section-11}
+
+\clearpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output3-1.pdf}}{}}\label{section-12}
+
+\clearpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output4-1.pdf}}{}}\label{section-13}
+
+\clearpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output5-1.pdf}}{}}\label{section-14}
+
+\clearpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =}\NormalTok{ F) }
+\end{Highlighting}
+\end{Shaded}
+
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output6-1.pdf}}{}}\label{section-15}
+
+\clearpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =}\NormalTok{ F) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_color_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"green"}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output7-1.pdf}}{}}\label{section-16}
+
+\clearpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =}\NormalTok{ F) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_color_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"green"}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ylim}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{35}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output8-1.pdf}}{}}\label{section-17}
+
+\clearpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =}\NormalTok{ F) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_color_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"green"}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ylim}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{35}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{col =} \StringTok{""}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output9-1.pdf}}{}}\label{section-18}
+
+\clearpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =}\NormalTok{ F) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_color_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"green"}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ylim}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{35}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{col =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Wie echt sind deine Blätter?"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output10-1.pdf}}{}}\label{section-19}
+
+\clearpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =}\NormalTok{ F) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_color_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"green"}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ylim}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{35}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{col =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Wie echt sind deine Blätter?"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{subtitle =} \StringTok{"Real and fake Christmas trees sold in the US | Data Source: Statista | @EvaMaeRey "}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output11-1.pdf}}{}}\label{section-20}
+
+\clearpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =}\NormalTok{ F) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_color_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"green"}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ylim}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{35}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{col =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Wie echt sind deine Blätter?"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{subtitle =} \StringTok{"Real and fake Christmas trees sold in the US | Data Source: Statista | @EvaMaeRey "}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme_bw}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{makeovermonday_book_files/figure-latex/output12-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -546,15 +727,15 @@ A random sample from the data set:
 \hline
 Country & Topic & value & value\_type & alpha\\
 \hline
-Indonesia & Share of seats held by women & 0.17 & Correct Answer & 0.7\\
+Senegal & Share of seats held by women & 0.4500000 & Individual belief & 0.3\\
 \hline
-Colombia & Share of seats held by women & 0.33 & Individual belief & 0.3\\
+Senegal & Share of seats held by women & 0.5000000 & Individual belief & 0.3\\
 \hline
-Colombia & Share of seats held by women & 0.30 & Individual belief & 0.3\\
+India & Share of seats held by women & 0.0900000 & Individual belief & 0.3\\
 \hline
-Indonesia & Share of seats held by women & 0.30 & Individual belief & 0.3\\
+Indonesia & Share of seats held by women & 0.1000000 & Individual belief & 0.3\\
 \hline
-Colombia & Share of seats held by women & 0.15 & Individual belief & 0.3\\
+India & Share of seats held by women & 0.1917391 & Average of beliefs & 0.7\\
 \hline
 \end{tabular}
 
@@ -585,444 +766,6 @@ Colombia & Share of seats held by women & 0.15 & Individual belief & 0.3\\
 
 \includegraphics{makeovermonday_book_files/figure-latex/women-1.pdf}
 
-class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all)  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output1-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country)  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output2-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value)  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output3-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type))  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output4-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type))  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output5-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \KeywordTok{fct_inorder}\NormalTok{(value_type))  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output6-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{size =} \DecValTok{7}\NormalTok{)  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output7-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{size =} \DecValTok{7}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{), }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{)  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output8-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{size =} \DecValTok{7}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{), }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{)  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output9-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{size =} \DecValTok{7}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{), }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme_bw}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{base_family =} \StringTok{"Times"}\NormalTok{)  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output10-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{size =} \DecValTok{7}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{), }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme_bw}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{base_family =} \StringTok{"Times"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\NormalTok{percent)  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output11-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{size =} \DecValTok{7}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{), }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme_bw}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{base_family =} \StringTok{"Times"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\NormalTok{percent) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkblue"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{))  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output12-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{size =} \DecValTok{7}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{), }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme_bw}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{base_family =} \StringTok{"Times"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\NormalTok{percent) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkblue"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_alpha_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, .}\DecValTok{17}\NormalTok{, }\DecValTok{1}\NormalTok{))  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output13-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{size =} \DecValTok{7}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{), }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme_bw}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{base_family =} \StringTok{"Times"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\NormalTok{percent) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkblue"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_alpha_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, .}\DecValTok{17}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{8}\NormalTok{))  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output14-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{size =} \DecValTok{7}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{), }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme_bw}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{base_family =} \StringTok{"Times"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\NormalTok{percent) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkblue"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_alpha_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, .}\DecValTok{17}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{8}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \FloatTok{4.95}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ .}\DecValTok{70}\NormalTok{, }\DataTypeTok{label =} \KeywordTok{str_wrap}\NormalTok{(}\StringTok{"Senegal's 2010 gender parity law means it leads among these countries."}\NormalTok{, }\DecValTok{16}\NormalTok{), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{)  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output15-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{size =} \DecValTok{7}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{), }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme_bw}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{base_family =} \StringTok{"Times"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\NormalTok{percent) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkblue"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_alpha_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, .}\DecValTok{17}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{8}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \FloatTok{4.95}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ .}\DecValTok{70}\NormalTok{, }\DataTypeTok{label =} \KeywordTok{str_wrap}\NormalTok{(}\StringTok{"Senegal's 2010 gender parity law means it leads among these countries."}\NormalTok{, }\DecValTok{16}\NormalTok{), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \FloatTok{5.05}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ .}\DecValTok{250}\NormalTok{, }\DataTypeTok{label =} \KeywordTok{str_wrap}\NormalTok{(}\StringTok{"Officials seem to be aware of the law."}\NormalTok{, }\DecValTok{10}\NormalTok{), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{0}\NormalTok{)  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output16-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{size =} \DecValTok{7}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{), }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme_bw}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{base_family =} \StringTok{"Times"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\NormalTok{percent) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkblue"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_alpha_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, .}\DecValTok{17}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{8}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \FloatTok{4.95}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ .}\DecValTok{70}\NormalTok{, }\DataTypeTok{label =} \KeywordTok{str_wrap}\NormalTok{(}\StringTok{"Senegal's 2010 gender parity law means it leads among these countries."}\NormalTok{, }\DecValTok{16}\NormalTok{), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \FloatTok{5.05}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ .}\DecValTok{250}\NormalTok{, }\DataTypeTok{label =} \KeywordTok{str_wrap}\NormalTok{(}\StringTok{"Officials seem to be aware of the law."}\NormalTok{, }\DecValTok{10}\NormalTok{), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{0}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{)  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output17-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{size =} \DecValTok{7}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{), }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme_bw}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{base_family =} \StringTok{"Times"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\NormalTok{percent) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkblue"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_alpha_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, .}\DecValTok{17}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{8}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \FloatTok{4.95}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ .}\DecValTok{70}\NormalTok{, }\DataTypeTok{label =} \KeywordTok{str_wrap}\NormalTok{(}\StringTok{"Senegal's 2010 gender parity law means it leads among these countries."}\NormalTok{, }\DecValTok{16}\NormalTok{), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \FloatTok{5.05}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ .}\DecValTok{250}\NormalTok{, }\DataTypeTok{label =} \KeywordTok{str_wrap}\NormalTok{(}\StringTok{"Officials seem to be aware of the law."}\NormalTok{, }\DecValTok{10}\NormalTok{), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{0}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{y =} \StringTok{"Seats held by women"}\NormalTok{)  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output18-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{size =} \DecValTok{7}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{), }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme_bw}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{base_family =} \StringTok{"Times"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\NormalTok{percent) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkblue"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_alpha_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, .}\DecValTok{17}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{8}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \FloatTok{4.95}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ .}\DecValTok{70}\NormalTok{, }\DataTypeTok{label =} \KeywordTok{str_wrap}\NormalTok{(}\StringTok{"Senegal's 2010 gender parity law means it leads among these countries."}\NormalTok{, }\DecValTok{16}\NormalTok{), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \FloatTok{5.05}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ .}\DecValTok{250}\NormalTok{, }\DataTypeTok{label =} \KeywordTok{str_wrap}\NormalTok{(}\StringTok{"Officials seem to be aware of the law."}\NormalTok{, }\DecValTok{10}\NormalTok{), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{0}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{y =} \StringTok{"Seats held by women"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Women in national parliaments in 2015 in five countries }\CharTok{\textbackslash{}n}\StringTok{and officials' beliefs about representation"}\NormalTok{)  }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output19-1.pdf}
-{]}{]} --- class: split-50 count: false
-
-.column{[}.content{[}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ df_all) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Country) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ value) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{alpha =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{shape =} \KeywordTok{fct_inorder}\NormalTok{(value_type)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_jitter}\NormalTok{(}\DataTypeTok{width =}\NormalTok{ .}\DecValTok{1}\NormalTok{, }\DataTypeTok{height =} \DecValTok{0}\NormalTok{, }\DataTypeTok{size =} \DecValTok{7}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{), }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_hline}\NormalTok{(}\DataTypeTok{yintercept =} \KeywordTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{"grey"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme_bw}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{base_family =} \StringTok{"Times"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{expand =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\DataTypeTok{labels =}\NormalTok{ scales}\OperatorTok{::}\NormalTok{percent) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkblue"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{, }\StringTok{"goldenrod3"}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_alpha_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, .}\DecValTok{17}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{name =} \StringTok{""}\NormalTok{, }\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{19}\NormalTok{, }\DecValTok{8}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \FloatTok{4.95}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ .}\DecValTok{70}\NormalTok{, }\DataTypeTok{label =} \KeywordTok{str_wrap}\NormalTok{(}\StringTok{"Senegal's 2010 gender parity law means it leads among these countries."}\NormalTok{, }\DecValTok{16}\NormalTok{), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \FloatTok{5.05}\NormalTok{, }\DataTypeTok{y =}\NormalTok{ .}\DecValTok{250}\NormalTok{, }\DataTypeTok{label =} \KeywordTok{str_wrap}\NormalTok{(}\StringTok{"Officials seem to be aware of the law."}\NormalTok{, }\DecValTok{10}\NormalTok{), }\DataTypeTok{size =} \DecValTok{5}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{0}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{y =} \StringTok{"Seats held by women"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Women in national parliaments in 2015 in five countries }\CharTok{\textbackslash{}n}\StringTok{and officials' beliefs about representation"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{subtitle =} \StringTok{"Data Source: Equal Measures 2030 | Vis: Gina Reynolds @EvaMaeRey"}\NormalTok{) }\CommentTok{#<<}
-\end{Highlighting}
-\end{Shaded}
-
-{]}{]} .column{[}.content.center{[}
-\includegraphics{makeovermonday_book_files/figure-latex/output20-1.pdf}
-{]}{]}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FloatTok{.remark-code}\KeywordTok{\{} \KeywordTok{line-height:} \DataTypeTok{2}\KeywordTok{;} \KeywordTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
 \chapter{Maternal Leave}\label{maternal-leave}
 
 The OECD provides a comparative report on how much paid leave women are
@@ -1040,15 +783,15 @@ A random sample from the data set:
 \hline
 Country & Paid maternity leave avg payment rate (\%) & Paid maternity leave full rate equivalent in weeks & Paid maternity leave in weeks & Paid parental leave avg payment rate (\%) & Paid parental leave full rate equivalent in weeks & Paid parental leave in weeks & Total paid leave avg payment rate (\%) & Total paid leave full rate equivalent in weeks & Total paid leave in weeks & rank\_name & paid\_leave\_months & total\_paid\_yearly\_salaries\\
 \hline
-Japan & 67.0 & 9.4 & 14.0 & 59.9 & 26.4 & 44.0 & 61.6 & 35.8 & 58.0 & \#12: Japan & 13.347945 & 0.6884615\\
+Turkey & 66.0 & 10.6 & 16.0 & 0.0 & 0.0 & 0.0 & 66.0 & 10.6 & 16.0 & \#30: Turkey & 3.682192 & 0.2038462\\
 \hline
-Sweden & 77.6 & 10.0 & 12.9 & 57.7 & 24.7 & 42.9 & 62.3 & 34.7 & 55.7 & \#13: Sweden & 12.818630 & 0.6673077\\
+Finland & 74.4 & 13.0 & 17.5 & 19.2 & 27.6 & 143.5 & 25.2 & 40.6 & 161.0 & \#11: Finland & 37.052055 & 0.7807692\\
 \hline
-Denmark & 53.6 & 9.6 & 18.0 & 53.6 & 17.1 & 32.0 & 53.6 & 26.8 & 50.0 & \#16: Denmark & 11.506849 & 0.5153846\\
+Norway & 97.9 & 12.7 & 13.0 & 41.3 & 32.2 & 78.0 & 49.4 & 45.0 & 91.0 & \#8: Norway & 20.942466 & 0.8653846\\
 \hline
-New Zealand & 42.6 & 7.7 & 18.0 & 0.0 & 0.0 & 0.0 & 42.6 & 7.7 & 18.0 & \#33: New Zealand & 4.142466 & 0.1480769\\
+Slovenia & 100.0 & 15.0 & 15.0 & 90.0 & 33.4 & 37.1 & 92.9 & 48.4 & 52.1 & \#7: Slovenia & 11.990137 & 0.9307692\\
 \hline
-Spain & 100.0 & 16.0 & 16.0 & 0.0 & 0.0 & 0.0 & 100.0 & 16.0 & 16.0 & \#24: Spain & 3.682192 & 0.3076923\\
+Israel & 100.0 & 14.0 & 14.0 & 0.0 & 0.0 & 0.0 & 100.0 & 14.0 & 14.0 & \#26: Israel & 3.221918 & 0.2692308\\
 \hline
 \end{tabular}
 
@@ -1077,7 +820,7 @@ Spain & 100.0 & 16.0 & 16.0 & 0.0 & 0.0 & 0.0 & 100.0 & 16.0 & 16.0 & \#24: Spai
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-15-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-14-1.pdf}
 
 \chapter{Traits}\label{traits}
 
@@ -1087,15 +830,15 @@ A random sample from the data set:
 \hline
 Gender & Question\_short & Rank (text) & Rank (number) & n & Percent\\
 \hline
-Men & Personality & Ranked first & 1 & 4641.14 & 43.411898\\
+Women & Sense of humor & Ranked fifth & 5 & 1314.15 & 11.554714\\
 \hline
-Men & Looks & Ranked fourth & 4 & 1722.09 & 16.110862\\
+Women & Has similar interests & Ranked fourth & 4 & 2292.38 & 20.111190\\
 \hline
-Men & Personality & Ranked fourth & 4 & 989.05 & 9.251291\\
+Men & Looks & Ranked third & 3 & 1828.66 & 17.107868\\
 \hline
-Women & Intellegence & Ranked second & 2 & 2185.55 & 19.238336\\
+Women & Intellegence & Ranked fifth & 5 & 1636.64 & 14.406548\\
 \hline
-Men & Money & Ranked second & 2 & 339.41 & 3.180516\\
+Men & Looks & Ranked sixth & 6 & 742.71 & 6.948358\\
 \hline
 \end{tabular}
 
@@ -1119,7 +862,7 @@ Men & Money & Ranked second & 2 & 339.41 & 3.180516\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-18-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-17-1.pdf}
 
 \chapter{Salarys of Trump and Obama White House
 Employees}\label{salarys-of-trump-and-obama-white-house-employees}
@@ -1140,15 +883,15 @@ A random sample from the data set:
 \hline
 ADMINISTRATION & NAME & STATUS & SALARY & PAY BASIS & POSITION TITLE\\
 \hline
-Obama & Smart, Kelly J. & Employee & 55000 & Per Annum & ASSOCIATE DIGITAL PRODUCER\\
+Trump & Clemens, Nicholas J. & Employee & 40000 & Per Annum & WRITER FOR CORRESPONDENCE\\
 \hline
-Obama & Lezotte, Darin R. & Employee & 80073 & Per Annum & SUPERVISOR OF SEARCH AND FILE\\
+Trump & Larimer, Becky S. & Employee & 70100 & Per Annum & CALLIGRAPHER\\
 \hline
-Trump & Hoelscher, Douglas L. & Employee & 115000 & Per Annum & SPECIAL ASSISTANT TO THE PRESIDENT AND DEPUTY DIRECTOR OF INTERGOVERNMENTAL AFFAIRS\\
+Obama & Dyer, Deesha A. & Employee & 119723 & Per Annum & SPECIAL ASSISTANT TO THE PRESIDENT AND WHITE HOUSE SOCIAL SECRETARY\\
 \hline
-Obama & Lechtenberg, Tyler A. & Employee & 87103 & Per Annum & SENIOR PRESIDENTIAL SPEECHWRITER\\
+Obama & Gianotti, Claire L. & Employee & 51700 & Per Annum & ASSOCIATE RESEARCH DIRECTOR\\
 \hline
-Trump & Tripepi, Timothy G. & Employee & 115000 & Per Annum & SPECIAL ASSISTANT TO THE PRESIDENT AND DEPUTY CHIEF OF STAFF OF OPERATIONS FOR THE FIRST LADY\\
+Obama & Samuels, Jr., Wendell A. & Employee & 73270 & Per Annum & RECORDS MANAGEMENT INFORMATION SYSTEMS SPECIALIST\\
 \hline
 \end{tabular}
 
@@ -1167,7 +910,7 @@ Trump & Tripepi, Timothy G. & Employee & 115000 & Per Annum & SPECIAL ASSISTANT 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-21-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-20-1.pdf}
 
 \chapter{Winter Games}\label{winter-games}
 
@@ -1177,15 +920,15 @@ A random sample from the data set:
 \hline
 Year & Sport & Event & Country & Gender & Medal Rank & Medal & Name of Athlete or Team & Age of Athlete\\
 \hline
-1984 & Figure Skating & Women's Singles & East Germany & Women & 1 & gold & Katarina Witt & 18\\
+1960 & Speedskating & Men's 5,000 Meters & Norway & Men & 2 & silver & Knut Johannesen & 26\\
 \hline
-2002 & Alpine Skiing & Women's Combined & Austria & Women & 2 & silver & Renate GÃ¶tschl & 26\\
+2014 & Cross-Country Skiing & Men's 15-Kilometer Classic & Sweden & Men & 2 & silver & Johan Olsson & 33\\
 \hline
-1976 & Nordic Combined & Men's Individual & West Germany & Men & 2 & silver & Urban Hettich & 22\\
+1968 & Ski Jumping & Men's Normal Hill, Individual & Czechoslovakia & Men & 1 & gold & JiÅ™Ã­ RaÅ¡ka & 27\\
 \hline
-1998 & Alpine Skiing & Men's Slalom & Norway & Men & 1 & gold & Hans Petter Buraas & 22\\
+1964 & Cross-Country Skiing & Women's 3 Ã— 5-Kilometer Relay & Sweden & Women & 2 & silver & Sweden & NA\\
 \hline
-1984 & Figure Skating & Mixed Pairs & Soviet Union & Mixed & 3 & bronze & Soviet Union-2 & NA\\
+2014 & Alpine Skiing & Women's Downhill & Slovenia & Women & 1 & gold & Tina Maze & 30\\
 \hline
 \end{tabular}
 
@@ -1199,7 +942,7 @@ Year & Sport & Event & Country & Gender & Medal Rank & Medal & Name of Athlete o
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-25-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-24-1.pdf}
 
 A random sample from the data set:
 
@@ -1207,15 +950,15 @@ A random sample from the data set:
 \hline
 Year & Sport & Event & Country & Gender & Medal Rank & Medal & Name of Athlete or Team & Age of Athlete & cold\_war\\
 \hline
-1960 & Speedskating & Women's 1,500 Meters & Soviet Union & Women & 1 & gold & Lidiya Skoblikova & 20 & Soviet Union\\
+1952 & Speedskating & Men's 10,000 Meters & Norway & Men & 1 & gold & Hjalmar Andersen & 28 & A\\
 \hline
-1980 & Speedskating & Women's 3,000 Meters & United States & Women & 3 & bronze & Beth Heiden & 20 & A\\
+1976 & Luge & Men's Doubles & Austria & Men & 3 & bronze & Austria-1 & NA & A\\
 \hline
-2002 & Biathlon & Women's 10-Kilometer pursuit & Russia & Women & 1 & gold & Olga Pylyova-Medvedtseva & 26 & A\\
+1992 & Figure Skating & Mixed Pairs & Unified Team & Mixed & 1 & gold & Unified Team-1 & NA & A\\
 \hline
-1976 & Luge & Men's Singles & East Germany & Men & 3 & bronze & Hans Rinn & 22 & East Germany\\
+2010 & Ski Jumping & Men's Normal Hill, Individual & Poland & Men & 2 & silver & Adam MaÅ‚ysz & 32 & A\\
 \hline
-1988 & Cross-Country Skiing & Women's 20 Kilometers & Soviet Union & Women & 2 & silver & Anfisa Reztsova & 23 & Soviet Union\\
+1948 & Speedskating & Men's 10,000 Meters & Finland & Men & 2 & silver & Lassi Parkkinen & 30 & A\\
 \hline
 \end{tabular}
 
@@ -1239,7 +982,7 @@ Year & Sport & Event & Country & Gender & Medal Rank & Medal & Name of Athlete o
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-28-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-27-1.pdf}
 
 \chapter{Brexit}\label{brexit}
 
@@ -1264,15 +1007,15 @@ A random sample from the data set:
 \hline
 Country & Year & Quarter & Date (start of quarter) & Percentage change from previous period & Date (start o quarter)\\
 \hline
-JPN & 2015 & 2 & 2015-04-01 & -0.019508 & 2015-04-01\\
+FRA & 2016 & 4 & 2016-10-01 & 0.516292 & 2016-10-01\\
 \hline
-CAN & 2012 & 1 & 2012-01-01 & 0.031895 & 2012-01-01\\
+DEU & 2016 & 1 & 2016-01-01 & 0.632392 & 2016-01-01\\
 \hline
-CAN & 2011 & 3 & 2011-07-01 & 1.387897 & 2011-07-01\\
+USA & 2016 & 3 & 2016-07-01 & 0.687731 & 2016-07-01\\
 \hline
-GBR & 2016 & 2 & 2016-04-01 & 0.601298 & 2016-04-01\\
+FRA & 2012 & 3 & 2012-07-01 & 0.148280 & 2012-07-01\\
 \hline
-CAN & 2010 & 1 & 2010-01-01 & 1.191352 & 2010-01-01\\
+USA & 2012 & 4 & 2012-10-01 & 0.022756 & 2012-10-01\\
 \hline
 \end{tabular}
 
@@ -1290,7 +1033,7 @@ CAN & 2010 & 1 & 2010-01-01 & 1.191352 & 2010-01-01\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-31-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-30-1.pdf}
 
 A random sample from the data set:
 
@@ -1298,15 +1041,15 @@ A random sample from the data set:
 \hline
 Country & Year & Quarter & Date (start of quarter) & Percentage change from previous period & Date (start o quarter) & min\_ & max\_\\
 \hline
-USA & 2017 & 1 & 2017-01-01 & 0.307393 & 2017-01-01 & 0.211890 & 0.910663\\
+FRA & 2011 & 4 & 2011-10-01 & 0.104859 & 2011-10-01 & -1.017723 & 1.126416\\
 \hline
-JPN & 2017 & 2 & 2017-04-01 & 0.629149 & 2017-04-01 & 0.297970 & 1.094763\\
+JPN & 2013 & 4 & 2013-10-01 & -0.102503 & 2013-10-01 & -0.102503 & 1.007924\\
 \hline
-DEU & 2013 & 2 & 2013-04-01 & 0.886494 & 2013-04-01 & 0.096773 & 0.967565\\
+FRA & 2014 & 1 & 2014-01-01 & 0.070655 & 2014-01-01 & -0.229836 & 1.079279\\
 \hline
-JPN & 2016 & 4 & 2016-10-01 & 0.403650 & 2016-10-01 & 0.395541 & 0.666167\\
+FRA & 2014 & 4 & 2014-10-01 & 0.029185 & 2014-10-01 & -0.049711 & 0.889928\\
 \hline
-DEU & 2013 & 4 & 2013-10-01 & 0.408634 & 2013-10-01 & -0.102503 & 1.007924\\
+JPN & 2013 & 1 & 2013-01-01 & 1.210002 & 2013-01-01 & -1.052199 & 1.210002\\
 \hline
 \end{tabular}
 
@@ -1335,7 +1078,7 @@ DEU & 2013 & 4 & 2013-10-01 & 0.408634 & 2013-10-01 & -0.102503 & 1.007924\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-34-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-33-1.pdf}
 
 \chapter{Curry in London}\label{curry-in-london}
 
@@ -1354,15 +1097,15 @@ A random sample from the data set:
 \hline
 Name & Location & Latitude & Longitude & Empire State Burger & Chicken Tikka & Gammon afternoon deal & Chocolate Brownie & Doom Bar & Birra Moretti & Porn Star at 2 x £12 & Porn Star (glass) & MEAL & Notes & Moretti as a \% of a tikka & Moretti as \% of burger & PRICE BUCKETS & Food cost £ & Drink cost £\\
 \hline
-The White Hart & Aylesbury & 51.81533 & -0.8097584 & 8.75 & 7.40 & 5.90 & 3.85 & 2.29 & 3.09 & 6.3 & NA & 25.38 & NA & 0.4175676 & 0.3531429 & £25.21+ & 16.15 & 5.38\\
+The Green Parrot & Perranporth & 50.34451 & -5.1559044 & 10.85 & 8.40 & 6.4 & 3.90 & 2.55 & 3.09 & 6.3 & NA & 28.79 & NA & 0.3678571 & 0.2847926 & £27.50+ & 19.25 & 5.64\\
 \hline
-Sandford House & Huntingdon & 52.33042 & -0.1871106 & 8.75 & 7.59 & 6.15 & 3.85 & 2.29 & 3.09 & 6.3 & NA & 25.57 & NA & 0.4071146 & 0.3531429 & £25.21+ & 16.34 & 5.38\\
+The Bowling Green & Otley & 53.90427 & -1.6928946 & 8.75 & 7.40 & 5.9 & 3.85 & 2.29 & 3.09 & 6.3 & NA & 25.38 & NA & 0.4175676 & 0.3531429 & £25.21+ & 16.15 & 5.38\\
 \hline
-The Pear Tree & Birmingham & 52.43198 & -1.8928248 & 8.75 & 5.40 & 5.80 & 3.35 & 2.19 & 2.75 & 6.3 & NA & 22.44 & NA & 0.5092593 & 0.3142857 & £25.20- & 14.15 & 4.94\\
+The Moon And Spoon & Slough & 51.50947 & -0.5959543 & 8.75 & 7.19 & 5.9 & 3.85 & 2.29 & 3.15 & 6.3 & NA & 25.23 & NA & 0.4381085 & 0.3600000 & £25.21+ & 15.94 & 5.44\\
 \hline
-Woodrow Wilson & Carlisle & 54.89075 & -2.9307650 & 8.75 & 7.19 & 5.90 & 3.85 & 2.29 & 3.19 & 6.3 & NA & 25.27 & NA & 0.4436718 & 0.3645714 & £25.21+ & 15.94 & 5.48\\
+The George Hotel & Peterborough & 52.64967 & -0.4783880 & 8.75 & 7.19 & 5.9 & 3.85 & 2.29 & 3.09 & NA & 5.90 & 25.17 & NA & 0.4297636 & 0.3531429 & £25.20- & 15.94 & 5.38\\
 \hline
-The Hornet & Birmingham & 52.49268 & -1.8194877 & 8.75 & 5.80 & 5.40 & 3.35 & 2.19 & 2.75 & 6.3 & NA & 22.84 & NA & 0.4741379 & 0.3142857 & £25.20- & 14.55 & 4.94\\
+The Ice Wharf & Camden, London & 51.54079 & -0.1454212 & 11.25 & 8.39 & 6.1 & 3.90 & 2.69 & 4.09 & NA & 10.35 & 30.32 & NA & 0.4874851 & 0.3635556 & £27.50+ & 19.64 & 6.78\\
 \hline
 \end{tabular}
 
@@ -1379,15 +1122,15 @@ A random sample from the data set:
 \hline
   & long & lat & group & order & region & subregion\\
 \hline
-31356 & 131.06856 & 42.902245 & 430 & 31356 & China & NA\\
+88312 & 100.6295 & 6.447998 & 1413 & 88312 & Thailand & NA\\
 \hline
-48165 & 107.59160 & -2.976563 & 755 & 48165 & Indonesia & Belitung\\
+18728 & -133.1968 & 68.739845 & 345 & 18728 & Canada & NA\\
 \hline
-3372 & -99.43433 & -72.406639 & 72 & 3372 & Antarctica & Thurston Island\\
+8316 & 137.4836 & -34.252148 & 177 & 8316 & Australia & NA\\
 \hline
-1289 & -58.08242 & -26.138575 & 20 & 1289 & Argentina & NA\\
+81664 & 174.7150 & 61.947903 & 1309 & 81664 & Russia & NA\\
 \hline
-19133 & -103.47412 & 68.115036 & 345 & 19133 & Canada & NA\\
+93724 & -115.1252 & 32.683304 & 1501 & 93724 & USA & NA\\
 \hline
 \end{tabular}
 
@@ -1429,7 +1172,7 @@ A random sample from the data set:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-39-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-38-1.pdf}
 
 A random sample from the data set:
 
@@ -1437,15 +1180,15 @@ A random sample from the data set:
 \hline
 Name & Location & Latitude & Longitude & Notes & Moretti as a \% of a tikka & Moretti as \% of burger & PRICE BUCKETS & Food cost £ & Drink cost £ & Kilometers from Big Ben & Item & Menu Item Price\\
 \hline
-JJ Moon's & Tooting, London & 51.42787 & -0.1684140 & NA & 0.4506438 & 0.3503893 & £25.21+ & 15.98 & 5.44 & 9.853645 & Chicken Tikka & 6.99\\
+The Whiffler & Norwich & 52.65430 & 1.268524 & NA & 0.4113924 & 0.3591160 & £25.21+ & 16.95 & 5.74 & 158.8010 & Birra Moretti & 3.25\\
 \hline
-The Hornet & Birmingham & 52.49268 & -1.8194877 & NA & 0.4741379 & 0.3142857 & £25.20- & 14.55 & 4.94 & 160.055813 & Birra Moretti & 2.75\\
+The Kingfisher & Poynton & 53.34644 & -2.124271 & NA & 0.3920386 & 0.3714286 & £25.21+ & 17.04 & 5.60 & 245.7196 & Birra Moretti & 3.25\\
 \hline
-The Asparagus & Battersea, London & 51.47000 & -0.1713948 & NA & 0.4520167 & 0.3714286 & £25.21+ & 15.94 & 5.60 & 5.878401 & Birra Moretti & 3.25\\
+Bull and Stirrup Hotel & Chester & 53.19436 & -2.893331 & NA & 0.4172015 & 0.3571429 & £25.21+ & 16.89 & 5.84 & 266.2428 & Doom Bar & 2.59\\
 \hline
-The JP Joule & Sale & 53.42406 & -2.3175328 & NA & 0.4310811 & 0.3645714 & £25.21+ & 16.15 & 5.48 & 260.198082 & Doom Bar & 2.29\\
+The Great Central & Wilmslow Road & 53.44093 & -2.219457 & NA & 0.4256757 & 0.3600000 & £25.21+ & 16.15 & 5.44 & 257.9732 & Birra Moretti & 3.15\\
 \hline
-The Old Swanne Inne & Great Malvern & 52.13869 & -2.3000250 & NA & 0.4297636 & 0.3531429 & £25.20- & 15.94 & 5.38 & 165.960682 & Gammon afternoon deal & 5.90\\
+The Hornet & Birmingham & 52.49268 & -1.819488 & NA & 0.4741379 & 0.3142857 & £25.20- & 14.55 & 4.94 & 160.0558 & Empire State Burger & 8.75\\
 \hline
 \end{tabular}
 
@@ -1463,7 +1206,7 @@ The Old Swanne Inne & Great Malvern & 52.13869 & -2.3000250 & NA & 0.4297636 & 0
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-42-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-41-1.pdf}
 
 \chapter{Life Expectancy Increases}\label{life-expectancy-increases}
 
@@ -1482,15 +1225,15 @@ A random sample from the data set:
 \hline
 Life Expectancy 1960 & Country Code & Country Name & Region & Income Group & Year & Life Expectancy 2010 & CountryName & squared\\
 \hline
-72.17659 & DNK & Denmark & Europe \& Central Asia & High income & 2010 & 79.10000 & Denmark & 5209.459\\
+69.10927 & ESP & Spain & Europe \& Central Asia & High income & 2010 & 81.62683 & Spain & 4776.091\\
 \hline
-48.01371 & EGY & Egypt, Arab Rep. & Middle East \& North Africa & Lower middle income & 2010 & 70.34141 & Egypt & 2305.316\\
+65.56937 & ABW & Aruba & Latin America \& Caribbean & High income & 2010 & 74.91063 & Aruba & 4299.342\\
 \hline
-45.38441 & TUR & Turkey & Europe \& Central Asia & Upper middle income & 2010 & 74.09405 & Turkey & 2059.745\\
+41.98105 & PNG & Papua New Guinea & East Asia \& Pacific & Lower middle income & 2010 & 64.64024 & Papua New Guinea & 1762.408\\
 \hline
-36.87241 & CIV & Cote d'Ivoire & Sub-Saharan Africa & Lower middle income & 2010 & 50.45071 & Côte d’Ivoire & 1359.575\\
+60.78085 & AZE & Azerbaijan & Europe \& Central Asia & Upper middle income & 2010 & 70.91861 & Azerbaijan & 3694.312\\
 \hline
-46.99883 & NIC & Nicaragua & Latin America \& Caribbean & Lower middle income & 2010 & 73.59234 & Nicaragua & 2208.890\\
+68.29954 & UKR & Ukraine & Europe \& Central Asia & Lower middle income & 2010 & 70.26537 & Ukraine & 4664.827\\
 \hline
 \end{tabular}
 
@@ -1525,7 +1268,7 @@ Life Expectancy 1960 & Country Code & Country Name & Region & Income Group & Yea
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-45-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-44-1.pdf}
 
 \chapter{Myers Briggs}\label{myers-briggs}
 
@@ -1544,15 +1287,15 @@ A random sample from the data set:
 \hline
 (S)ensing/I(N)tuition & (T)hinking/(F)eeling & (J)udging/(P)erceiving & (E)xtroversion/(I)ntroversion & count\\
 \hline
+Intuition & Thinking & Perceiving & Introversion & 1\\
+\hline
+Intuition & Feeling & Judging & Introversion & 1\\
+\hline
 Intuition & Thinking & Judging & Extroversion & 1\\
 \hline
-Intuition & Thinking & Perceiving & Extroversion & 1\\
+Intuition & Feeling & Perceiving & Introversion & 1\\
 \hline
-Intuition & Feeling & Perceiving & Extroversion & 1\\
-\hline
-Intuition & Feeling & Perceiving & Extroversion & 1\\
-\hline
-Sensing & Feeling & Judging & Extroversion & 1\\
+Sensing & Thinking & Perceiving & Extroversion & 1\\
 \hline
 \end{tabular}
 
@@ -1579,7 +1322,7 @@ Sensing & Feeling & Judging & Extroversion & 1\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-48-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-47-1.pdf}
 
 \chapter{Wine}\label{wine}
 
@@ -1627,7 +1370,7 @@ volitility early in this period.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-50-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-49-1.pdf}
 
 \chapter{Arctic Ice}\label{arctic-ice}
 
@@ -1653,15 +1396,15 @@ A random sample from the data set:
 \hline
 Date & Extent (million sq km) & year & month\_day & month\_day\_plus & proportion\_ocean\_covered\_in\_ice & mean\_for\_day & diff\_from\_mean\_day\\
 \hline
-2015-06-06 & 11.323 & 2015 & 06-06 & 2000-06-06 & 0.0314528 & 12.05682 & -0.7338235\\
+2008-02-27 & 15.354 & 2008 & 02-27 & 2000-02-27 & 0.0426500 & 15.31966 & 0.0343429\\
 \hline
-1985-03-29 & 15.957 & 1985 & 03-29 & 2000-03-29 & 0.0443250 & 15.14966 & 0.8073429\\
+1992-11-15 & 11.138 & 1992 & 11-15 & 2000-11-15 & 0.0309389 & 10.40931 & 0.7286857\\
 \hline
-1996-12-18 & 13.106 & 1996 & 12-18 & 2000-12-18 & 0.0364056 & 12.83218 & 0.2738235\\
+1994-05-01 & 14.126 & 1994 & 05-01 & 2000-05-01 & 0.0392389 & 13.73321 & 0.3927941\\
 \hline
-2017-01-02 & 12.614 & 2017 & 01-02 & 2000-01-02 & 0.0350389 & 13.66329 & -1.0492941\\
+2014-04-07 & 14.479 & 2014 & 04-07 & 2000-04-07 & 0.0402194 & 14.83906 & -0.3600588\\
 \hline
-2017-04-03 & 14.227 & 2017 & 04-03 & 2000-04-03 & 0.0395194 & 14.96232 & -0.7353235\\
+2001-06-09 & 12.073 & 2001 & 06-09 & 2000-06-09 & 0.0335361 & 11.95731 & 0.1156857\\
 \hline
 \end{tabular}
 
@@ -1735,7 +1478,7 @@ year & average\_coverage & num\_days & average\_day\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-54-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-53-1.pdf}
 
 \bibliography{book.bib,packages.bib}
 

@@ -1,6 +1,17 @@
 # Introduction {#intro}
 
-In late 2016 I heard Andy Kreibel (and __) being interviewed on the Podcast "Data Stories".  He was invited onto the show because he had started the initiative #MakeoverMonday, in which he would find the data for an existing data visualization that he had come across in the media, and would recreate the visualization using Tableau, a tool that they were both expert in, but found that they weren't practicing as regularly due to the grind of administrative jobs.  The two friends shared their makeovers products with each other, but also with the world on Twitter.  Soon, more people expressed interest in joining, and they two started a more organized initiative - posting the original graph and data every Sunday, so that whoever wanted to could participate in #Makeovermonday.
+Outline introduction: 
+
+- What is ggplot 
+- What is "slow" ggplotting
+- What does this book contain (Makeover monday examples with slow ggplot)
+
+
+
+#MakeoverMonday is now in it's third year.
+ January 2016, Andy Kreibel, Head Coach at The Information Lab, and Andy Cotgreave, Technical Evangelist at Tableau, have been organizing Make
+
+The friends wanted to keep up their skills even as they had moved into more administrative jobs that didn't require regular visualizaton work.  Andy and Andy were find the data for an existing data visualization in the media, and would recreate or "makeover" the visualization using Tableau, a tool that they were both expert in. They were sharing their makeovers products with each other, but also with the world on Twitter.  When more people expressed interest in joining, and they two started a more organized initiative - posting the original graph and data every Sunday, so that whoever wanted to could participate in #Makeovermonday.
 
 My first submission was late 2016, after catching wind of the exciting project via the podcast.  I made a scrappy little graph about motorway casualties; sad topic, but fun graph making.  
 
@@ -8,14 +19,54 @@ I was using base R at that time. Then in the summer of 2017 I went to a conferen
 
 Early this year Andy and Eva Murry sent a number of the participants a private message on Twitter.  "We're writing a book:  #MakeoverMonday".  They were putting together a collection of a visualizations that resulted from the project, and were seeking perspectives of participants as well as permission to use some of the visualizations produced for the initiatives.  Cool.  I was pleased to participate.  For me #MakeoverMonday allowed me to focus on the visualization task.  Usually visualization comes at the end of, sometimes arguous, data cleaning --- and you might already be a little spent.  Having rather clean data delivered, and seeing the approaches of many other (many brilliant) data visualizers was a treat.  I still need to buy my copy of the book, which contains a visualization of food prices in London as a function of how far a restaurant is from the Big Ben.  
 
-And now, using the magic of RStudio and Yihui Xie's bookdown, I'm putting together my own little collection.  Of course there is a bit of curation involved --- I'm not including every plot.  And, I'm revising the exact code that creates the plots in many cases, to be more consistent across plots, and also, I think, to make communicating about how the plot was built easy.  This involves:
+And now, using the goodness of RStudio and Yihui Xie's bookdown, I'm putting together my own little collection.  Of course there is a bit of curation involved --- I'm not including every plot.  And, I'm revising the exact code that creates the plots in many cases, to be more consistent across plots, and also, I think, to make communicating about how the plot was built easy.  This involves:
 
-- using fewer functions (labs(title = ) instead of ggtitle()) 
 - pulling out aes() from the ggplot() function
-- multiply using functions aes(x = ?) + aes(y = ?) rather than aes(x = , y = )
+- using fewer functions; example - using labs() to add a title instead of ggtitle()
+- using functions multiple times; example aes(x = var1) + aes(y = var2) rather than aes(x = var1, y = var2)
 - using base R functions and tidyverse functions.  For other packages, the :: style to call them
 - write out arguments (no shortcuts)  aes(x = gdppercap) not aes(gdppercap)
-- order ggplot commands so that reactivity is obvious
+- order ggplot commands so that reactivity is obvious; scale adjustments to aesthetics might also be near the aesthetic declaration. 
+
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# knitr::opts_chunk$set(fig.height = 6, out.width="100%")
+
+# reveal lines up to `upto` and highlight lines `highlight`
+reveal <- function(name, upto, highlight = upto) {
+  content <- knitr:::knit_code$get(name)
+  content[upto] <- gsub("%>%", "", content[upto], fixed=T)
+  content[upto] <- gsub("+", "", content[upto], fixed=T)
+  content[highlight] <- paste(content[highlight]
+                              #, "#<<"
+                              )
+  content[1:upto]
+}
+
+partial_knit_chunks <- function(chunk_name) {
+  # Create slide for lines 1:N for each line N in the given chunk
+  idx_lines <- seq_along(knitr:::knit_code$get(chunk_name))
+  partial_knit_steps <- glue::glue(
+    # "class: split-50",
+    # "count: false",
+    # "",
+    # ".column[.content[",
+    "\\clearpage", #  This is new for latex book
+    "```{r plot{{idx_lines}}, eval=FALSE, code=reveal('{{chunk_name}}', {{idx_lines}})}",
+    "```",
+    # "]]",
+    # ".column[.content.center[",
+    "```{r output{{idx_lines}}, echo=FALSE, code=reveal('{{chunk_name}}', {{idx_lines}})}",
+    "```",
+    # "]]",
+     .open = "{{", .close = "}}", .sep = "\n"
+  )
+  glue::glue_collapse(partial_knit_steps, "\n---\n")
+}
+```
+
 
 <!-- You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods). -->
 
