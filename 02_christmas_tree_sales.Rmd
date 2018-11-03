@@ -4,6 +4,8 @@ Here is a simple plot of Christmas Tree Sales in the U.S.  The plot shows that a
 
 I also plot the cumulative number of trees purchased of each type, artificial and real, from 2004 to 2014, comparing that to the 2016 U.S. population.  Almost one real tree per person was bought over the course of 10 years!   
 
+
+
 ```{r, echo = F}
 dta <- readxl::read_xlsx("raw_data/Christmas tree sales.xlsx") %>%
   mutate(`Number of trees sold (millions)` = `Number of trees sold` / 1000000)
@@ -14,7 +16,7 @@ A random sample from the data set:
 knitr::kable(sample_n(dta, 5))
 ```
 
-```{r}
+```{r christmas}
 ggplot(data = dta) +
   aes(Year) +
   aes(y = `Number of trees sold (millions)`) +
@@ -28,6 +30,8 @@ ggplot(data = dta) +
   labs(subtitle = "Real and fake Christmas trees sold in the US | Data Source: Statista | @EvaMaeRey ") +
   theme_bw() 
 ```
+
+
 
 
 ```{r}

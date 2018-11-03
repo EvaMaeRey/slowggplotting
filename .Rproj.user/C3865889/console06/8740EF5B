@@ -1,9 +1,0 @@
-]0;~/Google Drive/side_projects/makeovermonday_book[?1034hEvangelines-MacBook-Air:makeovermonday_book evangelinereynolds$ [KEvangelines-MacBook-Air:makeovvermonday_book evangelinereynoolds$ w[Kdir
-bash: dir: command not found
-]0;~/Google Drive/side_projects/makeovermonday_bookEvangelines-MacBook-Air:makeovvermonday_book evangelinereynoolds$ dir[K[K[Kprint dir
-bash: print: command not found
-]0;~/Google Drive/side_projects/makeovermonday_bookEvangelines-MacBook-Air:makeovvermonday_book evangelinereynoolds$ pwd
-/Users/evangelinereynolds/Google Drive/side_projects/makeovermonday_book
-]0;~/Google Drive/side_projects/makeovermonday_bookEvangelines-MacBook-Air:makeovvermonday_book evangelinereynoolds$ git init
-Initialized empty Git repository in /Users/evangelinereynolds/Google Drive/side_projects/makeovermonday_book/.git/
-]0;~/Google Drive/side_projects/makeovermonday_bookEvangelines-MacBook-Air:makeovvermonday_book evangelinereynoolds$ git add .

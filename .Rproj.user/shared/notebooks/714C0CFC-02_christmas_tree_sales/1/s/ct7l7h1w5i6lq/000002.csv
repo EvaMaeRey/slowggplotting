@@ -1,2 +1,0 @@
-"0","dta <- readxl::read_xlsx(""raw_data/Christmas tree sales.xlsx"") %>%"
-"0","  mutate(`Number of trees sold (millions)` = `Number of trees sold` / 1000000)"

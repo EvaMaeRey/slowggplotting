@@ -1,0 +1,133 @@
+---
+title: "ggplot tutorial"
+subtitle: "with kunoichi + ninjutsu theme"
+author: "<br><br> Emi Tanaka"
+date: "<br>2018/09/16"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["kunoichi", "ninjutsu"]
+    nature:
+      ratio: "16:9"
+      highlightLines: true
+---
+
+
+
+```{r}
+knitr::opts_chunk$set(warning = F)
+library(tidyverse)
+library(readr)
+library(ggrepel)
+df_0 <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2018-10-23/movie_profit.csv")
+
+df <- df_0 %>% mutate(release_date = lubridate::mdy(release_date)) %>% filter(worldwide_gross != 0) %>% mutate(label = paste0(movie, "\n$", round(production_budget/1000000, 2), "mil."))
+sum(is.na(df$label))
+sum(is.na(log10(df$worldwide_gross)))
+sum(is.na(log10(df$production_budget)))
+```
+```{r}
+set.seed(24578)
+
+  ggplot(data = df) +
+  aes(x = production_budget) +
+  labs(x = "production budget") +
+  aes(y = worldwide_gross/production_budget) +
+  labs(y = "Profit ratio (worldwide gross)") +
+  geom_point(alpha = .25) +
+  facet_wrap(~ genre) +
+  geom_abline(intercept = 0, 
+              slope = 0, lty = 2, col = "darkgrey") +
+  aes(label = label) +
+  ggpmisc::stat_dens2d_filter(data = df %>% filter(worldwide_gross > 10*production_budget), geom = "text_repel", keep.fraction = 0.06, size = 2.8, col = "darkgrey") + 
+  ggpmisc::stat_dens2d_filter(data = df %>% filter(worldwide_gross < production_budget), geom = "text_repel", keep.fraction = 0.002, size = 2.8, col = "darkgrey") + 
+  aes(col = lubridate::year(release_date)) +
+  scale_color_viridis_c(option = "B") +
+  labs(col = "") +
+  scale_x_log10(labels = scales::dollar_format(), limits = c(300000, 100000000)) + 
+  scale_y_log10(breaks = c(.0001,.001,.01,.1,1,10,100, 1000), label = c(".0001X", ".001X", ".01X", ".1X", "1X", "10X", "100X", "1000X"), limits = c(.0001, 1000)) +
+  theme_bw() +
+  labs(title = "Profit ratio in a 538 movies dataset") +
+  labs(subtitle = "Data source: 538 via TidyTuesday | Vis: Gina Reynolds")
+
+  
+  
+  
+  
+
+ggsave(filename = "movie_genres.png", width = 16)
+
+```
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE)
+knitr::opts_chunk$set(fig.height=6, out.width="100%")
+library(ggplot2)
+# reveal lines up to `upto` and highlight lines `highlight`
+reveal <- function(name, upto, highlight = upto) {
+  content <- knitr:::knit_code$get(name)
+  content[upto] <- gsub("+", "", content[upto], fixed=T)
+  content[highlight] <- paste(content[highlight], "#<<")
+  content[1:upto]
+}
+
+partial_knit_chunks <- function(chunk_name) {
+  # Create slide for lines 1:N for each line N in the given chunk
+  idx_lines <- seq_along(knitr:::knit_code$get(chunk_name))
+  partial_knit_steps <- glue::glue(
+    "class: split-50",
+    "count: false",
+    "",
+    ".column[.content[",
+    "```{r plot{{idx_lines}}, eval=FALSE, code=reveal('{{chunk_name}}', {{idx_lines}})}",
+    "```",
+    "]]",
+    ".column[.content.center[",
+    "```{r output{{idx_lines}}, echo=FALSE, code=reveal('{{chunk_name}}', {{idx_lines}})}",
+    "```",
+    "]]",
+    .open = "{{", .close = "}}", .sep = "\n"
+  )
+  glue::glue_collapse(partial_knit_steps, "\n---\n")
+}
+```
+
+```{r complete, eval=F, echo=F}
+ggplot(data = df) +
+  aes(x = production_budget) +
+  aes(y = worldwide_gross/production_budget) +
+  geom_point(alpha = .25) +
+  facet_wrap(~ genre) +
+  theme_bw() +
+  aes(col = lubridate::year(release_date)) +
+  scale_color_viridis_c(option = "B") +
+  labs(col = "") +
+  scale_x_log10(labels = scales::dollar_format(), limits = c(300000, 100000000)) + 
+  scale_y_log10(breaks = c(.0001,.001,.01,.1,1,10,100, 1000), label = c(".0001X", ".001X", ".01X", ".1X", "1X", "10X", "100X", "1000X"), limits = c(.0001, 1000)) +
+  aes(label = paste0(movie, "\n$", round(production_budget/1000000, 2), "mil.")) +
+  ggpmisc::stat_dens2d_filter(data = df %>% filter(worldwide_gross>10*production_budget), geom = "text_repel", keep.fraction = 0.06, size = 2.8, col = "darkgrey") + 
+  ggpmisc::stat_dens2d_filter(data = df %>% filter(worldwide_gross<production_budget), geom = "text_repel", keep.fraction = 0.002, size = 2.8, col = "darkgrey") + 
+  geom_abline(intercept = 0, slope = 0, lty = 2, col = "darkgrey") +
+  labs(x = "production budget") +
+  labs(y = "Profit ratio (worldwide gross)") +
+  labs(title = "Profit ratio in a 538 movies dataset") +
+  labs(subtitle = "Data source: 538 via TidyTuesday | Vis: Gina Reynolds")
+
+  
+
+```
+
+`r paste(knitr::knit(text = partial_knit_chunks("complete")), collapse = "\n")`
+
+<!--
+Create slides for the "complete" chunk
+...it's just R Markdown as a vector of strings
+...and why not be super concise about it?
+-->
+
+<!-- This css chunk can't be before the first class: split-40... lines -->
+```{css, eval=TRUE}
+.remark-code{ line-height: 2; }
+```

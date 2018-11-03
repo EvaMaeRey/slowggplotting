@@ -1,0 +1,144 @@
+---
+title: "ggplot tutorial"
+subtitle: "with kunoichi + ninjutsu theme"
+author: "<br><br> Emi Tanaka"
+date: "<br>2018/09/16"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: ["kunoichi", "ninjutsu"]
+    nature:
+      ratio: "16:9"
+      highlightLines: true
+---
+
+
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(lubridate)
+df_0 <- read_xlsx("us_avg_tuition.xlsx") %>% 
+  left_join(data_frame(state.abb, State = state.name))
+  
+library(ggrepel)
+
+ggplot(df_0) +
+  aes(x = `2004-05`) +
+  aes(y = `2014-15`) +
+  labs(x = "Tuition cost in 2004, USD") +
+  labs(y = "Tuition cost in 2014, USD") +
+  coord_equal() +
+  geom_abline(slope = 1, intercept = 0, lty = 2) +
+  theme_bw(base_family = "serif") +
+  # gain
+  geom_segment(
+    aes(xend=`2004-05`, yend=`2004-05`, 
+        col="Increase from\n2004 to 2014"), alpha = .7) + 
+  #original
+  geom_segment(aes(xend=`2004-05`, y=0, yend=`2004-05`, col="2004 Tuition Cost" ), alpha = .7) +
+  # colscale
+  scale_color_manual(breaks = c("Increase from\n2004 to 2014", "2004 Tuition Cost"),values=c("grey70", "grey30")) +
+    aes(label = state.abb) +
+    geom_point(col = "grey30") +
+  lims(x = c(0,15000)) +
+  lims(y = c(0,17000)) +
+  annotate(geom = "text", x = 1700, y = 1700, 
+           label = "Average Tuition\nCosts in 2004", 
+           angle = 45, size = 2.8) +
+  annotate(geom = "text", x = 13300, y = 15200, 
+           label = "Increase", angle = 90, size = 2.8) +
+  annotate(geom = "segment", x = 12900, y = 12900, 
+           xend = 12900, yend = 17000, 
+           arrow = arrow(length = unit(0.25, "cm")), 
+           col = "darkgrey") +
+  annotate(geom = "segment", 
+           x = 12900, y = 12900, xend = 12900, yend = 0, 
+           arrow = arrow(ends = "both", length = unit(0.15, "cm"), 
+                         angle = 90), col = "darkgrey") +
+  annotate(geom = "text", x = 13300, y = 8000, 
+           label = "Cost in 2004", angle = 90, size = 2.8) +
+  ggpmisc::stat_dens2d_filter(geom = "text_repel", 
+                              keep.fraction = 0.30, 
+                              size = 3.8) +
+  labs(subtitle = "Vis: Gina Reynolds | Data Source: onlinembapage.com") +
+
+  labs(title = "Average in-state tuition fees at public 4-year: 2004 and 2014") +
+  labs(col = "") 
+
+```
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE)
+knitr::opts_chunk$set(fig.height=6, out.width="100%")
+library(ggplot2)
+# reveal lines up to `upto` and highlight lines `highlight`
+reveal <- function(name, upto, highlight = upto) {
+  content <- knitr:::knit_code$get(name)
+  content[upto] <- gsub("+", "", content[upto], fixed=T)
+  content[highlight] <- paste(content[highlight], "#<<")
+  content[1:upto]
+}
+
+partial_knit_chunks <- function(chunk_name) {
+  # Create slide for lines 1:N for each line N in the given chunk
+  idx_lines <- seq_along(knitr:::knit_code$get(chunk_name))
+  partial_knit_steps <- glue::glue(
+    "class: split-40",
+    "count: false",
+    "",
+    ".column[.content[",
+    "```{r plot{{idx_lines}}, eval=FALSE, code=reveal('{{chunk_name}}', {{idx_lines}})}",
+    "```",
+    "]]",
+    ".column[.content.center[",
+    "```{r output{{idx_lines}}, echo=FALSE, code=reveal('{{chunk_name}}', {{idx_lines}})}",
+    "```",
+    "]]",
+    .open = "{{", .close = "}}", .sep = "\n"
+  )
+  glue::glue_collapse(partial_knit_steps, "\n---\n")
+}
+```
+
+```{r complete, eval=F, echo=F}
+ggplot(df_0) +
+  aes(x = `2004-05`) +
+  aes(y = `2014-15`) +
+  coord_equal() +
+  labs(x = "Tuition cost in 2004, USD") +
+  labs(y = "Tuition cost in 2014, USD") +
+  geom_segment(aes(xend=`2004-05`, yend=`2004-05`, col="Increase from\n2004 to 2014"), alpha = .7) + 
+  geom_segment(aes(xend=`2004-05`, y=0, yend=`2004-05`, col="2004 Tuition Cost" ), alpha = .7) +
+  scale_color_manual(breaks = c("Increase from\n2004 to 2014", "2004 Tuition Cost"),values=c("grey70", "grey30")) +
+ aes(label = state.abb) +
+  geom_point(col = "grey30") +
+  ggpmisc::stat_dens2d_filter(geom = "text_repel", keep.fraction = 0.30, size = 3.8) +
+  lims(x = c(0,15000)) +
+  lims(y = c(0,17000)) +
+  annotate(geom = "text", x = 1700, y = 1700, label = "Average Tuition\nCosts in 2004", angle = 45, size = 2.8) +
+  annotate(geom = "text", x = 13300, y = 15200, label = "Increase", angle = 90, size = 2.8) +
+  annotate(geom = "segment", x = 12900, y = 12900, xend = 12900, yend = 17000, arrow = arrow(length = unit(0.25, "cm")), col = "darkgrey") +
+  annotate(geom = "segment", x = 12900, y = 12900, xend = 12900, yend = 0, arrow = arrow(ends = "both", length = unit(0.15, "cm"), angle = 90), col = "darkgrey") +
+  annotate(geom = "text", x = 13300, y = 8000, label = "Cost in 2004", angle = 90, size = 2.8) +
+  labs(title = "Average in-state tuition fees at public 4-year: 2004 and 2014") +
+  labs(subtitle = "Vis: Gina Reynolds | Data Source: onlinembapage.com") +
+  labs(col = "") +
+    geom_abline(slope = 1, intercept = 0, lty = 2) +
+    theme_bw(base_family = "serif") 
+```
+
+`r paste(knitr::knit(text = partial_knit_chunks("complete")), collapse = "\n")`
+
+<!--
+Create slides for the "complete" chunk
+...it's just R Markdown as a vector of strings
+...and why not be super concise about it?
+-->
+
+<!-- This css chunk can't be before the first class: split-40... lines -->
+```{css, eval=TRUE}
+.remark-code{ line-height: 2; }
+```

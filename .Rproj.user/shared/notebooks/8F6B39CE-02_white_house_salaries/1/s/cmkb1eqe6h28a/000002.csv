@@ -1,8 +1,0 @@
-"0","library(readxl)"
-"0","library(tidyverse)"
-"0","Trump_White_House_salaries <- read_excel(""raw_data/White House salaries.xlsx"")"
-"0","Obama_White_House_salaries <- read_excel(""raw_data/White House salaries.xlsx"","
-"0","  sheet = ""Obama admin"""
-"0",")"
-"0","both_data <- bind_rows(Trump_White_House_salaries, Obama_White_House_salaries) %>%"
-"0","  mutate(position_and_name = paste(NAME, `POSITION TITLE`, sep = ""\n""))"

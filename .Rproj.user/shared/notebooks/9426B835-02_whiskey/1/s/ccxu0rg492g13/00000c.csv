@@ -1,6 +1,0 @@
-"0","img_cow=readPNG(""../raw_data/noun_194996_cc.png"")[000:600, 57:650, 1:4]"
-"0","## info reduction"
-"0","img_cow=img_cow[seq(1, dim(img_cow)[1], by = 1), "
-"0","                          seq(1, dim(img_cow)[2], by = 1),1:4]"
-"0","pngCredit_cow=""Whiskey by Mark S Waterhouse from the Noun Project"""
-"0","plot(0:5, 0:5, type='n')"
