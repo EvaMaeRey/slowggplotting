@@ -1,25 +1,23 @@
 # Introduction {#intro}
 
-Outline introduction: 
+<!-- Introduction outline:  -->
+<!-- - What is ggplot ? -->
 
-- What is ggplot 
-- What is "slow" ggplotting
-- What does this book contain (Makeover monday examples with slow ggplot)
+<!--   - Originated with  -->
+<!--   - Developed by ... -->
+<!--   - Now team ... -->
+
+<!-- - What is "slow" ggplotting -->
+
+<!--   - action-reaction one of the most powerful tools we have in teaching how-to knowledge. -->
+<!--   - What does this book contain (Makeover monday examples with slow ggplot) -->
 
 
 
-#MakeoverMonday is now in it's third year.
- January 2016, Andy Kreibel, Head Coach at The Information Lab, and Andy Cotgreave, Technical Evangelist at Tableau, have been organizing Make
+The ggplot2 package in R, written by Hadley Wickham and a number of collaborators, implements the "grammer of graphics" proposal of Leland Wilkinson.  This data visualization system idea is at once powerful, novel, and intuitive.  Wickham conceives  of and has built a system where data visualization as dividable seven parameters:  data to visualize, aesthetics that represent variables in the data, geometric objects, the coordinate system, specific scales, and statistical transformation.  
 
-The friends wanted to keep up their skills even as they had moved into more administrative jobs that didn't require regular visualizaton work.  Andy and Andy were find the data for an existing data visualization in the media, and would recreate or "makeover" the visualization using Tableau, a tool that they were both expert in. They were sharing their makeovers products with each other, but also with the world on Twitter.  When more people expressed interest in joining, and they two started a more organized initiative - posting the original graph and data every Sunday, so that whoever wanted to could participate in #Makeovermonday.
+While intuitive, using ggplotting effectively and efficiently requires practice.  The "slow ggplotting" method and examples are designed to facilitate rapid incorporation of the ggplot logic and syntax.  The method relys on action-reaction thinking, one of the most powerful tools in our "how-to" teaching tool kit --- "slow ggplotting" makes modifications to plots as incrementally as possible so that it is clear to users what code triggers each change.    
 
-My first submission was late 2016, after catching wind of the exciting project via the podcast.  I made a scrappy little graph about motorway casualties; sad topic, but fun graph making.  
-
-I was using base R at that time. Then in the summer of 2017 I went to a conference in Zurich, the women's summer school for political methodology.  There was a session on ggplot2.  I internalized some of the basics, and decided that if I wanted to learn that (powerful - as everyone kept calling it) graphing system, then I could do it via the #MakeoverMonday weekly exercises (not that I particpated weekly).  Even though most folks were using Tablaeu, the administrators didn't seem to mind a few R and ggplot submission here and there.  I got a little hooked.
-
-Early this year Andy and Eva Murry sent a number of the participants a private message on Twitter.  "We're writing a book:  #MakeoverMonday".  They were putting together a collection of a visualizations that resulted from the project, and were seeking perspectives of participants as well as permission to use some of the visualizations produced for the initiatives.  Cool.  I was pleased to participate.  For me #MakeoverMonday allowed me to focus on the visualization task.  Usually visualization comes at the end of, sometimes arguous, data cleaning --- and you might already be a little spent.  Having rather clean data delivered, and seeing the approaches of many other (many brilliant) data visualizers was a treat.  I still need to buy my copy of the book, which contains a visualization of food prices in London as a function of how far a restaurant is from the Big Ben.  
-
-And now, using the goodness of RStudio and Yihui Xie's bookdown, I'm putting together my own little collection.  Of course there is a bit of curation involved --- I'm not including every plot.  And, I'm revising the exact code that creates the plots in many cases, to be more consistent across plots, and also, I think, to make communicating about how the plot was built easy.  This involves:
 
 - pulling out aes() from the ggplot() function
 - using fewer functions; example - using labs() to add a title instead of ggtitle()
@@ -27,6 +25,26 @@ And now, using the goodness of RStudio and Yihui Xie's bookdown, I'm putting tog
 - using base R functions and tidyverse functions.  For other packages, the :: style to call them
 - write out arguments (no shortcuts)  aes(x = gdppercap) not aes(gdppercap)
 - order ggplot commands so that reactivity is obvious; scale adjustments to aesthetics might also be near the aesthetic declaration. 
+
+
+The particular collection of visualizations here was produced for the Tableau associated initiative #MakeoverMonday.  
+
+
+
+
+<!-- #MakeoverMonday is now in it's third year. -->
+<!--  January 2016, Andy Kreibel, Head Coach at The Information Lab, and Andy Cotgreave, Technical Evangelist at Tableau, have been organizing Make -->
+
+<!-- The friends wanted to keep up their skills even as they had moved into more administrative jobs that didn't require regular visualizaton work.  Andy and Andy were find the data for an existing data visualization in the media, and would recreate or "makeover" the visualization using Tableau, a tool that they were both expert in. They were sharing their makeovers products with each other, but also with the world on Twitter.  When more people expressed interest in joining, and they two started a more organized initiative - posting the original graph and data every Sunday, so that whoever wanted to could participate in #Makeovermonday. -->
+
+<!-- My first submission was late 2016, after catching wind of the exciting project via the podcast.  I made a scrappy little graph about motorway casualties; sad topic, but fun graph making.   -->
+
+<!-- I was using base R at that time. Then in the summer of 2017 I went to a conference in Zurich, the women's summer school for political methodology.  There was a session on ggplot2.  I internalized some of the basics, and decided that if I wanted to learn that (powerful - as everyone kept calling it) graphing system, then I could do it via the #MakeoverMonday weekly exercises (not that I particpated weekly).  Even though most folks were using Tablaeu, the administrators didn't seem to mind a few R and ggplot submission here and there.  I got a little hooked. -->
+
+<!-- Early this year Andy and Eva Murry sent a number of the participants a private message on Twitter.  "We're writing a book:  #MakeoverMonday".  They were putting together a collection of a visualizations that resulted from the project, and were seeking perspectives of participants as well as permission to use some of the visualizations produced for the initiatives.  Cool.  I was pleased to participate.  For me #MakeoverMonday allowed me to focus on the visualization task.  Usually visualization comes at the end of, sometimes arguous, data cleaning --- and you might already be a little spent.  Having rather clean data delivered, and seeing the approaches of many other (many brilliant) data visualizers was a treat.  I still need to buy my copy of the book, which contains a visualization of food prices in London as a function of how far a restaurant is from the Big Ben.   -->
+
+<!-- And now, using the goodness of RStudio and Yihui Xie's bookdown, I'm putting together my own little collection.  Of course there is a bit of curation involved --- I'm not including every plot.  And, I'm revising the exact code that creates the plots in many cases, to be more consistent across plots, and also, I think, to make communicating about how the plot was built easy.  This involves: -->
+
 
 
 
@@ -63,7 +81,7 @@ partial_knit_chunks <- function(chunk_name) {
     # "]]",
      .open = "{{", .close = "}}", .sep = "\n"
   )
-  glue::glue_collapse(partial_knit_steps, "\n---\n")
+  glue::glue_collapse(partial_knit_steps, "\n\n") # removed --- from \n---\n for latex
 }
 ```
 

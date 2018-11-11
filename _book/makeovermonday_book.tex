@@ -125,7 +125,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-11-03}
+    \date{2018-11-11}
 
 \usepackage{booktabs}
 
@@ -152,69 +152,21 @@
 }
 \chapter{Introduction}\label{intro}
 
-Outline introduction:
+The ggplot2 package in R, written by Hadley Wickham and a number of
+collaborators, implements the ``grammer of graphics'' proposal of Leland
+Wilkinson. This data visualization system idea is at once powerful,
+novel, and intuitive. Wickham conceives of and has built a system where
+data visualization as dividable seven parameters: data to visualize,
+aesthetics that represent variables in the data, geometric objects, the
+coordinate system, specific scales, and statistical transformation.
 
-\begin{itemize}
-\tightlist
-\item
-  What is ggplot
-\item
-  What is ``slow'' ggplotting
-\item
-  What does this book contain (Makeover monday examples with slow
-  ggplot)
-\end{itemize}
-
-\chapter{MakeoverMonday is now in it's third
-year.}\label{makeovermonday-is-now-in-its-third-year.}
-
-January 2016, Andy Kreibel, Head Coach at The Information Lab, and Andy
-Cotgreave, Technical Evangelist at Tableau, have been organizing Make
-
-The friends wanted to keep up their skills even as they had moved into
-more administrative jobs that didn't require regular visualizaton work.
-Andy and Andy were find the data for an existing data visualization in
-the media, and would recreate or ``makeover'' the visualization using
-Tableau, a tool that they were both expert in. They were sharing their
-makeovers products with each other, but also with the world on Twitter.
-When more people expressed interest in joining, and they two started a
-more organized initiative - posting the original graph and data every
-Sunday, so that whoever wanted to could participate in \#Makeovermonday.
-
-My first submission was late 2016, after catching wind of the exciting
-project via the podcast. I made a scrappy little graph about motorway
-casualties; sad topic, but fun graph making.
-
-I was using base R at that time. Then in the summer of 2017 I went to a
-conference in Zurich, the women's summer school for political
-methodology. There was a session on ggplot2. I internalized some of the
-basics, and decided that if I wanted to learn that (powerful - as
-everyone kept calling it) graphing system, then I could do it via the
-\#MakeoverMonday weekly exercises (not that I particpated weekly). Even
-though most folks were using Tablaeu, the administrators didn't seem to
-mind a few R and ggplot submission here and there. I got a little
-hooked.
-
-Early this year Andy and Eva Murry sent a number of the participants a
-private message on Twitter. ``We're writing a book: \#MakeoverMonday''.
-They were putting together a collection of a visualizations that
-resulted from the project, and were seeking perspectives of participants
-as well as permission to use some of the visualizations produced for the
-initiatives. Cool. I was pleased to participate. For me \#MakeoverMonday
-allowed me to focus on the visualization task. Usually visualization
-comes at the end of, sometimes arguous, data cleaning --- and you might
-already be a little spent. Having rather clean data delivered, and
-seeing the approaches of many other (many brilliant) data visualizers
-was a treat. I still need to buy my copy of the book, which contains a
-visualization of food prices in London as a function of how far a
-restaurant is from the Big Ben.
-
-And now, using the magic of RStudio and Yihui Xie's bookdown, I'm
-putting together my own little collection. Of course there is a bit of
-curation involved --- I'm not including every plot. And, I'm revising
-the exact code that creates the plots in many cases, to be more
-consistent across plots, and also, I think, to make communicating about
-how the plot was built easy. This involves:
+While intuitive, using ggplotting effectively and efficiently requires
+practice. The ``slow ggplotting'' method and examples are designed to
+facilitate rapid incorporation of the ggplot logic and syntax. The
+method relys on action-reaction thinking, one of the most powerful tools
+in our ``how-to'' teaching tool kit --- ``slow ggplotting'' makes
+modifications to plots as incrementally as possible so that it is clear
+to users what code triggers each change.
 
 \begin{itemize}
 \tightlist
@@ -237,6 +189,9 @@ how the plot was built easy. This involves:
   to aesthetics might also be near the aesthetic declaration.
 \end{itemize}
 
+The particular collection of visualizations here was produced for the
+Tableau associated initiative \#MakeoverMonday.
+
 \chapter{Baseball, WAR, and Ethnicity}\label{baseball-war-and-ethnicity}
 
 This data visualization uses the WAR measure in baseball, a calculation
@@ -254,15 +209,15 @@ A random sample from the data set:
 \hline
 Year & Ethnicity & type & Percent\\
 \hline
-2005 & African American & \% of WAR & 11.3\\
+2008 & African American & \% of Players & 8.2\\
 \hline
-1985 & Asian & \% of Players & 0.0\\
+1963 & White & \% of WAR & 70.4\\
 \hline
-1977 & Asian & \% of Players & 0.0\\
+1973 & Latino & \% of Players & 11.0\\
 \hline
-1960 & Latino & \% of Players & 8.9\\
+2012 & Asian & \% of WAR & 2.2\\
 \hline
-1968 & African American & \% of Players & 15.4\\
+1989 & African American & \% of WAR & 22.4\\
 \hline
 \end{tabular}
 
@@ -292,7 +247,7 @@ Year & Ethnicity & type & Percent\\
 \end{Highlighting}
 \end{Shaded}
 
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output1-1.pdf}}{}}\label{section}
+\includegraphics{makeovermonday_book_files/figure-latex/output1-1.pdf}
 
 \clearpage
 
@@ -303,7 +258,7 @@ Year & Ethnicity & type & Percent\\
 \end{Highlighting}
 \end{Shaded}
 
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output2-1.pdf}}{}}\label{section-1}
+\includegraphics{makeovermonday_book_files/figure-latex/output2-1.pdf}
 
 \clearpage
 
@@ -315,7 +270,7 @@ Year & Ethnicity & type & Percent\\
 \end{Highlighting}
 \end{Shaded}
 
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output3-1.pdf}}{}}\label{section-2}
+\includegraphics{makeovermonday_book_files/figure-latex/output3-1.pdf}
 
 \clearpage
 
@@ -328,7 +283,7 @@ Year & Ethnicity & type & Percent\\
 \end{Highlighting}
 \end{Shaded}
 
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output4-1.pdf}}{}}\label{section-3}
+\includegraphics{makeovermonday_book_files/figure-latex/output4-1.pdf}
 
 \clearpage
 
@@ -342,7 +297,7 @@ Year & Ethnicity & type & Percent\\
 \end{Highlighting}
 \end{Shaded}
 
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output5-1.pdf}}{}}\label{section-4}
+\includegraphics{makeovermonday_book_files/figure-latex/output5-1.pdf}
 
 \clearpage
 
@@ -357,7 +312,7 @@ Year & Ethnicity & type & Percent\\
 \end{Highlighting}
 \end{Shaded}
 
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output6-1.pdf}}{}}\label{section-5}
+\includegraphics{makeovermonday_book_files/figure-latex/output6-1.pdf}
 
 \clearpage
 
@@ -373,7 +328,7 @@ Year & Ethnicity & type & Percent\\
 \end{Highlighting}
 \end{Shaded}
 
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output7-1.pdf}}{}}\label{section-6}
+\includegraphics{makeovermonday_book_files/figure-latex/output7-1.pdf}
 
 \clearpage
 
@@ -390,7 +345,7 @@ Year & Ethnicity & type & Percent\\
 \end{Highlighting}
 \end{Shaded}
 
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output8-1.pdf}}{}}\label{section-7}
+\includegraphics{makeovermonday_book_files/figure-latex/output8-1.pdf}
 
 \clearpage
 
@@ -408,7 +363,7 @@ Year & Ethnicity & type & Percent\\
 \end{Highlighting}
 \end{Shaded}
 
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output9-1.pdf}}{}}\label{section-8}
+\includegraphics{makeovermonday_book_files/figure-latex/output9-1.pdf}
 
 \clearpage
 
@@ -427,7 +382,7 @@ Year & Ethnicity & type & Percent\\
 \end{Highlighting}
 \end{Shaded}
 
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output10-1.pdf}}{}}\label{section-9}
+\includegraphics{makeovermonday_book_files/figure-latex/output10-1.pdf}
 
 \clearpage
 
@@ -470,15 +425,15 @@ A random sample from the data set:
 \hline
 Year & Number of trees sold & Type of tree & Number of trees sold (millions)\\
 \hline
-2016 & 27400000 & Real tree & 27.4\\
+2015 & 25900000 & Real tree & 25.90\\
 \hline
-2011 & 9500000 & Fake tree & 9.5\\
+2013 & 33020000 & Real tree & 33.02\\
 \hline
-2011 & 30800000 & Real tree & 30.8\\
+2016 & 18600000 & Fake tree & 18.60\\
 \hline
-2009 & 28200000 & Real tree & 28.2\\
+2007 & 31300000 & Real tree & 31.30\\
 \hline
-2012 & 24500000 & Real tree & 24.5\\
+2014 & 13900000 & Fake tree & 13.90\\
 \hline
 \end{tabular}
 
@@ -500,192 +455,6 @@ Year & Number of trees sold & Type of tree & Number of trees sold (millions)\\
 \end{Shaded}
 
 \includegraphics{makeovermonday_book_files/figure-latex/christmas-1.pdf}
-
-\clearpage
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }
-\end{Highlighting}
-\end{Shaded}
-
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output1-1.pdf}}{}}\label{section-10}
-
-\clearpage
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }
-\end{Highlighting}
-\end{Shaded}
-
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output2-1.pdf}}{}}\label{section-11}
-
-\clearpage
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }
-\end{Highlighting}
-\end{Shaded}
-
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output3-1.pdf}}{}}\label{section-12}
-
-\clearpage
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }
-\end{Highlighting}
-\end{Shaded}
-
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output4-1.pdf}}{}}\label{section-13}
-
-\clearpage
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }
-\end{Highlighting}
-\end{Shaded}
-
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output5-1.pdf}}{}}\label{section-14}
-
-\clearpage
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =}\NormalTok{ F) }
-\end{Highlighting}
-\end{Shaded}
-
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output6-1.pdf}}{}}\label{section-15}
-
-\clearpage
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =}\NormalTok{ F) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_color_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"green"}\NormalTok{)) }
-\end{Highlighting}
-\end{Shaded}
-
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output7-1.pdf}}{}}\label{section-16}
-
-\clearpage
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =}\NormalTok{ F) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_color_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"green"}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ylim}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{35}\NormalTok{)) }
-\end{Highlighting}
-\end{Shaded}
-
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output8-1.pdf}}{}}\label{section-17}
-
-\clearpage
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =}\NormalTok{ F) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_color_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"green"}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ylim}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{35}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{col =} \StringTok{""}\NormalTok{) }
-\end{Highlighting}
-\end{Shaded}
-
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output9-1.pdf}}{}}\label{section-18}
-
-\clearpage
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =}\NormalTok{ F) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_color_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"green"}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ylim}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{35}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{col =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Wie echt sind deine Blätter?"}\NormalTok{) }
-\end{Highlighting}
-\end{Shaded}
-
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output10-1.pdf}}{}}\label{section-19}
-
-\clearpage
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =}\NormalTok{ F) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_color_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"green"}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ylim}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{35}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{col =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Wie echt sind deine Blätter?"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{subtitle =} \StringTok{"Real and fake Christmas trees sold in the US | Data Source: Statista | @EvaMaeRey "}\NormalTok{) }
-\end{Highlighting}
-\end{Shaded}
-
-\section[]{\texorpdfstring{\protect\includegraphics{makeovermonday_book_files/figure-latex/output11-1.pdf}}{}}\label{section-20}
-
-\clearpage
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dta) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(Year) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =} \StringTok{`}\DataTypeTok{Number of trees sold (millions)}\StringTok{`}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
-\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =} \KeywordTok{fct_rev}\NormalTok{(}\StringTok{`}\DataTypeTok{Type of tree}\StringTok{`}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =}\NormalTok{ F) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_color_manual}\NormalTok{(}\DataTypeTok{values =} \KeywordTok{c}\NormalTok{(}\StringTok{"darkgreen"}\NormalTok{, }\StringTok{"green"}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ylim}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{35}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{col =} \StringTok{""}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Wie echt sind deine Blätter?"}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{subtitle =} \StringTok{"Real and fake Christmas trees sold in the US | Data Source: Statista | @EvaMaeRey "}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{theme_bw}\NormalTok{() }
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{makeovermonday_book_files/figure-latex/output12-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -727,15 +496,15 @@ A random sample from the data set:
 \hline
 Country & Topic & value & value\_type & alpha\\
 \hline
-Senegal & Share of seats held by women & 0.4500000 & Individual belief & 0.3\\
+Indonesia & Share of seats held by women & 0.20 & Individual belief & 0.3\\
 \hline
-Senegal & Share of seats held by women & 0.5000000 & Individual belief & 0.3\\
+Colombia & Share of seats held by women & 0.15 & Individual belief & 0.3\\
 \hline
-India & Share of seats held by women & 0.0900000 & Individual belief & 0.3\\
+Indonesia & Share of seats held by women & 0.10 & Individual belief & 0.3\\
 \hline
-Indonesia & Share of seats held by women & 0.1000000 & Individual belief & 0.3\\
+Kenya & Share of seats held by women & 0.19 & Individual belief & 0.3\\
 \hline
-India & Share of seats held by women & 0.1917391 & Average of beliefs & 0.7\\
+Indonesia & Share of seats held by women & 0.30 & Individual belief & 0.3\\
 \hline
 \end{tabular}
 
@@ -783,13 +552,13 @@ A random sample from the data set:
 \hline
 Country & Paid maternity leave avg payment rate (\%) & Paid maternity leave full rate equivalent in weeks & Paid maternity leave in weeks & Paid parental leave avg payment rate (\%) & Paid parental leave full rate equivalent in weeks & Paid parental leave in weeks & Total paid leave avg payment rate (\%) & Total paid leave full rate equivalent in weeks & Total paid leave in weeks & rank\_name & paid\_leave\_months & total\_paid\_yearly\_salaries\\
 \hline
-Turkey & 66.0 & 10.6 & 16.0 & 0.0 & 0.0 & 0.0 & 66.0 & 10.6 & 16.0 & \#30: Turkey & 3.682192 & 0.2038462\\
+Portugal & 100.0 & 6.0 & 6.0 & 59.6 & 14.4 & 24.1 & 67.7 & 20.4 & 30.1 & \#21: Portugal & 6.927123 & 0.3923077\\
 \hline
-Finland & 74.4 & 13.0 & 17.5 & 19.2 & 27.6 & 143.5 & 25.2 & 40.6 & 161.0 & \#11: Finland & 37.052055 & 0.7807692\\
+Italy & 80.0 & 17.4 & 21.7 & 30.0 & 7.8 & 26.0 & 52.7 & 25.2 & 47.7 & \#18: Italy & 10.977534 & 0.4846154\\
 \hline
-Norway & 97.9 & 12.7 & 13.0 & 41.3 & 32.2 & 78.0 & 49.4 & 45.0 & 91.0 & \#8: Norway & 20.942466 & 0.8653846\\
+New Zealand & 42.6 & 7.7 & 18.0 & 0.0 & 0.0 & 0.0 & 42.6 & 7.7 & 18.0 & \#33: New Zealand & 4.142466 & 0.1480769\\
 \hline
-Slovenia & 100.0 & 15.0 & 15.0 & 90.0 & 33.4 & 37.1 & 92.9 & 48.4 & 52.1 & \#7: Slovenia & 11.990137 & 0.9307692\\
+Latvia & 80.0 & 12.8 & 16.0 & 51.9 & 40.5 & 78.0 & 56.7 & 53.3 & 94.0 & \#4: Latvia & 21.632877 & 1.0250000\\
 \hline
 Israel & 100.0 & 14.0 & 14.0 & 0.0 & 0.0 & 0.0 & 100.0 & 14.0 & 14.0 & \#26: Israel & 3.221918 & 0.2692308\\
 \hline
@@ -830,15 +599,15 @@ A random sample from the data set:
 \hline
 Gender & Question\_short & Rank (text) & Rank (number) & n & Percent\\
 \hline
-Women & Sense of humor & Ranked fifth & 5 & 1314.15 & 11.554714\\
-\hline
-Women & Has similar interests & Ranked fourth & 4 & 2292.38 & 20.111190\\
+Men & Money & Ranked third & 3 & 578.79 & 5.423678\\
 \hline
 Men & Looks & Ranked third & 3 & 1828.66 & 17.107868\\
 \hline
-Women & Intellegence & Ranked fifth & 5 & 1636.64 & 14.406548\\
+Men & Money & Ranked fourth & 4 & 754.62 & 7.071332\\
 \hline
-Men & Looks & Ranked sixth & 6 & 742.71 & 6.948358\\
+Women & Personality & Ranked sixth & 6 & 328.93 & 2.884144\\
+\hline
+Men & Personality & Ranked second & 2 & 2460.32 & 23.013131\\
 \hline
 \end{tabular}
 
@@ -883,15 +652,15 @@ A random sample from the data set:
 \hline
 ADMINISTRATION & NAME & STATUS & SALARY & PAY BASIS & POSITION TITLE\\
 \hline
-Trump & Clemens, Nicholas J. & Employee & 40000 & Per Annum & WRITER FOR CORRESPONDENCE\\
+Obama & Marketos, Cassandra G. & Employee & 64500 & Per Annum & DEPUTY DIRECTOR FOR DIGITAL OUTBOUND\\
 \hline
-Trump & Larimer, Becky S. & Employee & 70100 & Per Annum & CALLIGRAPHER\\
+Obama & Kelly, Lauren M. & Employee & 65949 & Per Annum & DEPUTY DIRECTOR AND DEPUTY SOCIAL SECRETARY\\
 \hline
-Obama & Dyer, Deesha A. & Employee & 119723 & Per Annum & SPECIAL ASSISTANT TO THE PRESIDENT AND WHITE HOUSE SOCIAL SECRETARY\\
+Trump & Williams, Sherman A. & Employee & 90350 & Per Annum & ASSISTANT TO THE EXECUTIVE CLERK\\
 \hline
-Obama & Gianotti, Claire L. & Employee & 51700 & Per Annum & ASSOCIATE RESEARCH DIRECTOR\\
+Obama & Aniskoff, Paulette L. & Employee & 157299 & Per Annum & DEPUTY ASSISTANT TO THE PRESIDENT AND DIRECTOR OF THE OFFICE OF PUBLIC ENGAGEMENT\\
 \hline
-Obama & Samuels, Jr., Wendell A. & Employee & 73270 & Per Annum & RECORDS MANAGEMENT INFORMATION SYSTEMS SPECIALIST\\
+Obama & Sanchez, Raul D. & Employee & 42613 & Per Annum & ANALYST\\
 \hline
 \end{tabular}
 
@@ -920,15 +689,15 @@ A random sample from the data set:
 \hline
 Year & Sport & Event & Country & Gender & Medal Rank & Medal & Name of Athlete or Team & Age of Athlete\\
 \hline
-1960 & Speedskating & Men's 5,000 Meters & Norway & Men & 2 & silver & Knut Johannesen & 26\\
+1960 & Ski Jumping & Men's Normal Hill, Individual & Germany & Men & 1 & gold & Helmut Recknagel & 22\\
 \hline
-2014 & Cross-Country Skiing & Men's 15-Kilometer Classic & Sweden & Men & 2 & silver & Johan Olsson & 33\\
+1988 & Cross-Country Skiing & Women's 20 Kilometers & Soviet Union & Women & 3 & bronze & Raisa Smetanina & 35\\
 \hline
-1968 & Ski Jumping & Men's Normal Hill, Individual & Czechoslovakia & Men & 1 & gold & JiÅ™Ã­ RaÅ¡ka & 27\\
+1964 & Speedskating & Women's 500 Meters & Soviet Union & Women & 2 & silver & Irina Yegorova & 23\\
 \hline
-1964 & Cross-Country Skiing & Women's 3 Ã— 5-Kilometer Relay & Sweden & Women & 2 & silver & Sweden & NA\\
+1948 & Bobsled & Men's Four & United States & Men & 1 & gold & United States-2 & NA\\
 \hline
-2014 & Alpine Skiing & Women's Downhill & Slovenia & Women & 1 & gold & Tina Maze & 30\\
+1994 & Cross-Country Skiing & Women's 15 Kilometers & Russia & Women & 3 & bronze & Nina Gavrylyuk & 28\\
 \hline
 \end{tabular}
 
@@ -950,15 +719,15 @@ A random sample from the data set:
 \hline
 Year & Sport & Event & Country & Gender & Medal Rank & Medal & Name of Athlete or Team & Age of Athlete & cold\_war\\
 \hline
-1952 & Speedskating & Men's 10,000 Meters & Norway & Men & 1 & gold & Hjalmar Andersen & 28 & A\\
+2006 & Ski Jumping & Men's Large Hill, Team & Austria & Men & 1 & gold & Austria & NA & A\\
 \hline
-1976 & Luge & Men's Doubles & Austria & Men & 3 & bronze & Austria-1 & NA & A\\
+2006 & Alpine Skiing & Men's Slalom & Austria & Men & 2 & silver & Reinfried Herbst & 27 & A\\
 \hline
-1992 & Figure Skating & Mixed Pairs & Unified Team & Mixed & 1 & gold & Unified Team-1 & NA & A\\
+1968 & Cross-Country Skiing & Men's 30 Kilometers & Norway & Men & 2 & silver & Odd Martinsen & 25 & A\\
 \hline
-2010 & Ski Jumping & Men's Normal Hill, Individual & Poland & Men & 2 & silver & Adam MaÅ‚ysz & 32 & A\\
+1998 & Cross-Country Skiing & Men's 50 Kilometers & Austria & Men & 3 & bronze & Christian Hoffmann & 23 & A\\
 \hline
-1948 & Speedskating & Men's 10,000 Meters & Finland & Men & 2 & silver & Lassi Parkkinen & 30 & A\\
+1980 & Cross-Country Skiing & Men's 15 Kilometers & Finland & Men & 2 & silver & Juha Mieto & 30 & A\\
 \hline
 \end{tabular}
 
@@ -1007,15 +776,15 @@ A random sample from the data set:
 \hline
 Country & Year & Quarter & Date (start of quarter) & Percentage change from previous period & Date (start o quarter)\\
 \hline
-FRA & 2016 & 4 & 2016-10-01 & 0.516292 & 2016-10-01\\
+CAN & 2013 & 4 & 2013-10-01 & 1.007924 & 2013-10-01\\
 \hline
-DEU & 2016 & 1 & 2016-01-01 & 0.632392 & 2016-01-01\\
+DEU & 2012 & 2 & 2012-04-01 & 0.096022 & 2012-04-01\\
 \hline
-USA & 2016 & 3 & 2016-07-01 & 0.687731 & 2016-07-01\\
+DEU & 2014 & 4 & 2014-10-01 & 0.889928 & 2014-10-01\\
 \hline
-FRA & 2012 & 3 & 2012-07-01 & 0.148280 & 2012-07-01\\
+USA & 2012 & 2 & 2012-04-01 & 0.466941 & 2012-04-01\\
 \hline
-USA & 2012 & 4 & 2012-10-01 & 0.022756 & 2012-10-01\\
+FRA & 2015 & 2 & 2015-04-01 & -0.062148 & 2015-04-01\\
 \hline
 \end{tabular}
 
@@ -1041,15 +810,15 @@ A random sample from the data set:
 \hline
 Country & Year & Quarter & Date (start of quarter) & Percentage change from previous period & Date (start o quarter) & min\_ & max\_\\
 \hline
-FRA & 2011 & 4 & 2011-10-01 & 0.104859 & 2011-10-01 & -1.017723 & 1.126416\\
+ITA & 2011 & 2 & 2011-04-01 & 0.126761 & 2011-04-01 & -0.544269 & 0.727759\\
 \hline
-JPN & 2013 & 4 & 2013-10-01 & -0.102503 & 2013-10-01 & -0.102503 & 1.007924\\
+CAN & 2016 & 4 & 2016-10-01 & 0.666167 & 2016-10-01 & 0.395541 & 0.666167\\
 \hline
-FRA & 2014 & 1 & 2014-01-01 & 0.070655 & 2014-01-01 & -0.229836 & 1.079279\\
+CAN & 2013 & 1 & 2013-01-01 & 1.030501 & 2013-01-01 & -1.052199 & 1.210002\\
 \hline
-FRA & 2014 & 4 & 2014-10-01 & 0.029185 & 2014-10-01 & -0.049711 & 0.889928\\
+ITA & 2017 & 2 & 2017-04-01 & 0.374353 & 2017-04-01 & 0.297970 & 1.094763\\
 \hline
-JPN & 2013 & 1 & 2013-01-01 & 1.210002 & 2013-01-01 & -1.052199 & 1.210002\\
+CAN & 2010 & 2 & 2010-04-01 & 0.514190 & 2010-04-01 & 0.514190 & 2.047503\\
 \hline
 \end{tabular}
 
@@ -1097,15 +866,15 @@ A random sample from the data set:
 \hline
 Name & Location & Latitude & Longitude & Empire State Burger & Chicken Tikka & Gammon afternoon deal & Chocolate Brownie & Doom Bar & Birra Moretti & Porn Star at 2 x £12 & Porn Star (glass) & MEAL & Notes & Moretti as a \% of a tikka & Moretti as \% of burger & PRICE BUCKETS & Food cost £ & Drink cost £\\
 \hline
-The Green Parrot & Perranporth & 50.34451 & -5.1559044 & 10.85 & 8.40 & 6.4 & 3.90 & 2.55 & 3.09 & 6.3 & NA & 28.79 & NA & 0.3678571 & 0.2847926 & £27.50+ & 19.25 & 5.64\\
+The Wheatsheaf & Ellesmere Port & 53.28290 & -2.923064 & 9.35 & 5.90 & 5.4 & 3.35 & 2.19 & 3.09 & NA & 5.8 & 23.88 & NA & 0.5237288 & 0.3304813 & £25.20- & 15.25 & 5.28\\
 \hline
-The Bowling Green & Otley & 53.90427 & -1.6928946 & 8.75 & 7.40 & 5.9 & 3.85 & 2.29 & 3.09 & 6.3 & NA & 25.38 & NA & 0.4175676 & 0.3531429 & £25.21+ & 16.15 & 5.38\\
+The York Palace & Llanelli & 51.68107 & -4.163065 & 8.75 & 7.19 & 5.9 & 3.85 & 2.29 & 3.05 & 6.3 & NA & 25.13 & NA & 0.4242003 & 0.3485714 & £25.20- & 15.94 & 5.34\\
 \hline
-The Moon And Spoon & Slough & 51.50947 & -0.5959543 & 8.75 & 7.19 & 5.9 & 3.85 & 2.29 & 3.15 & 6.3 & NA & 25.23 & NA & 0.4381085 & 0.3600000 & £25.21+ & 15.94 & 5.44\\
+The Observatory & Ilkeston & 52.97154 & -1.308131 & 8.75 & 6.99 & 5.9 & 3.85 & 2.29 & 2.99 & 6.3 & NA & 24.87 & NA & 0.4277539 & 0.3417143 & £25.20- & 15.74 & 5.28\\
 \hline
-The George Hotel & Peterborough & 52.64967 & -0.4783880 & 8.75 & 7.19 & 5.9 & 3.85 & 2.29 & 3.09 & NA & 5.90 & 25.17 & NA & 0.4297636 & 0.3531429 & £25.20- & 15.94 & 5.38\\
+The Red Lion & Ripley & 53.05078 & -1.407486 & 8.75 & 7.19 & 5.9 & 3.85 & 1.99 & 2.95 & 6.3 & NA & 24.73 & NA & 0.4102921 & 0.3371429 & £25.20- & 15.94 & 4.94\\
 \hline
-The Ice Wharf & Camden, London & 51.54079 & -0.1454212 & 11.25 & 8.39 & 6.1 & 3.90 & 2.69 & 4.09 & NA & 10.35 & 30.32 & NA & 0.4874851 & 0.3635556 & £27.50+ & 19.64 & 6.78\\
+The Society Rooms & Macclesfield & 53.25640 & -2.124377 & 8.75 & 7.40 & 5.9 & 3.85 & 2.29 & 3.09 & 6.3 & NA & 25.38 & NA & 0.4175676 & 0.3531429 & £25.21+ & 16.15 & 5.38\\
 \hline
 \end{tabular}
 
