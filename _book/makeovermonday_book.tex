@@ -125,7 +125,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-11-11}
+    \date{2018-11-12}
 
 \usepackage{booktabs}
 
@@ -152,26 +152,32 @@
 }
 \chapter{Introduction}\label{intro}
 
-The ggplot2 package in R, written by Hadley Wickham and a number of
-collaborators, implements the ``grammer of graphics'' proposal of Leland
-Wilkinson. This data visualization system idea is at once powerful,
-novel, and intuitive. Wickham conceives of and has built a system where
-data visualization as dividable seven parameters: data to visualize,
-aesthetics that represent variables in the data, geometric objects, the
-coordinate system, specific scales, and statistical transformation.
+The ggplot2 package in R implements the ``grammer of graphics'' --- a
+proposal of Leland Wilkinson and the product of the PhD and ongoing work
+of Hadley Wickham. This data visualization system idea is at once
+powerful, novel, and intuitive. Wickham conceives of and has built a
+system where data visualization as dividable into parameters: data to
+visualize, aesthetics that represent variables in the data, geometric
+objects, the coordinate system, specific scales, and statistical
+transformation.
 
 While intuitive, using ggplotting effectively and efficiently requires
 practice. The ``slow ggplotting'' method and examples are designed to
 facilitate rapid incorporation of the ggplot logic and syntax. The
-method relys on action-reaction thinking, one of the most powerful tools
-in our ``how-to'' teaching tool kit --- ``slow ggplotting'' makes
+method relys on action-reaction thinking --- one of the most powerful
+tools in our ``how-to'' teaching tool kit. ``Slow ggplotting'' makes
 modifications to plots as incrementally as possible so that it is clear
-to users what code triggers each change.
+to users what code triggers each new layer or modification. The aim is
+less to be concise, but to be explicit about modifications, and
+facilitating more interactions with ggplot functions for newcomer
+internalization of the code.
+
+Working incrementally is facilitatied by using the following (non
+conventional) conventions:
 
 \begin{itemize}
-\tightlist
 \item
-  pulling out aes() from the ggplot() function
+  pulling out aes() from the ggplot() function:
 \item
   using fewer functions; example - using labs() to add a title instead
   of ggtitle()
@@ -189,8 +195,37 @@ to users what code triggers each change.
   to aesthetics might also be near the aesthetic declaration.
 \end{itemize}
 
+Here, I contrast the usual plotting method to slow ggplotting:
+
+Usual approach:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(my_data, }\KeywordTok{aes}\NormalTok{(var1, }\DataTypeTok{y =}\NormalTok{ var2, }\DataTypeTok{col =}\NormalTok{ var3)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"My Title"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"the x label"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"the y label"}\NormalTok{, }\DataTypeTok{col =} \StringTok{"legend title"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Using new slow ggplotting conventions:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ my_data) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ var1) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"the x label"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ var2) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{y =} \StringTok{"the y label"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{col =}\NormalTok{ var3) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{col =} \StringTok{"legend title"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title =} \StringTok{"My title"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 The particular collection of visualizations here was produced for the
-Tableau associated initiative \#MakeoverMonday.
+Tableau-users-associated initiative \#MakeoverMonday.
 
 \chapter{Baseball, WAR, and Ethnicity}\label{baseball-war-and-ethnicity}
 
@@ -209,15 +244,15 @@ A random sample from the data set:
 \hline
 Year & Ethnicity & type & Percent\\
 \hline
-2008 & African American & \% of Players & 8.2\\
+1975 & Asian & \% of Players & 0.0\\
 \hline
-1963 & White & \% of WAR & 70.4\\
+2005 & Latino & \% of WAR & 28.4\\
 \hline
-1973 & Latino & \% of Players & 11.0\\
+1967 & White & \% of WAR & 67.4\\
 \hline
-2012 & Asian & \% of WAR & 2.2\\
+1972 & Asian & \% of Players & 0.0\\
 \hline
-1989 & African American & \% of WAR & 22.4\\
+1961 & Latino & \% of WAR & 8.0\\
 \hline
 \end{tabular}
 
@@ -425,15 +460,15 @@ A random sample from the data set:
 \hline
 Year & Number of trees sold & Type of tree & Number of trees sold (millions)\\
 \hline
-2015 & 25900000 & Real tree & 25.90\\
+2009 & 28200000 & Real tree & 28.2\\
 \hline
-2013 & 33020000 & Real tree & 33.02\\
+2007 & 17400000 & Fake tree & 17.4\\
 \hline
-2016 & 18600000 & Fake tree & 18.60\\
+2008 & 28200000 & Real tree & 28.2\\
 \hline
-2007 & 31300000 & Real tree & 31.30\\
+2004 & 9000000 & Fake tree & 9.0\\
 \hline
-2014 & 13900000 & Fake tree & 13.90\\
+2006 & 9300000 & Fake tree & 9.3\\
 \hline
 \end{tabular}
 
@@ -477,7 +512,7 @@ Year & Number of trees sold & Type of tree & Number of trees sold (millions)\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-8-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-10-1.pdf}
 
 \chapter{Officials' beliefs about women's
 representation}\label{officials-beliefs-about-womens-representation}
@@ -496,15 +531,15 @@ A random sample from the data set:
 \hline
 Country & Topic & value & value\_type & alpha\\
 \hline
-Indonesia & Share of seats held by women & 0.20 & Individual belief & 0.3\\
-\hline
 Colombia & Share of seats held by women & 0.15 & Individual belief & 0.3\\
 \hline
-Indonesia & Share of seats held by women & 0.10 & Individual belief & 0.3\\
+Kenya & Share of seats held by women & 0.47 & Individual belief & 0.3\\
+\hline
+Senegal & Share of seats held by women & 0.50 & Individual belief & 0.3\\
+\hline
+India & Share of seats held by women & 0.30 & Individual belief & 0.3\\
 \hline
 Kenya & Share of seats held by women & 0.19 & Individual belief & 0.3\\
-\hline
-Indonesia & Share of seats held by women & 0.30 & Individual belief & 0.3\\
 \hline
 \end{tabular}
 
@@ -552,15 +587,15 @@ A random sample from the data set:
 \hline
 Country & Paid maternity leave avg payment rate (\%) & Paid maternity leave full rate equivalent in weeks & Paid maternity leave in weeks & Paid parental leave avg payment rate (\%) & Paid parental leave full rate equivalent in weeks & Paid parental leave in weeks & Total paid leave avg payment rate (\%) & Total paid leave full rate equivalent in weeks & Total paid leave in weeks & rank\_name & paid\_leave\_months & total\_paid\_yearly\_salaries\\
 \hline
-Portugal & 100.0 & 6.0 & 6.0 & 59.6 & 14.4 & 24.1 & 67.7 & 20.4 & 30.1 & \#21: Portugal & 6.927123 & 0.3923077\\
+Finland & 74.4 & 13.0 & 17.5 & 19.2 & 27.6 & 143.5 & 25.2 & 40.6 & 161 & \#11: Finland & 37.052055 & 0.7807692\\
 \hline
-Italy & 80.0 & 17.4 & 21.7 & 30.0 & 7.8 & 26.0 & 52.7 & 25.2 & 47.7 & \#18: Italy & 10.977534 & 0.4846154\\
+Czech Republic & 62.6 & 17.5 & 28.0 & 43.4 & 35.6 & 82.0 & 48.3 & 53.1 & 110 & \#5: Czech Republic & 25.315068 & 1.0211538\\
 \hline
-New Zealand & 42.6 & 7.7 & 18.0 & 0.0 & 0.0 & 0.0 & 42.6 & 7.7 & 18.0 & \#33: New Zealand & 4.142466 & 0.1480769\\
+Turkey & 66.0 & 10.6 & 16.0 & 0.0 & 0.0 & 0.0 & 66.0 & 10.6 & 16 & \#30: Turkey & 3.682192 & 0.2038462\\
 \hline
-Latvia & 80.0 & 12.8 & 16.0 & 51.9 & 40.5 & 78.0 & 56.7 & 53.3 & 94.0 & \#4: Latvia & 21.632877 & 1.0250000\\
+Greece & 54.2 & 23.3 & 43.0 & 0.0 & 0.0 & 0.0 & 54.2 & 23.3 & 43 & \#20: Greece & 9.895890 & 0.4480769\\
 \hline
-Israel & 100.0 & 14.0 & 14.0 & 0.0 & 0.0 & 0.0 & 100.0 & 14.0 & 14.0 & \#26: Israel & 3.221918 & 0.2692308\\
+Poland & 100.0 & 20.0 & 20.0 & 67.5 & 21.6 & 32.0 & 80.0 & 41.6 & 52 & \#10: Poland & 11.967123 & 0.8000000\\
 \hline
 \end{tabular}
 
@@ -589,7 +624,7 @@ Israel & 100.0 & 14.0 & 14.0 & 0.0 & 0.0 & 0.0 & 100.0 & 14.0 & 14.0 & \#26: Isr
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-14-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-16-1.pdf}
 
 \chapter{Traits}\label{traits}
 
@@ -599,15 +634,15 @@ A random sample from the data set:
 \hline
 Gender & Question\_short & Rank (text) & Rank (number) & n & Percent\\
 \hline
-Men & Money & Ranked third & 3 & 578.79 & 5.423678\\
+Men & Sense of humor & Ranked second & 2 & 2349.83 & 22.011057\\
 \hline
-Men & Looks & Ranked third & 3 & 1828.66 & 17.107868\\
+Women & Looks & Ranked sixth & 6 & 2650.67 & 23.284416\\
 \hline
-Men & Money & Ranked fourth & 4 & 754.62 & 7.071332\\
+Women & Personality & Ranked first & 1 & 5546.56 & 48.633686\\
 \hline
-Women & Personality & Ranked sixth & 6 & 328.93 & 2.884144\\
+Men & Intellegence & Ranked sixth & 6 & 501.65 & 4.699372\\
 \hline
-Men & Personality & Ranked second & 2 & 2460.32 & 23.013131\\
+Men & Sense of humor & Ranked third & 3 & 2466.30 & 23.102041\\
 \hline
 \end{tabular}
 
@@ -631,7 +666,7 @@ Men & Personality & Ranked second & 2 & 2460.32 & 23.013131\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-17-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-19-1.pdf}
 
 \chapter{Salarys of Trump and Obama White House
 Employees}\label{salarys-of-trump-and-obama-white-house-employees}
@@ -652,15 +687,15 @@ A random sample from the data set:
 \hline
 ADMINISTRATION & NAME & STATUS & SALARY & PAY BASIS & POSITION TITLE\\
 \hline
-Obama & Marketos, Cassandra G. & Employee & 64500 & Per Annum & DEPUTY DIRECTOR FOR DIGITAL OUTBOUND\\
+Trump & Biddle, Emily K. & Employee & 70000 & Per Annum & DEPUTY SOCIAL SECRETARY\\
 \hline
-Obama & Kelly, Lauren M. & Employee & 65949 & Per Annum & DEPUTY DIRECTOR AND DEPUTY SOCIAL SECRETARY\\
+Trump & Salvi, Mary E. & Employee & 47000 & Per Annum & EXECUTIVE ASSISTANT\\
 \hline
-Trump & Williams, Sherman A. & Employee & 90350 & Per Annum & ASSISTANT TO THE EXECUTIVE CLERK\\
+Trump & Meyer, Joyce Y. & Employee & 155000 & Per Annum & DEPUTY ASSISTANT TO THE PRESIDENT FOR LEGISLATIVE AFFAIRS AND HOUSE DEPUTY DIRECTOR\\
 \hline
-Obama & Aniskoff, Paulette L. & Employee & 157299 & Per Annum & DEPUTY ASSISTANT TO THE PRESIDENT AND DIRECTOR OF THE OFFICE OF PUBLIC ENGAGEMENT\\
+Obama & Dyer, Deesha A. & Employee & 119723 & Per Annum & SPECIAL ASSISTANT TO THE PRESIDENT AND WHITE HOUSE SOCIAL SECRETARY\\
 \hline
-Obama & Sanchez, Raul D. & Employee & 42613 & Per Annum & ANALYST\\
+Trump & Eason, William J. & Employee & 77000 & Per Annum & LEAD PRESS REPRESENTATIVE\\
 \hline
 \end{tabular}
 
@@ -679,7 +714,7 @@ Obama & Sanchez, Raul D. & Employee & 42613 & Per Annum & ANALYST\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-20-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-22-1.pdf}
 
 \chapter{Winter Games}\label{winter-games}
 
@@ -689,15 +724,15 @@ A random sample from the data set:
 \hline
 Year & Sport & Event & Country & Gender & Medal Rank & Medal & Name of Athlete or Team & Age of Athlete\\
 \hline
-1960 & Ski Jumping & Men's Normal Hill, Individual & Germany & Men & 1 & gold & Helmut Recknagel & 22\\
+1948 & Figure Skating & Men's Singles & Austria & Men & 3 & bronze & Edi Rada & 25\\
 \hline
-1988 & Cross-Country Skiing & Women's 20 Kilometers & Soviet Union & Women & 3 & bronze & Raisa Smetanina & 35\\
+1960 & Cross-Country Skiing & Men's 50 Kilometers & Finland & Men & 2 & silver & Veikko Hakulinen & 35\\
 \hline
-1964 & Speedskating & Women's 500 Meters & Soviet Union & Women & 2 & silver & Irina Yegorova & 23\\
+2014 & Alpine Skiing & Women's Super G & Austria & Women & 3 & bronze & Nicole Hosp & 30\\
 \hline
-1948 & Bobsled & Men's Four & United States & Men & 1 & gold & United States-2 & NA\\
+1998 & Speedskating & Men's 1,500 Meters & Netherlands & Men & 3 & bronze & Rintje Ritsma & 27\\
 \hline
-1994 & Cross-Country Skiing & Women's 15 Kilometers & Russia & Women & 3 & bronze & Nina Gavrylyuk & 28\\
+1972 & Cross-Country Skiing & Men's 50 Kilometers & Soviet Union & Men & 3 & bronze & Vyacheslav Vedenin & 30\\
 \hline
 \end{tabular}
 
@@ -711,7 +746,7 @@ Year & Sport & Event & Country & Gender & Medal Rank & Medal & Name of Athlete o
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-24-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-26-1.pdf}
 
 A random sample from the data set:
 
@@ -719,15 +754,15 @@ A random sample from the data set:
 \hline
 Year & Sport & Event & Country & Gender & Medal Rank & Medal & Name of Athlete or Team & Age of Athlete & cold\_war\\
 \hline
-2006 & Ski Jumping & Men's Large Hill, Team & Austria & Men & 1 & gold & Austria & NA & A\\
+1976 & Cross-Country Skiing & Men's 30 Kilometers & United States & Men & 2 & silver & Bill Koch & 20 & A\\
 \hline
-2006 & Alpine Skiing & Men's Slalom & Austria & Men & 2 & silver & Reinfried Herbst & 27 & A\\
+1960 & Alpine Skiing & Men's Giant Slalom & Austria & Men & 3 & bronze & Ernst Hinterseer & 27 & A\\
 \hline
-1968 & Cross-Country Skiing & Men's 30 Kilometers & Norway & Men & 2 & silver & Odd Martinsen & 25 & A\\
+1984 & Speedskating & Men's 5,000 Meters & East Germany & Men & 3 & bronze & RenÃ© SchÃ¶fisch & 22 & East Germany\\
 \hline
-1998 & Cross-Country Skiing & Men's 50 Kilometers & Austria & Men & 3 & bronze & Christian Hoffmann & 23 & A\\
+1998 & Speedskating & Men's 10,000 Meters & Netherlands & Men & 1 & gold & Gianni Romme & 24 & A\\
 \hline
-1980 & Cross-Country Skiing & Men's 15 Kilometers & Finland & Men & 2 & silver & Juha Mieto & 30 & A\\
+1984 & Alpine Skiing & Women's Slalom & Liechtenstein & Women & 3 & bronze & Ursula Konzett & 24 & A\\
 \hline
 \end{tabular}
 
@@ -751,7 +786,7 @@ Year & Sport & Event & Country & Gender & Medal Rank & Medal & Name of Athlete o
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-27-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-29-1.pdf}
 
 \chapter{Brexit}\label{brexit}
 
@@ -776,15 +811,15 @@ A random sample from the data set:
 \hline
 Country & Year & Quarter & Date (start of quarter) & Percentage change from previous period & Date (start o quarter)\\
 \hline
-CAN & 2013 & 4 & 2013-10-01 & 1.007924 & 2013-10-01\\
+FRA & 2015 & 3 & 2015-07-01 & 0.439134 & 2015-07-01\\
 \hline
-DEU & 2012 & 2 & 2012-04-01 & 0.096022 & 2012-04-01\\
+JPN & 2010 & 3 & 2010-07-01 & 1.873702 & 2010-07-01\\
 \hline
-DEU & 2014 & 4 & 2014-10-01 & 0.889928 & 2014-10-01\\
+GBR & 2016 & 2 & 2016-04-01 & 0.601298 & 2016-04-01\\
 \hline
-USA & 2012 & 2 & 2012-04-01 & 0.466941 & 2012-04-01\\
+USA & 2017 & 1 & 2017-01-01 & 0.307393 & 2017-01-01\\
 \hline
-FRA & 2015 & 2 & 2015-04-01 & -0.062148 & 2015-04-01\\
+ITA & 2014 & 2 & 2014-04-01 & -0.046314 & 2014-04-01\\
 \hline
 \end{tabular}
 
@@ -802,7 +837,7 @@ FRA & 2015 & 2 & 2015-04-01 & -0.062148 & 2015-04-01\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-30-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-32-1.pdf}
 
 A random sample from the data set:
 
@@ -810,15 +845,15 @@ A random sample from the data set:
 \hline
 Country & Year & Quarter & Date (start of quarter) & Percentage change from previous period & Date (start o quarter) & min\_ & max\_\\
 \hline
-ITA & 2011 & 2 & 2011-04-01 & 0.126761 & 2011-04-01 & -0.544269 & 0.727759\\
+JPN & 2016 & 3 & 2016-07-01 & 0.214856 & 2016-07-01 & 0.185529 & 1.021803\\
 \hline
-CAN & 2016 & 4 & 2016-10-01 & 0.666167 & 2016-10-01 & 0.395541 & 0.666167\\
+GBR & 2013 & 4 & 2013-10-01 & 0.491800 & 2013-10-01 & -0.102503 & 1.007924\\
 \hline
-CAN & 2013 & 1 & 2013-01-01 & 1.030501 & 2013-01-01 & -1.052199 & 1.210002\\
+FRA & 2017 & 1 & 2017-01-01 & 0.531857 & 2017-01-01 & 0.211890 & 0.910663\\
 \hline
-ITA & 2017 & 2 & 2017-04-01 & 0.374353 & 2017-04-01 & 0.297970 & 1.094763\\
+USA & 2011 & 1 & 2011-01-01 & -0.386237 & 2011-01-01 & -1.457400 & 1.766414\\
 \hline
-CAN & 2010 & 2 & 2010-04-01 & 0.514190 & 2010-04-01 & 0.514190 & 2.047503\\
+FRA & 2014 & 3 & 2014-07-01 & 0.572167 & 2014-07-01 & -0.130127 & 1.278254\\
 \hline
 \end{tabular}
 
@@ -847,7 +882,7 @@ CAN & 2010 & 2 & 2010-04-01 & 0.514190 & 2010-04-01 & 0.514190 & 2.047503\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-33-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-35-1.pdf}
 
 \chapter{Curry in London}\label{curry-in-london}
 
@@ -866,15 +901,15 @@ A random sample from the data set:
 \hline
 Name & Location & Latitude & Longitude & Empire State Burger & Chicken Tikka & Gammon afternoon deal & Chocolate Brownie & Doom Bar & Birra Moretti & Porn Star at 2 x £12 & Porn Star (glass) & MEAL & Notes & Moretti as a \% of a tikka & Moretti as \% of burger & PRICE BUCKETS & Food cost £ & Drink cost £\\
 \hline
-The Wheatsheaf & Ellesmere Port & 53.28290 & -2.923064 & 9.35 & 5.90 & 5.4 & 3.35 & 2.19 & 3.09 & NA & 5.8 & 23.88 & NA & 0.5237288 & 0.3304813 & £25.20- & 15.25 & 5.28\\
+The Eccles Cross & Eccles & 53.48334 & -2.3346944 & 8.75 & 7.19 & 5.90 & 3.75 & 2.29 & 2.75 & NA & 5.9 & 24.73 & NA & 0.3824757 & 0.3142857 & £25.20- & 15.94 & 5.04\\
 \hline
-The York Palace & Llanelli & 51.68107 & -4.163065 & 8.75 & 7.19 & 5.9 & 3.85 & 2.29 & 3.05 & 6.3 & NA & 25.13 & NA & 0.4242003 & 0.3485714 & £25.20- & 15.94 & 5.34\\
+The Baron Cadogan & Caversham & 51.46808 & -0.9725126 & 8.75 & 7.90 & 5.90 & 3.85 & 2.69 & 3.09 & 6.3 & NA & 26.28 & NA & 0.3911392 & 0.3531429 & £25.21+ & 16.65 & 5.78\\
 \hline
-The Observatory & Ilkeston & 52.97154 & -1.308131 & 8.75 & 6.99 & 5.9 & 3.85 & 2.29 & 2.99 & 6.3 & NA & 24.87 & NA & 0.4277539 & 0.3417143 & £25.20- & 15.74 & 5.28\\
+JJ Moon's & Tooting, London & 51.42787 & -0.1684140 & 8.99 & 6.99 & NA & 4.05 & 2.29 & 3.15 & 6.3 & NA & 25.47 & NA & 0.4506438 & 0.3503893 & £25.21+ & 15.98 & 5.44\\
 \hline
-The Red Lion & Ripley & 53.05078 & -1.407486 & 8.75 & 7.19 & 5.9 & 3.85 & 1.99 & 2.95 & 6.3 & NA & 24.73 & NA & 0.4102921 & 0.3371429 & £25.20- & 15.94 & 4.94\\
+Wetherspoons & Milton Keynes & 52.03763 & -0.7676750 & 8.75 & 7.49 & 5.90 & 3.85 & 2.25 & 3.15 & 6.3 & NA & 25.49 & NA & 0.4205607 & 0.3600000 & £25.21+ & 16.24 & 5.40\\
 \hline
-The Society Rooms & Macclesfield & 53.25640 & -2.124377 & 8.75 & 7.40 & 5.9 & 3.85 & 2.29 & 3.09 & 6.3 & NA & 25.38 & NA & 0.4175676 & 0.3531429 & £25.21+ & 16.15 & 5.38\\
+The Charlie Hall & Birmingham & 52.52430 & -1.8400000 & 8.45 & 7.40 & 5.75 & 3.85 & 2.29 & 2.95 & 6.3 & NA & 24.94 & NA & 0.3986486 & 0.3491124 & £25.20- & 15.85 & 5.24\\
 \hline
 \end{tabular}
 
@@ -891,15 +926,15 @@ A random sample from the data set:
 \hline
   & long & lat & group & order & region & subregion\\
 \hline
-88312 & 100.6295 & 6.447998 & 1413 & 88312 & Thailand & NA\\
+28726 & 109.68105 & 18.24712 & 418 & 28726 & China & 1\\
 \hline
-18728 & -133.1968 & 68.739845 & 345 & 18728 & Canada & NA\\
+83396 & -14.12109 & 22.96055 & 1341 & 83396 & Western Sahara & NA\\
 \hline
-8316 & 137.4836 & -34.252148 & 177 & 8316 & Australia & NA\\
+63064 & 95.05977 & 26.47397 & 1013 & 63064 & Myanmar & NA\\
 \hline
-81664 & 174.7150 & 61.947903 & 1309 & 81664 & Russia & NA\\
+23244 & -96.94648 & 71.79189 & 351 & 23244 & Canada & Prince of Wales Island\\
 \hline
-93724 & -115.1252 & 32.683304 & 1501 & 93724 & USA & NA\\
+51314 & 92.43047 & 22.82183 & 839 & 51314 & India & NA\\
 \hline
 \end{tabular}
 
@@ -941,7 +976,7 @@ A random sample from the data set:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-38-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-40-1.pdf}
 
 A random sample from the data set:
 
@@ -949,15 +984,15 @@ A random sample from the data set:
 \hline
 Name & Location & Latitude & Longitude & Notes & Moretti as a \% of a tikka & Moretti as \% of burger & PRICE BUCKETS & Food cost £ & Drink cost £ & Kilometers from Big Ben & Item & Menu Item Price\\
 \hline
-The Whiffler & Norwich & 52.65430 & 1.268524 & NA & 0.4113924 & 0.3591160 & £25.21+ & 16.95 & 5.74 & 158.8010 & Birra Moretti & 3.25\\
+The Queen's Arms & Winsford & 53.19135 & -2.5303022 & NA & 0.4828125 & 0.3639576 & £25.20- & 14.89 & 5.28 & 249.037977 & Empire State Burger & 8.49\\
 \hline
-The Kingfisher & Poynton & 53.34644 & -2.124271 & NA & 0.3920386 & 0.3714286 & £25.21+ & 17.04 & 5.60 & 245.7196 & Birra Moretti & 3.25\\
+The Jolly Sailor & Bristol & 51.44928 & -2.5172637 & NA & 0.4175676 & 0.3531429 & £25.21+ & 16.15 & 5.38 & 166.895837 & Chocolate Brownie & 3.85\\
 \hline
-Bull and Stirrup Hotel & Chester & 53.19436 & -2.893331 & NA & 0.4172015 & 0.3571429 & £25.21+ & 16.89 & 5.84 & 266.2428 & Doom Bar & 2.59\\
+Goldengrove & Stratford, London & 51.54377 & 0.0039464 & NA & 0.3987342 & 0.3600000 & £25.21+ & 16.65 & 5.50 & 9.165488 & Doom Bar & 2.35\\
 \hline
-The Great Central & Wilmslow Road & 53.44093 & -2.219457 & NA & 0.4256757 & 0.3600000 & £25.21+ & 16.15 & 5.44 & 257.9732 & Birra Moretti & 3.15\\
+The Society Rooms & Macclesfield & 53.25640 & -2.1243769 & NA & 0.4175676 & 0.3531429 & £25.21+ & 16.15 & 5.38 & 237.539017 & Empire State Burger & 8.75\\
 \hline
-The Hornet & Birmingham & 52.49268 & -1.819488 & NA & 0.4741379 & 0.3142857 & £25.20- & 14.55 & 4.94 & 160.0558 & Empire State Burger & 8.75\\
+The Ivor Davies & Cardiff & 51.48131 & -3.2003483 & NA & 0.4200000 & 0.3405405 & £25.21+ & 16.75 & 5.64 & 214.153117 & Gammon afternoon deal & 5.90\\
 \hline
 \end{tabular}
 
@@ -975,7 +1010,7 @@ The Hornet & Birmingham & 52.49268 & -1.819488 & NA & 0.4741379 & 0.3142857 & £
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-41-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-43-1.pdf}
 
 \chapter{Life Expectancy Increases}\label{life-expectancy-increases}
 
@@ -994,15 +1029,15 @@ A random sample from the data set:
 \hline
 Life Expectancy 1960 & Country Code & Country Name & Region & Income Group & Year & Life Expectancy 2010 & CountryName & squared\\
 \hline
-69.10927 & ESP & Spain & Europe \& Central Asia & High income & 2010 & 81.62683 & Spain & 4776.091\\
+54.21302 & BRA & Brazil & Latin America \& Caribbean & Upper middle income & 2010 & 73.76956 & Brazil & 2939.052\\
 \hline
-65.56937 & ABW & Aruba & Latin America \& Caribbean & High income & 2010 & 74.91063 & Aruba & 4299.342\\
+48.58112 & COG & Congo, Rep. & Sub-Saharan Africa & Lower middle income & 2010 & 60.45261 & Congo - Brazzaville & 2360.125\\
 \hline
-41.98105 & PNG & Papua New Guinea & East Asia \& Pacific & Lower middle income & 2010 & 64.64024 & Papua New Guinea & 1762.408\\
+NA & CUW & Curacao & Latin America \& Caribbean & High income & 2010 & NA & Curaçao & NA\\
 \hline
-60.78085 & AZE & Azerbaijan & Europe \& Central Asia & Upper middle income & 2010 & 70.91861 & Azerbaijan & 3694.312\\
+73.39268 & NLD & Netherlands & Europe \& Central Asia & High income & 2010 & 80.70244 & Netherlands & 5386.486\\
 \hline
-68.29954 & UKR & Ukraine & Europe \& Central Asia & Lower middle income & 2010 & 70.26537 & Ukraine & 4664.827\\
+68.71961 & PRI & Puerto Rico & Latin America \& Caribbean & High income & 2010 & 78.40817 & Puerto Rico & 4722.385\\
 \hline
 \end{tabular}
 
@@ -1037,7 +1072,7 @@ Life Expectancy 1960 & Country Code & Country Name & Region & Income Group & Yea
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-44-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-46-1.pdf}
 
 \chapter{Myers Briggs}\label{myers-briggs}
 
@@ -1056,15 +1091,15 @@ A random sample from the data set:
 \hline
 (S)ensing/I(N)tuition & (T)hinking/(F)eeling & (J)udging/(P)erceiving & (E)xtroversion/(I)ntroversion & count\\
 \hline
-Intuition & Thinking & Perceiving & Introversion & 1\\
-\hline
-Intuition & Feeling & Judging & Introversion & 1\\
-\hline
-Intuition & Thinking & Judging & Extroversion & 1\\
-\hline
 Intuition & Feeling & Perceiving & Introversion & 1\\
 \hline
-Sensing & Thinking & Perceiving & Extroversion & 1\\
+Sensing & Feeling & Judging & Introversion & 1\\
+\hline
+Sensing & Thinking & Judging & Extroversion & 1\\
+\hline
+Sensing & Feeling & Judging & Introversion & 1\\
+\hline
+Sensing & Feeling & Judging & Introversion & 1\\
 \hline
 \end{tabular}
 
@@ -1091,7 +1126,7 @@ Sensing & Thinking & Perceiving & Extroversion & 1\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-47-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-49-1.pdf}
 
 \chapter{Wine}\label{wine}
 
@@ -1139,7 +1174,7 @@ volitility early in this period.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-49-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-51-1.pdf}
 
 \chapter{Arctic Ice}\label{arctic-ice}
 
@@ -1165,15 +1200,15 @@ A random sample from the data set:
 \hline
 Date & Extent (million sq km) & year & month\_day & month\_day\_plus & proportion\_ocean\_covered\_in\_ice & mean\_for\_day & diff\_from\_mean\_day\\
 \hline
-2008-02-27 & 15.354 & 2008 & 02-27 & 2000-02-27 & 0.0426500 & 15.31966 & 0.0343429\\
+2003-05-31 & 12.483 & 2003 & 05-31 & 2000-05-31 & 0.0346750 & 12.447412 & 0.0355882\\
 \hline
-1992-11-15 & 11.138 & 1992 & 11-15 & 2000-11-15 & 0.0309389 & 10.40931 & 0.7286857\\
+1987-05-30 & 13.234 & 1987 & 05-30 & 2000-05-30 & 0.0367611 & 12.538743 & 0.6952571\\
 \hline
-1994-05-01 & 14.126 & 1994 & 05-01 & 2000-05-01 & 0.0392389 & 13.73321 & 0.3927941\\
+1989-03-22 & 15.397 & 1989 & 03-22 & 2000-03-22 & 0.0427694 & 15.175265 & 0.2217353\\
 \hline
-2014-04-07 & 14.479 & 2014 & 04-07 & 2000-04-07 & 0.0402194 & 14.83906 & -0.3600588\\
+1999-09-27 & 6.761 & 1999 & 09-27 & 2000-09-27 & 0.0187806 & 6.257371 & 0.5036286\\
 \hline
-2001-06-09 & 12.073 & 2001 & 06-09 & 2000-06-09 & 0.0335361 & 11.95731 & 0.1156857\\
+2008-11-09 & 10.089 & 2008 & 11-09 & 2000-11-09 & 0.0280250 & 10.003600 & 0.0854000\\
 \hline
 \end{tabular}
 
@@ -1247,7 +1282,7 @@ year & average\_coverage & num\_days & average\_day\\
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-53-1.pdf}
+\includegraphics{makeovermonday_book_files/figure-latex/unnamed-chunk-55-1.pdf}
 
 \bibliography{book.bib,packages.bib}
 

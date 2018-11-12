@@ -14,20 +14,48 @@
 
 
 
-The ggplot2 package in R, written by Hadley Wickham and a number of collaborators, implements the "grammer of graphics" proposal of Leland Wilkinson.  This data visualization system idea is at once powerful, novel, and intuitive.  Wickham conceives  of and has built a system where data visualization as dividable seven parameters:  data to visualize, aesthetics that represent variables in the data, geometric objects, the coordinate system, specific scales, and statistical transformation.  
+The ggplot2 package in R implements the "grammer of graphics" --- a proposal of Leland Wilkinson and the product of the PhD and ongoing work of Hadley Wickham.  This data visualization system idea is at once powerful, novel, and intuitive.  Wickham conceives  of and has built a system where data visualization as dividable into parameters:  data to visualize, aesthetics that represent variables in the data, geometric objects, the coordinate system, specific scales, and statistical transformation.  
 
-While intuitive, using ggplotting effectively and efficiently requires practice.  The "slow ggplotting" method and examples are designed to facilitate rapid incorporation of the ggplot logic and syntax.  The method relys on action-reaction thinking, one of the most powerful tools in our "how-to" teaching tool kit --- "slow ggplotting" makes modifications to plots as incrementally as possible so that it is clear to users what code triggers each change.    
+While intuitive, using ggplotting effectively and efficiently requires practice.  The "slow ggplotting" method and examples are designed to facilitate rapid incorporation of the ggplot logic and syntax.  The method relys on action-reaction thinking --- one of the most powerful tools in our "how-to" teaching tool kit. "Slow ggplotting" makes modifications to plots as incrementally as possible so that it is clear to users what code triggers each new layer or modification.  The aim is less to be concise, but to be explicit about modifications, and facilitating more interactions with ggplot functions for newcomer internalization of the code. 
 
+Working incrementally is facilitatied by using the following (non conventional) conventions: 
 
-- pulling out aes() from the ggplot() function
+- pulling out aes() from the ggplot() function:  
+
 - using fewer functions; example - using labs() to add a title instead of ggtitle()
+
 - using functions multiple times; example aes(x = var1) + aes(y = var2) rather than aes(x = var1, y = var2)
 - using base R functions and tidyverse functions.  For other packages, the :: style to call them
 - write out arguments (no shortcuts)  aes(x = gdppercap) not aes(gdppercap)
 - order ggplot commands so that reactivity is obvious; scale adjustments to aesthetics might also be near the aesthetic declaration. 
 
 
-The particular collection of visualizations here was produced for the Tableau associated initiative #MakeoverMonday.  
+Here, I contrast the usual plotting method to slow ggplotting:
+
+Usual approach:
+
+```{r, eval = F}
+ggplot(my_data, aes(var1, y = var2, col = var3)) +
+  geom_point() +
+  ggtitle("My Title") +
+  labs(x = "the x label", y = "the y label", col = "legend title")
+```
+
+Using new slow ggplotting conventions: 
+
+```{r, eval = F}
+ggplot(data = my_data) +
+  aes(x = var1) +
+  labs(x = "the x label") +
+  aes(y = var2) +
+  labs(y = "the y label") +
+  geom_point() +
+  aes(col = var3) +
+  labs(col = "legend title") +
+  labs(title = "My title")
+```
+
+The particular collection of visualizations here was produced for the Tableau-users-associated initiative #MakeoverMonday.  
 
 
 
@@ -55,8 +83,8 @@ knitr::opts_chunk$set(echo = TRUE)
 # reveal lines up to `upto` and highlight lines `highlight`
 reveal <- function(name, upto, highlight = upto) {
   content <- knitr:::knit_code$get(name)
-  content[upto] <- gsub("%>%", "", content[upto], fixed=T)
-  content[upto] <- gsub("+", "", content[upto], fixed=T)
+  content[upto] <- gsub("%>%", "", content[upto], fixed = T)
+  content[upto] <- gsub("+", "", content[upto], fixed = T)
   content[highlight] <- paste(content[highlight]
                               #, "#<<"
                               )
